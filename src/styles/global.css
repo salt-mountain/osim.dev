@@ -500,6 +500,23 @@ a:hover {
   max-width: 640px;
 }
 
+.hero__quote {
+  border-left: 3px solid var(--accent-glow);
+  padding-left: 1.25rem;
+  font-size: 0.9rem;
+  color: var(--text-heading);
+  line-height: 1.8;
+  max-width: 640px;
+}
+
+.hero__quote p {
+  margin-bottom: 0.15rem;
+}
+
+.hero__quote p:last-child {
+  margin-bottom: 0;
+}
+
 .hero__resume {
   margin-top: 1.25rem;
 }
