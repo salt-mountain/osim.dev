@@ -490,6 +490,7 @@ a:hover {
   color: var(--accent-glow);
   margin-bottom: 1.25rem;
   font-weight: 400;
+  text-align: center;
 }
 
 .hero__bio {
@@ -638,7 +639,7 @@ a:hover {
 
 .job__dates {
   font-size: 0.78rem;
-  color: var(--text-secondary);
+  color: #fab387;
 }
 
 .job__title {
