@@ -92,18 +92,15 @@ Y8,        88  8b       d8  88          ,adPPPPP88  88       88     Y8,        ,
           <span class="powerline__seg powerline__seg--cmd">cat history.json | jq '.[]'</span>
         </div>
         <div class="section__output">
-          <div class="job">
+          <div class="job job--current">
             <div class="job__header">
               <span class="job__company">Acme Cloud Corp</span>
-              <span class="job__dates">2022 &ndash; Present</span>
+              <span class="job__dates">2022 &ndash; Present <span class="spinner" aria-hidden="true"></span></span>
             </div>
             <div class="job__title">Senior Platform Engineer</div>
-            <ul class="job__bullets">
-              <li>Designed and maintained a multi-region Kubernetes platform serving 200+ microservices across production, staging, and dev environments.</li>
-              <li>Built a self-service infrastructure provisioning system using Terraform and custom operators, reducing team onboarding time from weeks to hours.</li>
-              <li>Led migration from legacy CI/CD to a GitOps-based deployment pipeline, cutting deployment failures by 70%.</li>
-              <li>Implemented comprehensive observability stack (Prometheus, Grafana, OpenTelemetry) across the platform.</li>
-            </ul>
+            <div class="job__running">
+              <span class="job__running-text" id="job-running-text">RUNNING</span>
+            </div>
           </div>
 
           <div class="job">
@@ -132,17 +129,24 @@ Y8,        88  8b       d8  88          ,adPPPPP88  88       88     Y8,        ,
             </ul>
           </div>
 
-          <div class="job">
-            <div class="job__header">
-              <span class="job__company">StartupHQ</span>
-              <span class="job__dates">2016 &ndash; 2018</span>
+          <div id="experience-more" class="experience-more" hidden>
+            <div class="job">
+              <div class="job__header">
+                <span class="job__company">StartupHQ</span>
+                <span class="job__dates">2016 &ndash; 2018</span>
+              </div>
+              <div class="job__title">Junior Systems Engineer</div>
+              <ul class="job__bullets">
+                <li>First infrastructure hire. Built the initial deployment pipeline, monitoring stack, and on-call rotation from scratch.</li>
+                <li>Automated server provisioning with Ansible, reducing setup time from 2 days to 15 minutes.</li>
+              </ul>
             </div>
-            <div class="job__title">Junior Systems Engineer</div>
-            <ul class="job__bullets">
-              <li>First infrastructure hire. Built the initial deployment pipeline, monitoring stack, and on-call rotation from scratch.</li>
-              <li>Automated server provisioning with Ansible, reducing setup time from 2 days to 15 minutes.</li>
-            </ul>
           </div>
+
+          <a href="#" id="experience-toggle" class="experience-toggle" aria-expanded="false">
+            <span class="experience-toggle__text">-- MORE --</span>
+            <span class="cursor" aria-hidden="true"></span>
+          </a>
         </div>
       </section>
 
@@ -164,30 +168,30 @@ Y8,        88  8b       d8  88          ,adPPPPP88  88       88     Y8,        ,
               <span class="htop__exp">YRS</span>
               <span class="htop__status">STATUS</span>
             </div>
-            <div class="htop__row"><span class="htop__pid">1001</span><span class="htop__tool">Kubernetes</span><span class="htop__cat">containers</span><span class="htop__exp">5y+</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__pid">1002</span><span class="htop__tool">Docker</span><span class="htop__cat">containers</span><span class="htop__exp">6y+</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__pid">1003</span><span class="htop__tool">AWS</span><span class="htop__cat">cloud</span><span class="htop__exp">5y+</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__pid">1004</span><span class="htop__tool">GCP</span><span class="htop__cat">cloud</span><span class="htop__exp">3y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__pid">1005</span><span class="htop__tool">Terraform</span><span class="htop__cat">iac</span><span class="htop__exp">5y+</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__pid">1006</span><span class="htop__tool">Pulumi</span><span class="htop__cat">iac</span><span class="htop__exp">2y</span><span class="htop__status"><span class="htop__tag htop__tag--familiar">familiar</span></span></div>
-            <div class="htop__row"><span class="htop__pid">1007</span><span class="htop__tool">Ansible</span><span class="htop__cat">iac</span><span class="htop__exp">4y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__pid">1008</span><span class="htop__tool">Python</span><span class="htop__cat">languages</span><span class="htop__exp">6y+</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__pid">1009</span><span class="htop__tool">Go</span><span class="htop__cat">languages</span><span class="htop__exp">4y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__pid">1010</span><span class="htop__tool">Bash</span><span class="htop__cat">languages</span><span class="htop__exp">8y+</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__pid">1011</span><span class="htop__tool">Helm</span><span class="htop__cat">containers</span><span class="htop__exp">4y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__pid">1012</span><span class="htop__tool">ArgoCD</span><span class="htop__cat">containers</span><span class="htop__exp">3y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__pid">1013</span><span class="htop__tool">Prometheus</span><span class="htop__cat">o11y</span><span class="htop__exp">4y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__pid">1014</span><span class="htop__tool">Grafana</span><span class="htop__cat">o11y</span><span class="htop__exp">4y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__pid">1015</span><span class="htop__tool">OpenTelemetry</span><span class="htop__cat">o11y</span><span class="htop__exp">2y</span><span class="htop__status"><span class="htop__tag htop__tag--familiar">familiar</span></span></div>
-            <div class="htop__row"><span class="htop__pid">1016</span><span class="htop__tool">GitHub Actions</span><span class="htop__cat">cicd</span><span class="htop__exp">5y+</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__pid">1017</span><span class="htop__tool">Jenkins</span><span class="htop__cat">cicd</span><span class="htop__exp">4y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__pid">1018</span><span class="htop__tool">GitOps</span><span class="htop__cat">cicd</span><span class="htop__exp">3y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__pid">1019</span><span class="htop__tool">PostgreSQL</span><span class="htop__cat">data</span><span class="htop__exp">5y+</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__pid">1020</span><span class="htop__tool">Redis</span><span class="htop__cat">data</span><span class="htop__exp">4y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__pid">1021</span><span class="htop__tool">Kafka</span><span class="htop__cat">data</span><span class="htop__exp">3y</span><span class="htop__status"><span class="htop__tag htop__tag--familiar">familiar</span></span></div>
-            <div class="htop__row"><span class="htop__pid">1022</span><span class="htop__tool">Nginx</span><span class="htop__cat">networking</span><span class="htop__exp">4y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__pid">1023</span><span class="htop__tool">gRPC</span><span class="htop__cat">networking</span><span class="htop__exp">3y</span><span class="htop__status"><span class="htop__tag htop__tag--familiar">familiar</span></span></div>
-            <div class="htop__row"><span class="htop__pid">1024</span><span class="htop__tool">REST APIs</span><span class="htop__cat">networking</span><span class="htop__exp">6y+</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1001</span><span class="htop__tool">GitHub Actions</span><span class="htop__cat">cicd</span><span class="htop__exp">5y+</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1002</span><span class="htop__tool">GitOps</span><span class="htop__cat">cicd</span><span class="htop__exp">3y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1003</span><span class="htop__tool">Jenkins</span><span class="htop__cat">cicd</span><span class="htop__exp">4y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1004</span><span class="htop__tool">AWS</span><span class="htop__cat">cloud</span><span class="htop__exp">5y+</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1005</span><span class="htop__tool">GCP</span><span class="htop__cat">cloud</span><span class="htop__exp">3y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1006</span><span class="htop__tool">ArgoCD</span><span class="htop__cat">containers</span><span class="htop__exp">3y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1007</span><span class="htop__tool">Docker</span><span class="htop__cat">containers</span><span class="htop__exp">6y+</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1008</span><span class="htop__tool">Helm</span><span class="htop__cat">containers</span><span class="htop__exp">4y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1009</span><span class="htop__tool">Kubernetes</span><span class="htop__cat">containers</span><span class="htop__exp">5y+</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1010</span><span class="htop__tool">Kafka</span><span class="htop__cat">data</span><span class="htop__exp">3y</span><span class="htop__status"><span class="htop__tag htop__tag--familiar">familiar</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1011</span><span class="htop__tool">PostgreSQL</span><span class="htop__cat">data</span><span class="htop__exp">5y+</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1012</span><span class="htop__tool">Redis</span><span class="htop__cat">data</span><span class="htop__exp">4y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1013</span><span class="htop__tool">Ansible</span><span class="htop__cat">iac</span><span class="htop__exp">4y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1014</span><span class="htop__tool">Pulumi</span><span class="htop__cat">iac</span><span class="htop__exp">2y</span><span class="htop__status"><span class="htop__tag htop__tag--familiar">familiar</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1015</span><span class="htop__tool">Terraform</span><span class="htop__cat">iac</span><span class="htop__exp">5y+</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1016</span><span class="htop__tool">Bash</span><span class="htop__cat">languages</span><span class="htop__exp">8y+</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1017</span><span class="htop__tool">Go</span><span class="htop__cat">languages</span><span class="htop__exp">4y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1018</span><span class="htop__tool">Python</span><span class="htop__cat">languages</span><span class="htop__exp">6y+</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1019</span><span class="htop__tool">gRPC</span><span class="htop__cat">networking</span><span class="htop__exp">3y</span><span class="htop__status"><span class="htop__tag htop__tag--familiar">familiar</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1020</span><span class="htop__tool">Nginx</span><span class="htop__cat">networking</span><span class="htop__exp">4y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1021</span><span class="htop__tool">REST APIs</span><span class="htop__cat">networking</span><span class="htop__exp">6y+</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1022</span><span class="htop__tool">Grafana</span><span class="htop__cat">o11y</span><span class="htop__exp">4y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1023</span><span class="htop__tool">OpenTelemetry</span><span class="htop__cat">o11y</span><span class="htop__exp">2y</span><span class="htop__status"><span class="htop__tag htop__tag--familiar">familiar</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1024</span><span class="htop__tool">Prometheus</span><span class="htop__cat">o11y</span><span class="htop__exp">4y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
             <div class="htop__row"><span class="htop__pid">1025</span><span class="htop__tool">Linux</span><span class="htop__cat">os</span><span class="htop__exp">10y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
           </div>
         </div>

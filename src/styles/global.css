@@ -543,6 +543,27 @@ a:hover {
   margin-bottom: 0.75rem;
 }
 
+/* --- Experience Toggle --- */
+.experience-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.experience-toggle__text {
+  color: var(--highlight);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.experience-toggle:hover .experience-toggle__text {
+  color: var(--accent-glow);
+}
+
 /* --- Work Experience --- */
 .job {
   margin-bottom: 2rem;
@@ -559,6 +580,45 @@ a:hover {
 
 .job:last-child {
   margin-bottom: 0;
+}
+
+/* --- Current Job (building/running) --- */
+.spinner {
+  display: inline-block;
+  font-weight: 700;
+  color: var(--success);
+  width: 1ch;
+}
+
+.job__running {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.job__running-text {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--success);
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+}
+
+.job__running-text--blink {
+  animation: blink 1.2s step-end infinite;
+}
+
+.job__running-text--compile {
+  color: var(--text-secondary);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  font-size: 0.78rem;
+}
+
+.job__running-text--fade {
+  opacity: 0;
 }
 
 .job__header {
@@ -903,7 +963,7 @@ a:hover {
 }
 
 .contact-yaml .yaml__key {
-  color: var(--prompt-path);
+  color: #fab387;
   font-weight: 600;
 }
 

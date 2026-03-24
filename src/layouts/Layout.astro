@@ -61,6 +61,92 @@ const {
           updateLabel();
         });
       });
+
+      // Experience "more" toggle
+      document.addEventListener('DOMContentLoaded', function() {
+        var toggle = document.getElementById('experience-toggle');
+        var more = document.getElementById('experience-more');
+        if (!toggle || !more) return;
+
+        toggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          var expanded = toggle.getAttribute('aria-expanded') === 'true';
+          if (expanded) {
+            more.hidden = true;
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.querySelector('.experience-toggle__text').textContent = '-- MORE --';
+          } else {
+            more.hidden = false;
+            toggle.setAttribute('aria-expanded', 'true');
+            toggle.querySelector('.experience-toggle__text').textContent = '-- END --';
+          }
+        });
+      });
+
+      // Spinner animation
+      (function() {
+        var frames = ['|', '/', '-', '\\'];
+        var i = 0;
+        var el = document.querySelector('.spinner');
+        if (!el) return;
+        setInterval(function() {
+          i = (i + 1) % frames.length;
+          el.textContent = frames[i];
+        }, 350);
+      })();
+
+      // Job status: RUNNING (5s) → fade through compile lines → RUNNING → repeat
+      (function() {
+        var el = document.getElementById('job-running-text');
+        if (!el) return;
+
+        var compileLines = [
+          'compiling platform.rs...',
+          'linking infrastructure.o',
+          'building k8s-operator v3.2.1',
+          'optimizing deploy pipeline',
+          'resolving dependencies...',
+          'packaging observability stack',
+          'compiling terraform modules',
+          'linking ci-cd.pipeline.o',
+          'building service-mesh v2.0',
+          'optimizing resource allocator'
+        ];
+
+        var lineIndex = 0;
+
+        function showRunning() {
+          el.classList.add('job__running-text--fade');
+          setTimeout(function() {
+            el.textContent = 'RUNNING';
+            el.className = 'job__running-text job__running-text--blink';
+          }, 300);
+          setTimeout(showCompileLines, 5000);
+        }
+
+        function showCompileLines() {
+          var count = 0;
+          function nextLine() {
+            el.classList.add('job__running-text--fade');
+            setTimeout(function() {
+              el.textContent = compileLines[lineIndex % compileLines.length];
+              el.className = 'job__running-text job__running-text--compile';
+              lineIndex++;
+              count++;
+              if (count < 4) {
+                setTimeout(nextLine, 1200);
+              } else {
+                setTimeout(showRunning, 1200);
+              }
+            }, 300);
+          }
+          nextLine();
+        }
+
+        // Kick off
+        el.className = 'job__running-text job__running-text--blink';
+        setTimeout(showCompileLines, 5000);
+      })();
     </script>
   </body>
 </html>
