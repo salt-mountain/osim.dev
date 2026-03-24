@@ -10,86 +10,87 @@
 }
 
 :root {
-  /* Dark theme (default) */
-  --bg-primary: #0a0e14;
-  --bg-secondary: #0d1117;
-  --bg-card: #111820;
-  --bg-card-hover: #161d27;
-  --text-primary: #b8c4d0;
-  --text-secondary: #6b7d8e;
-  --text-heading: #d4dce6;
-  --accent: #1a365d;
-  --accent-light: #2a4a7f;
-  --accent-glow: #3b6cb5;
-  --prompt-user: #5fa87f;
-  --prompt-host: #5fa87f;
-  --prompt-path: #4a90c2;
-  --prompt-symbol: #b8c4d0;
-  --highlight: #c8a44e;
-  --error: #c25050;
-  --success: #5fa87f;
-  --border: #1e2a3a;
-  --scanline-opacity: 0.03;
-  --crt-opacity: 0.015;
-  --selection-bg: #1a365d;
-  --selection-text: #d4dce6;
-  --scrollbar-thumb: #1e2a3a;
-  --scrollbar-track: #0a0e14;
-  --vinyl-color: #1a1a2e;
-  --link-color: #4a90c2;
-  --link-hover: #6bb0e2;
-  --tag-bg: #111d2e;
-  --tag-border: #1a365d;
-  --tag-text: #5a8ab5;
-  --now-playing-bg: #0d1117;
-  --divider: #141c26;
-  --pl-user-bg: #2d4a3e;
-  --pl-user-text: #a3d9b1;
-  --pl-path-bg: #1a365d;
-  --pl-path-text: #7db4e0;
-  --pl-cmd-bg: #1c2333;
-  --pl-cmd-text: #c8a44e;
+  /* Alt Catppuccin Mocha — pastel warmth on deep purple-black */
+  --bg-primary: #1e1e2e;
+  --bg-secondary: #181825;
+  --bg-card: #313244;
+  --bg-card-hover: #45475a;
+  --text-primary: #cdd6f4;
+  --text-secondary: #6c7086;
+  --text-heading: #cdd6f4;
+  --accent: #45475a;
+  --accent-light: #585b70;
+  --accent-glow: #cba6f7;
+  --prompt-user: #a6e3a1;
+  --prompt-host: #a6e3a1;
+  --prompt-path: #89dceb;
+  --prompt-symbol: #cdd6f4;
+  --highlight: #f9e2af;
+  --error: #f38ba8;
+  --success: #a6e3a1;
+  --border: #45475a;
+  --scanline-opacity: 0.02;
+  --crt-opacity: 0.01;
+  --selection-bg: #585b70;
+  --selection-text: #cdd6f4;
+  --scrollbar-thumb: #45475a;
+  --scrollbar-track: #181825;
+  --vinyl-color: #313244;
+  --link-color: #89b4fa;
+  --link-hover: #cba6f7;
+  --tag-bg: #181825;
+  --tag-border: #45475a;
+  --tag-text: #89dceb;
+  --now-playing-bg: #181825;
+  --divider: #313244;
+  --pl-user-bg: #2a3e2e;
+  --pl-user-text: #a6e3a1;
+  --pl-path-bg: #45475a;
+  --pl-path-text: #89dceb;
+  --pl-cmd-bg: #313244;
+  --pl-cmd-text: #f9e2af;
 }
 
 [data-theme="light"] {
-  --bg-primary: #f0ede8;
-  --bg-secondary: #e8e4de;
+  /* Catppuccin Latte — soft pastels on warm white */
+  --bg-primary: #eff1f5;
+  --bg-secondary: #e6e9ef;
   --bg-card: #ffffff;
-  --bg-card-hover: #f5f3ef;
-  --text-primary: #2d3748;
-  --text-secondary: #718096;
-  --text-heading: #1a202c;
-  --accent: #1a365d;
-  --accent-light: #2a4a7f;
-  --accent-glow: #3b6cb5;
-  --prompt-user: #276749;
-  --prompt-host: #276749;
-  --prompt-path: #2b6cb0;
-  --prompt-symbol: #2d3748;
-  --highlight: #975a16;
-  --error: #c53030;
-  --success: #276749;
-  --border: #d2cdc4;
+  --bg-card-hover: #f2f4f8;
+  --text-primary: #4c4f69;
+  --text-secondary: #8c8fa1;
+  --text-heading: #4c4f69;
+  --accent: #ccd0da;
+  --accent-light: #8c8fa1;
+  --accent-glow: #8839ef;
+  --prompt-user: #40a02b;
+  --prompt-host: #40a02b;
+  --prompt-path: #04a5e5;
+  --prompt-symbol: #4c4f69;
+  --highlight: #df8e1d;
+  --error: #d20f39;
+  --success: #40a02b;
+  --border: #ccd0da;
   --scanline-opacity: 0;
   --crt-opacity: 0;
-  --selection-bg: #1a365d;
-  --selection-text: #ffffff;
-  --scrollbar-thumb: #c4bfb6;
-  --scrollbar-track: #e8e4de;
-  --vinyl-color: #cbd5e0;
-  --link-color: #2b6cb0;
-  --link-hover: #1a365d;
-  --tag-bg: #e2e8f0;
-  --tag-border: #a0aec0;
-  --tag-text: #2c5282;
-  --now-playing-bg: #e8e4de;
-  --divider: #d2cdc4;
-  --pl-user-bg: #c6f6d5;
-  --pl-user-text: #22543d;
-  --pl-path-bg: #bee3f8;
-  --pl-path-text: #2a4365;
-  --pl-cmd-bg: #e2e8f0;
-  --pl-cmd-text: #975a16;
+  --selection-bg: #acb0be;
+  --selection-text: #4c4f69;
+  --scrollbar-thumb: #bcc0cc;
+  --scrollbar-track: #e6e9ef;
+  --vinyl-color: #ccd0da;
+  --link-color: #1e66f5;
+  --link-hover: #8839ef;
+  --tag-bg: #e6e9ef;
+  --tag-border: #bcc0cc;
+  --tag-text: #04a5e5;
+  --now-playing-bg: #e6e9ef;
+  --divider: #ccd0da;
+  --pl-user-bg: #d5ecd2;
+  --pl-user-text: #2a6e1e;
+  --pl-path-bg: #ccd0da;
+  --pl-path-text: #0480b0;
+  --pl-cmd-bg: #e6e9ef;
+  --pl-cmd-text: #b87610;
 }
 
 ::selection {
@@ -205,9 +206,9 @@ a:hover {
   height: 12px;
   border-radius: 50%;
 }
-.window-dot--close { background: #c25050; }
-.window-dot--minimize { background: #c8a44e; }
-.window-dot--maximize { background: #5fa87f; }
+.window-dot--close { background: #f38ba8; }
+.window-dot--minimize { background: #f9e2af; }
+.window-dot--maximize { background: #a6e3a1; }
 
 .window-title {
   font-size: 0.75rem;
@@ -396,6 +397,13 @@ a:hover {
   margin-bottom: 3.5rem;
 }
 
+.hero__name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin-bottom: 0.25rem;
+}
+
 .hero__ascii {
   font-size: 0.38rem;
   line-height: 1.1;
@@ -403,7 +411,66 @@ a:hover {
   margin-bottom: 0.5rem;
   white-space: pre;
   font-family: inherit;
-  overflow-x: auto;
+  display: none;
+}
+
+@media (min-width: 600px) {
+  .hero__name {
+    display: none;
+  }
+  .hero__ascii {
+    display: block;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 799px) {
+  .hero__ascii {
+    font-size: 0.5rem;
+  }
+}
+
+@media (min-width: 800px) {
+  .hero__ascii {
+    font-size: 0.65rem;
+  }
+}
+
+.easter-egg {
+  color: var(--text-heading);
+  text-decoration: none;
+  cursor: default;
+  margin-left: 0.5ch;
+  position: relative;
+  top: 0.5em;
+}
+
+.easter-egg:hover {
+  color: var(--text-heading);
+  text-decoration: none;
+}
+
+/* --- Pi Easter Egg Page --- */
+.pi__art {
+  color: var(--accent-glow);
+  font-family: inherit;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin-bottom: 1.5rem;
+}
+
+.pi__message {
+  font-size: 0.9rem;
+  color: var(--highlight);
+  font-style: italic;
+  margin-bottom: 1.25rem;
+}
+
+.pi__sub {
+  font-size: 0.83rem;
+  color: var(--text-primary);
+  line-height: 1.75;
+  margin-bottom: 0.75rem;
+  max-width: 560px;
 }
 
 @media (min-width: 600px) {
@@ -630,13 +697,13 @@ a:hover {
 .htop__tag--production {
   color: var(--accent-glow);
   border-color: var(--accent-glow);
-  background: rgba(59, 108, 181, 0.08);
+  background: rgba(203, 166, 247, 0.1);
 }
 
 .htop__tag--familiar {
   color: var(--highlight);
   border-color: var(--highlight);
-  background: rgba(200, 164, 78, 0.08);
+  background: rgba(249, 226, 175, 0.1);
 }
 
 @media (max-width: 600px) {

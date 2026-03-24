@@ -1,0 +1,53 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
+---
+
+<Layout title="&pi; — osim.dev">
+  <div class="terminal-window">
+    <!-- Window Chrome -->
+    <div class="window-chrome">
+      <div class="window-dots">
+        <span class="window-dot window-dot--close"></span>
+        <span class="window-dot window-dot--minimize"></span>
+        <span class="window-dot window-dot--maximize"></span>
+      </div>
+      <span class="window-title">osim@dev: ~/&pi;</span>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">light-mode</button>
+    </div>
+
+    <!-- Terminal Body -->
+    <div class="terminal-body">
+
+      <div class="powerline">
+        <span class="powerline__seg powerline__seg--user">osim@dev</span>
+        <span class="powerline__seg powerline__seg--path">~</span>
+        <span class="powerline__seg powerline__seg--cmd">./&pi;</span>
+        <span class="cursor" aria-hidden="true"></span>
+      </div>
+
+      <section class="section">
+        <div class="section__output">
+          <pre class="pi__art">
+    &pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;
+    &pi;                  &pi;
+    &pi;   You found it.  &pi;
+    &pi;                  &pi;
+    &pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;</pre>
+          <p class="pi__message">> "Just because you're paranoid doesn't mean they're not after you."</p>
+          <p class="pi__sub">You clicked the &pi;. Not many people notice it.</p>
+          <p class="pi__sub">This is a hidden corner of osim.dev. Nothing secret here &mdash; just proof that you pay attention to details. That's a good trait for an engineer.</p>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer__prompt">
+          <span class="prompt__user">osim</span><span class="prompt__separator">@</span><span class="prompt__host">dev</span><span class="prompt__separator">:</span><span class="prompt__path">~/&pi;</span><span class="prompt__symbol">$</span> <a href="/" style="color: var(--link-color);">cd ~</a>
+        </div>
+        <p>&copy; 2026 osim.dev &middot; Built with Astro &middot; Served statically</p>
+      </footer>
+
+    </div>
+  </div>
+</Layout>
