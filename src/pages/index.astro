@@ -1,0 +1,243 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
+---
+
+<Layout>
+  <div class="terminal-window">
+    <!-- Window Chrome -->
+    <div class="window-chrome">
+      <div class="window-dots">
+        <span class="window-dot window-dot--close"></span>
+        <span class="window-dot window-dot--minimize"></span>
+        <span class="window-dot window-dot--maximize"></span>
+      </div>
+      <span class="window-title">osim@dev: ~/portfolio</span>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">light-mode</button>
+    </div>
+
+    <!-- Terminal Body -->
+    <div class="terminal-body">
+
+      <!-- Navigation -->
+      <nav class="nav" aria-label="Primary">
+        <div class="nav__prompt">
+          <span class="prompt__user">osim</span><span class="prompt__separator">@</span><span class="prompt__host">dev</span><span class="prompt__separator">:</span><span class="prompt__path">~</span><span class="prompt__symbol">$</span> ls ./
+        </div>
+        <ul class="nav__links">
+          <li class="nav__link"><a href="#about">about</a></li>
+          <li class="nav__link"><a href="#experience">experience</a></li>
+          <li class="nav__link"><a href="#tech">tech</a></li>
+          <li class="nav__link"><a href="/blog">blog</a></li>
+          <li class="nav__link"><a href="#contact">contact</a></li>
+          <li class="nav__link nav__link--resume"><a href="/resume.pdf" download>resume.pdf</a></li>
+        </ul>
+      </nav>
+
+      <!-- Hero / Bio -->
+      <section class="hero" id="hero">
+        <div class="powerline">
+          <span class="powerline__seg powerline__seg--user">osim@dev</span>
+          <span class="powerline__seg powerline__seg--path">~</span>
+          <span class="powerline__seg powerline__seg--cmd">whoami</span>
+          <span class="cursor" aria-hidden="true"></span>
+        </div>
+        <pre class="hero__ascii" aria-label="Goran Osim">
+  ,ad8888ba,                                                          ,ad8888ba,               88
+ d8"'    `"8b                                                        d8"'    `"8b              ""
+d8'                                                                 d8'        `8b
+88              ,adPPYba,   8b,dPPYba,  ,adPPYYba,  8b,dPPYba,      88          88  ,adPPYba,  88  88,dPYba,,adPYba,
+88      88888  a8"     "8a  88P'   "Y8  ""     `Y8  88P'   `"8a     88          88  I8[    ""  88  88P'   "88"    "8a
+Y8,        88  8b       d8  88          ,adPPPPP88  88       88     Y8,        ,8P   `"Y8ba,   88  88      88      88
+ Y8a.    .a88  "8a,   ,a8"  88          88,    ,88  88       88      Y8a.    .a8P   aa    ]8I  88  88      88      88
+  `"Y88888P"    `"YbbdP"'   88          `"8bbdP"Y8  88       88       `"Y8888Y"'    `"YbbdP"'  88  88      88      88</pre>
+        <p class="hero__title">System Development Engineer &middot; Platform Engineer</p>
+        <div class="hero__bio">
+          <p>I'm a force multiplier. I build the platforms, tooling, and infrastructure that let engineering teams move fast without breaking things. My work sits at the intersection of systems engineering and developer experience&mdash;automating the hard stuff, designing for reliability, and making sure the foundation is rock-solid so everyone else can focus on shipping.</p>
+        </div>
+        <div class="hero__resume">
+          <a href="/resume.pdf" class="resume-link" download>
+            <span class="resume-link__icon">&darr;</span>
+            resume.pdf
+          </a>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- About -->
+      <section class="section" id="about">
+        <div class="powerline">
+          <span class="powerline__seg powerline__seg--user">osim@dev</span>
+          <span class="powerline__seg powerline__seg--path">~/about</span>
+          <span class="powerline__seg powerline__seg--cmd">cat story.txt</span>
+        </div>
+        <div class="section__output">
+          <div class="about__label"># personal</div>
+          <div class="about__content">
+            <p>I came to this country with very little and built everything from the ground up. That immigrant drive&mdash;the refusal to settle, the hunger to figure things out even when nobody hands you a playbook&mdash;is baked into how I approach engineering. Every system I build carries that ethos: scrappy, resilient, designed to scale beyond its origins.</p>
+            <p>Outside of work, I'm endlessly curious. I read widely, tinker with side projects, and believe that the best engineers are the ones who never stop being students. The terminal is where I feel most at home.</p>
+          </div>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- Work Experience -->
+      <section class="section" id="experience">
+        <div class="powerline">
+          <span class="powerline__seg powerline__seg--user">osim@dev</span>
+          <span class="powerline__seg powerline__seg--path">~/experience</span>
+          <span class="powerline__seg powerline__seg--cmd">cat history.json | jq '.[]'</span>
+        </div>
+        <div class="section__output">
+          <div class="job">
+            <div class="job__header">
+              <span class="job__company">Acme Cloud Corp</span>
+              <span class="job__dates">2022 &ndash; Present</span>
+            </div>
+            <div class="job__title">Senior Platform Engineer</div>
+            <ul class="job__bullets">
+              <li>Designed and maintained a multi-region Kubernetes platform serving 200+ microservices across production, staging, and dev environments.</li>
+              <li>Built a self-service infrastructure provisioning system using Terraform and custom operators, reducing team onboarding time from weeks to hours.</li>
+              <li>Led migration from legacy CI/CD to a GitOps-based deployment pipeline, cutting deployment failures by 70%.</li>
+              <li>Implemented comprehensive observability stack (Prometheus, Grafana, OpenTelemetry) across the platform.</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job__header">
+              <span class="job__company">Nebula Infrastructure Inc</span>
+              <span class="job__dates">2020 &ndash; 2022</span>
+            </div>
+            <div class="job__title">System Development Engineer II</div>
+            <ul class="job__bullets">
+              <li>Developed internal tooling in Go and Python that automated 80% of manual infrastructure operations.</li>
+              <li>Architected a container orchestration layer that improved resource utilization by 35% across the fleet.</li>
+              <li>Drove adoption of infrastructure-as-code practices org-wide, authoring shared Terraform modules used by 15+ teams.</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job__header">
+              <span class="job__company">DataPipe Systems</span>
+              <span class="job__dates">2018 &ndash; 2020</span>
+            </div>
+            <div class="job__title">DevOps Engineer</div>
+            <ul class="job__bullets">
+              <li>Managed AWS infrastructure (EC2, ECS, RDS, S3, Lambda) for a high-throughput data pipeline processing 2TB+ daily.</li>
+              <li>Built and maintained CI/CD pipelines with Jenkins and GitHub Actions, enabling 50+ deployments per week.</li>
+              <li>Reduced infrastructure costs by 40% through right-sizing, reserved instances, and spot fleet strategies.</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job__header">
+              <span class="job__company">StartupHQ</span>
+              <span class="job__dates">2016 &ndash; 2018</span>
+            </div>
+            <div class="job__title">Junior Systems Engineer</div>
+            <ul class="job__bullets">
+              <li>First infrastructure hire. Built the initial deployment pipeline, monitoring stack, and on-call rotation from scratch.</li>
+              <li>Automated server provisioning with Ansible, reducing setup time from 2 days to 15 minutes.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- Tech & Tools -->
+      <section class="section" id="tech">
+        <div class="powerline">
+          <span class="powerline__seg powerline__seg--user">osim@dev</span>
+          <span class="powerline__seg powerline__seg--path">~/tech</span>
+          <span class="powerline__seg powerline__seg--cmd">htop --filter="tools,platforms,languages"</span>
+        </div>
+        <div class="section__output">
+          <div class="htop">
+            <div class="htop__header">
+              <span class="htop__pid">PID</span>
+              <span class="htop__tool">COMMAND</span>
+              <span class="htop__cat">GROUP</span>
+              <span class="htop__exp">YRS</span>
+              <span class="htop__status">STATUS</span>
+            </div>
+            <div class="htop__row"><span class="htop__pid">1001</span><span class="htop__tool">Kubernetes</span><span class="htop__cat">containers</span><span class="htop__exp">5y+</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1002</span><span class="htop__tool">Docker</span><span class="htop__cat">containers</span><span class="htop__exp">6y+</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1003</span><span class="htop__tool">AWS</span><span class="htop__cat">cloud</span><span class="htop__exp">5y+</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1004</span><span class="htop__tool">GCP</span><span class="htop__cat">cloud</span><span class="htop__exp">3y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1005</span><span class="htop__tool">Terraform</span><span class="htop__cat">iac</span><span class="htop__exp">5y+</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1006</span><span class="htop__tool">Pulumi</span><span class="htop__cat">iac</span><span class="htop__exp">2y</span><span class="htop__status"><span class="htop__tag htop__tag--familiar">familiar</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1007</span><span class="htop__tool">Ansible</span><span class="htop__cat">iac</span><span class="htop__exp">4y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1008</span><span class="htop__tool">Python</span><span class="htop__cat">languages</span><span class="htop__exp">6y+</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1009</span><span class="htop__tool">Go</span><span class="htop__cat">languages</span><span class="htop__exp">4y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1010</span><span class="htop__tool">Bash</span><span class="htop__cat">languages</span><span class="htop__exp">8y+</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1011</span><span class="htop__tool">Helm</span><span class="htop__cat">containers</span><span class="htop__exp">4y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1012</span><span class="htop__tool">ArgoCD</span><span class="htop__cat">containers</span><span class="htop__exp">3y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1013</span><span class="htop__tool">Prometheus</span><span class="htop__cat">o11y</span><span class="htop__exp">4y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1014</span><span class="htop__tool">Grafana</span><span class="htop__cat">o11y</span><span class="htop__exp">4y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1015</span><span class="htop__tool">OpenTelemetry</span><span class="htop__cat">o11y</span><span class="htop__exp">2y</span><span class="htop__status"><span class="htop__tag htop__tag--familiar">familiar</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1016</span><span class="htop__tool">GitHub Actions</span><span class="htop__cat">cicd</span><span class="htop__exp">5y+</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1017</span><span class="htop__tool">Jenkins</span><span class="htop__cat">cicd</span><span class="htop__exp">4y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1018</span><span class="htop__tool">GitOps</span><span class="htop__cat">cicd</span><span class="htop__exp">3y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1019</span><span class="htop__tool">PostgreSQL</span><span class="htop__cat">data</span><span class="htop__exp">5y+</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1020</span><span class="htop__tool">Redis</span><span class="htop__cat">data</span><span class="htop__exp">4y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1021</span><span class="htop__tool">Kafka</span><span class="htop__cat">data</span><span class="htop__exp">3y</span><span class="htop__status"><span class="htop__tag htop__tag--familiar">familiar</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1022</span><span class="htop__tool">Nginx</span><span class="htop__cat">networking</span><span class="htop__exp">4y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1023</span><span class="htop__tool">gRPC</span><span class="htop__cat">networking</span><span class="htop__exp">3y</span><span class="htop__status"><span class="htop__tag htop__tag--familiar">familiar</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1024</span><span class="htop__tool">REST APIs</span><span class="htop__cat">networking</span><span class="htop__exp">6y+</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+            <div class="htop__row"><span class="htop__pid">1025</span><span class="htop__tool">Linux</span><span class="htop__cat">os</span><span class="htop__exp">10y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- Contact / Social -->
+      <section class="section" id="contact">
+        <div class="powerline">
+          <span class="powerline__seg powerline__seg--user">osim@dev</span>
+          <span class="powerline__seg powerline__seg--path">~/contact</span>
+          <span class="powerline__seg powerline__seg--cmd">cat links.yml</span>
+        </div>
+        <div class="section__output">
+          <pre class="contact-yaml"><span class="yaml__key">github:</span>   <a href="https://github.com/osim" target="_blank" rel="noopener noreferrer">github.com/osim</a>
+<span class="yaml__key">linkedin:</span> <a href="https://linkedin.com/in/osim" target="_blank" rel="noopener noreferrer">linkedin.com/in/osim</a>
+<span class="yaml__key">email:</span>    <a href="mailto:hello@osim.dev">hello@osim.dev</a>
+<span class="yaml__key">x:</span>        <a href="https://x.com/osim" target="_blank" rel="noopener noreferrer">x.com/osim</a></pre>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- Now Playing Widget -->
+      <section class="section" id="now-playing">
+        <div class="powerline">
+          <span class="powerline__seg powerline__seg--user">osim@dev</span>
+          <span class="powerline__seg powerline__seg--path">~</span>
+          <span class="powerline__seg powerline__seg--cmd">now-playing --status</span>
+        </div>
+        <div class="section__output">
+          <div class="now-playing">
+            <div class="vinyl" aria-hidden="true"></div>
+            <div class="now-playing__info">
+              <span class="now-playing__label">Now Playing</span>
+              <span class="now-playing__song">Midnight City</span>
+              <span class="now-playing__artist">M83</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer__prompt">
+          <span class="prompt__user">osim</span><span class="prompt__separator">@</span><span class="prompt__host">dev</span><span class="prompt__separator">:</span><span class="prompt__path">~</span><span class="prompt__symbol">$</span> exit
+        </div>
+        <p>&copy; 2026 osim.dev &middot; Built with Astro &middot; Served statically</p>
+      </footer>
+
+    </div>
+  </div>
+</Layout>

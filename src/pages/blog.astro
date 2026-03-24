@@ -1,0 +1,79 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
+---
+
+<Layout>
+  <div class="terminal-window">
+    <!-- Window Chrome -->
+    <div class="window-chrome">
+      <div class="window-dots">
+        <span class="window-dot window-dot--close"></span>
+        <span class="window-dot window-dot--minimize"></span>
+        <span class="window-dot window-dot--maximize"></span>
+      </div>
+      <span class="window-title">osim@dev: ~/blog</span>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">light-mode</button>
+    </div>
+
+    <!-- Terminal Body -->
+    <div class="terminal-body">
+
+      <!-- Navigation -->
+      <nav class="nav" aria-label="Primary">
+        <div class="nav__prompt">
+          <span class="prompt__user">osim</span><span class="prompt__separator">@</span><span class="prompt__host">dev</span><span class="prompt__separator">:</span><span class="prompt__path">~</span><span class="prompt__symbol">$</span> ls ./
+        </div>
+        <ul class="nav__links">
+          <li class="nav__link"><a href="/">home</a></li>
+          <li class="nav__link"><a href="/#about">about</a></li>
+          <li class="nav__link"><a href="/#experience">experience</a></li>
+          <li class="nav__link"><a href="/#tech">tech</a></li>
+          <li class="nav__link nav__link--active"><a href="/blog">blog</a></li>
+          <li class="nav__link"><a href="/#contact">contact</a></li>
+          <li class="nav__link nav__link--resume"><a href="/resume.pdf" download>resume.pdf</a></li>
+        </ul>
+      </nav>
+
+      <!-- Blog Header -->
+      <section class="hero">
+        <div class="powerline">
+          <span class="powerline__seg powerline__seg--user">osim@dev</span>
+          <span class="powerline__seg powerline__seg--path">~/blog</span>
+          <span class="powerline__seg powerline__seg--cmd">ls -lt ./posts/</span>
+          <span class="cursor" aria-hidden="true"></span>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- Blog Posts -->
+      <section class="section">
+        <div class="section__output">
+          <div class="blog-entry">
+            <a href="/blog/platform-teams-ship-less" class="blog-entry__title">Why Platform Teams Should Ship Less and Enable More</a>
+            <span class="blog-entry__date">2026-02-14</span>
+          </div>
+          <div class="blog-entry">
+            <a href="/blog/self-service-kubernetes-platform" class="blog-entry__title">Building a Self-Service Kubernetes Platform from Scratch</a>
+            <span class="blog-entry__date">2025-11-03</span>
+          </div>
+          <div class="blog-entry">
+            <a href="/blog/immigrant-engineer" class="blog-entry__title">The Immigrant Engineer: Lessons from Starting Over</a>
+            <span class="blog-entry__date">2025-08-19</span>
+          </div>
+          <p class="blog-entry__stub">[ more posts coming soon ]</p>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer__prompt">
+          <span class="prompt__user">osim</span><span class="prompt__separator">@</span><span class="prompt__host">dev</span><span class="prompt__separator">:</span><span class="prompt__path">~/blog</span><span class="prompt__symbol">$</span> cd ~
+        </div>
+        <p>&copy; 2026 osim.dev &middot; Built with Astro &middot; Served statically</p>
+      </footer>
+
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,111 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/global.css';
+---
+
+<Layout title="Why Platform Teams Should Ship Less and Enable More — osim.dev">
+  <div class="terminal-window">
+    <!-- Window Chrome -->
+    <div class="window-chrome">
+      <div class="window-dots">
+        <span class="window-dot window-dot--close"></span>
+        <span class="window-dot window-dot--minimize"></span>
+        <span class="window-dot window-dot--maximize"></span>
+      </div>
+      <span class="window-title">osim@dev: ~/blog/platform-teams</span>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">light-mode</button>
+    </div>
+
+    <!-- Terminal Body -->
+    <div class="terminal-body">
+
+      <!-- Navigation -->
+      <nav class="nav" aria-label="Primary">
+        <div class="nav__prompt">
+          <span class="prompt__user">osim</span><span class="prompt__separator">@</span><span class="prompt__host">dev</span><span class="prompt__separator">:</span><span class="prompt__path">~</span><span class="prompt__symbol">$</span> ls ./
+        </div>
+        <ul class="nav__links">
+          <li class="nav__link"><a href="/">home</a></li>
+          <li class="nav__link"><a href="/#about">about</a></li>
+          <li class="nav__link"><a href="/#experience">experience</a></li>
+          <li class="nav__link"><a href="/#tech">tech</a></li>
+          <li class="nav__link nav__link--active"><a href="/blog">blog</a></li>
+          <li class="nav__link"><a href="/#contact">contact</a></li>
+          <li class="nav__link nav__link--resume"><a href="/resume.pdf" download>resume.pdf</a></li>
+        </ul>
+      </nav>
+
+      <!-- Post Header -->
+      <section class="hero">
+        <div class="powerline">
+          <span class="powerline__seg powerline__seg--user">osim@dev</span>
+          <span class="powerline__seg powerline__seg--path">~/blog</span>
+          <span class="powerline__seg powerline__seg--cmd">cat platform-teams-ship-less.md</span>
+          <span class="cursor" aria-hidden="true"></span>
+        </div>
+        <div class="post__meta">
+          <span class="post__date">2026-02-14</span>
+          <span class="post__reading-time">6 min read</span>
+        </div>
+        <h1 class="post__title">Why Platform Teams Should Ship Less and Enable More</h1>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- Post Body -->
+      <article class="post__body">
+        <p>There's a pattern I've seen at every company where platform engineering starts to take root: the platform team ships a tool, announces it in Slack, and waits for adoption. When adoption is slow, they ship another tool. Then another. Before long, the team has a portfolio of internal products that nobody asked for, a backlog that's three quarters deep, and a reputation for building things that "aren't quite right."</p>
+
+        <p>The instinct to ship is good. It means the team has energy and capability. But the best platform teams I've worked on — and the one I'm building now — don't optimize for output. They optimize for <em>leverage</em>.</p>
+
+        <h2>The enablement mindset</h2>
+
+        <p>Instead of asking "what should we build next?", the better question is: "what's slowing teams down the most, and what's the smallest thing we can do to unblock them?"</p>
+
+        <p>Sometimes that's a Terraform module. Sometimes it's a 20-line bash script dropped into a shared repo. Sometimes it's just documentation — a runbook that saves an engineer two hours of debugging at 2 AM.</p>
+
+        <p>The point is that the value of a platform team isn't measured in features shipped. It's measured in friction removed.</p>
+
+        <h2>Shipping less, intentionally</h2>
+
+        <p>Here's what this looks like in practice:</p>
+
+        <ul>
+          <li><strong>Talk to your users weekly.</strong> Not in a survey. In a 15-minute call where you watch them deploy something. You'll learn more in one session than a month of Jira tickets.</li>
+          <li><strong>Kill projects early.</strong> If you're three sprints in and adoption is still a question mark, that's your answer. Sunset it, write a post-mortem, move on.</li>
+          <li><strong>Invest in golden paths, not golden cages.</strong> Give teams a fast, well-lit road to production, but don't force them onto it. The teams that opt in are your advocates. The teams that don't are your roadmap.</li>
+          <li><strong>Measure time-to-production, not tickets closed.</strong> If a new engineer can go from "git clone" to "live in staging" in under an hour, your platform is working.</li>
+        </ul>
+
+        <h2>The hard part</h2>
+
+        <p>Shipping less requires confidence. It means telling your VP "we built three things this quarter, not twelve" and being able to explain why those three things moved the needle more. It means resisting the urge to build the abstraction when the wrapper will do. It means accepting that the most impactful work is often invisible.</p>
+
+        <p>Platform engineering is infrastructure for humans. And humans don't need more tools — they need fewer obstacles.</p>
+
+        <div class="post__end">
+          <span class="post__end-marker">--- EOF ---</span>
+        </div>
+      </article>
+
+      <hr class="divider" />
+
+      <!-- Back to blog -->
+      <div class="post__back">
+        <span class="prompt">
+          <span class="prompt__user">osim</span><span class="prompt__separator">@</span><span class="prompt__host">dev</span><span class="prompt__separator">:</span><span class="prompt__path">~/blog</span><span class="prompt__symbol">$</span>
+        </span>
+        <a href="/blog" class="post__back-link">cd ../blog/</a>
+      </div>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer__prompt">
+          <span class="prompt__user">osim</span><span class="prompt__separator">@</span><span class="prompt__host">dev</span><span class="prompt__separator">:</span><span class="prompt__path">~/blog</span><span class="prompt__symbol">$</span> cd ~
+        </div>
+        <p>&copy; 2026 osim.dev &middot; Built with Astro &middot; Served statically</p>
+      </footer>
+
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,36 @@
+/* --- Tech & Tools (YAML view) --- */
+.yaml {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--text-primary);
+  margin: 0;
+  overflow-x: auto;
+  columns: 2;
+  column-gap: 3rem;
+}
+
+.yaml__comment {
+  color: var(--text-secondary);
+  font-style: italic;
+  column-span: all;
+}
+
+.yaml__key {
+  color: var(--prompt-path);
+  font-weight: 600;
+}
+
+.yaml__value {
+  color: var(--tag-text);
+  transition: color 0.15s ease;
+}
+
+.yaml__value:hover {
+  color: var(--accent-glow);
+}
+
+@media (max-width: 550px) {
+  .yaml {
+    columns: 1;
+  }
+}

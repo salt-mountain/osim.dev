@@ -1,0 +1,119 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/global.css';
+---
+
+<Layout title="The Immigrant Engineer: Lessons from Starting Over — osim.dev">
+  <div class="terminal-window">
+    <!-- Window Chrome -->
+    <div class="window-chrome">
+      <div class="window-dots">
+        <span class="window-dot window-dot--close"></span>
+        <span class="window-dot window-dot--minimize"></span>
+        <span class="window-dot window-dot--maximize"></span>
+      </div>
+      <span class="window-title">osim@dev: ~/blog/immigrant-engineer</span>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">light-mode</button>
+    </div>
+
+    <!-- Terminal Body -->
+    <div class="terminal-body">
+
+      <!-- Navigation -->
+      <nav class="nav" aria-label="Primary">
+        <div class="nav__prompt">
+          <span class="prompt__user">osim</span><span class="prompt__separator">@</span><span class="prompt__host">dev</span><span class="prompt__separator">:</span><span class="prompt__path">~</span><span class="prompt__symbol">$</span> ls ./
+        </div>
+        <ul class="nav__links">
+          <li class="nav__link"><a href="/">home</a></li>
+          <li class="nav__link"><a href="/#about">about</a></li>
+          <li class="nav__link"><a href="/#experience">experience</a></li>
+          <li class="nav__link"><a href="/#tech">tech</a></li>
+          <li class="nav__link nav__link--active"><a href="/blog">blog</a></li>
+          <li class="nav__link"><a href="/#contact">contact</a></li>
+          <li class="nav__link nav__link--resume"><a href="/resume.pdf" download>resume.pdf</a></li>
+        </ul>
+      </nav>
+
+      <!-- Post Header -->
+      <section class="hero">
+        <div class="powerline">
+          <span class="powerline__seg powerline__seg--user">osim@dev</span>
+          <span class="powerline__seg powerline__seg--path">~/blog</span>
+          <span class="powerline__seg powerline__seg--cmd">cat immigrant-engineer.md</span>
+          <span class="cursor" aria-hidden="true"></span>
+        </div>
+        <div class="post__meta">
+          <span class="post__date">2025-08-19</span>
+          <span class="post__reading-time">5 min read</span>
+        </div>
+        <h1 class="post__title">The Immigrant Engineer: Lessons from Starting Over</h1>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- Post Body -->
+      <article class="post__body">
+        <p>I didn't grow up around computers. Where I came from, the internet was a luxury, and "tech career" wasn't a phrase anyone used. When I arrived in this country, I had a suitcase, a phone number for a cousin who might let me stay on his couch, and zero professional contacts.</p>
+
+        <p>Ten years later, I'm a senior platform engineer building systems that serve millions of requests a day. This post isn't a humble-brag. It's the honest version of how I got here — the parts that LinkedIn profiles leave out.</p>
+
+        <h2>The first year is survival</h2>
+
+        <p>My first tech job wasn't in tech. I worked help desk at a small company that couldn't afford a real IT department. I was the IT department. I learned networking by fixing the office router at 7 AM. I learned Linux because the one server we had ran Ubuntu and nobody else would touch it.</p>
+
+        <p>There's a particular kind of learning that happens when failure isn't theoretical — when the system you broke is the one that runs payroll, and people are waiting. You learn fast. You learn to read logs like a detective. You learn that "I don't know yet" is a better answer than a guess.</p>
+
+        <h2>The credential gap</h2>
+
+        <p>The hardest part of the early years wasn't the technical learning — it was the credentialing. I didn't have a CS degree from a recognized university. My resume had companies nobody had heard of. In interviews, I could solve the problem on the whiteboard, but I didn't always have the vocabulary that interviewers expected.</p>
+
+        <p>What closed the gap was building in public. I started contributing to open-source projects — small things at first, documentation fixes and bug reports. Then actual PRs. Then maintaining a small Terraform module that a few hundred people used. That module got me my second real job. The hiring manager said, "I looked at your GitHub before I looked at your resume."</p>
+
+        <h2>What immigration teaches you about systems</h2>
+
+        <p>Immigration is, at its core, a systems problem. You're navigating bureaucracies, optimizing for multiple constraints (time, money, legal status, employment), and operating with incomplete information. You learn to build contingency plans because you've lived through the scenario where the plan falls apart.</p>
+
+        <p>That mindset translates directly to platform engineering. When I design a deployment pipeline, I think about failure modes that other engineers might not consider — not because I'm smarter, but because I've been the person standing in a government office at 6 AM wondering what happens if this form is wrong.</p>
+
+        <p>Resilience isn't an abstract engineering principle for me. It's autobiographical.</p>
+
+        <h2>The things I wish someone told me</h2>
+
+        <ul>
+          <li><strong>Your accent is not a liability.</strong> Anyone who judges your technical ability by how you pronounce "Kubernetes" is not someone whose opinion you need.</li>
+          <li><strong>Networking isn't schmoozing.</strong> It's helping people. Fix someone's CI pipeline, share a useful tool, write up how you solved a problem. The network builds itself.</li>
+          <li><strong>Impostor syndrome hits different when you actually started from zero.</strong> The feeling doesn't go away. But you can learn to recognize it as a signal that you're growing, not that you're failing.</li>
+          <li><strong>Document everything.</strong> Your career, your projects, your wins. Nobody else is keeping score for you. When review season comes, you need receipts.</li>
+        </ul>
+
+        <h2>Why I'm writing this</h2>
+
+        <p>I'm writing this for the person who just landed, who's staring at job listings and feeling the gap between where they are and where they need to be. The gap is real. But it's crossable. And the skills you're building just by surviving — problem-solving under pressure, learning with no safety net, communicating across cultures — those are engineering superpowers. You just don't know it yet.</p>
+
+        <div class="post__end">
+          <span class="post__end-marker">--- EOF ---</span>
+        </div>
+      </article>
+
+      <hr class="divider" />
+
+      <!-- Back to blog -->
+      <div class="post__back">
+        <span class="prompt">
+          <span class="prompt__user">osim</span><span class="prompt__separator">@</span><span class="prompt__host">dev</span><span class="prompt__separator">:</span><span class="prompt__path">~/blog</span><span class="prompt__symbol">$</span>
+        </span>
+        <a href="/blog" class="post__back-link">cd ../blog/</a>
+      </div>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer__prompt">
+          <span class="prompt__user">osim</span><span class="prompt__separator">@</span><span class="prompt__host">dev</span><span class="prompt__separator">:</span><span class="prompt__path">~/blog</span><span class="prompt__symbol">$</span> cd ~
+        </div>
+        <p>&copy; 2026 osim.dev &middot; Built with Astro &middot; Served statically</p>
+      </footer>
+
+    </div>
+  </div>
+</Layout>

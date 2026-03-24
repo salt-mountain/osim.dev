@@ -1,0 +1,71 @@
+/* --- Tech & Tools (ls -la table view) --- */
+.ls-table {
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  overflow-x: auto;
+  display: grid;
+  grid-template-columns: auto auto auto 1fr;
+  gap: 0;
+}
+
+.ls__header {
+  display: contents;
+}
+
+.ls__header span {
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0 1rem 0.4rem 0;
+  border-bottom: 1px dashed var(--border);
+  margin-bottom: 0.15rem;
+}
+
+.ls__row {
+  display: contents;
+}
+
+.ls__row > span {
+  padding: 0.15rem 1rem 0.15rem 0.25rem;
+  transition: background 0.15s ease;
+  line-height: 1.4;
+}
+
+.ls__row:hover > span {
+  background: var(--bg-card-hover);
+}
+
+.ls__perm {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+}
+
+.ls__exp {
+  color: var(--success);
+  font-weight: 500;
+}
+
+.ls__cat {
+  color: var(--prompt-path);
+}
+
+.ls__tool {
+  color: var(--text-heading);
+  font-weight: 500;
+}
+
+.ls__row:hover .ls__tool {
+  color: var(--accent-glow);
+}
+
+@media (max-width: 550px) {
+  .ls-table {
+    grid-template-columns: auto auto 1fr;
+  }
+  .ls__col-perm,
+  .ls__perm {
+    display: none;
+  }
+}
