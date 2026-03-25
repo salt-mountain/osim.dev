@@ -166,6 +166,8 @@
   )
 )
 
+#pagebreak()
+
 #section-heading("Education")
 
 #v(4pt)
