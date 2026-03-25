@@ -1,9 +1,24 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import '../../styles/global.css';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id.replace(/\.md$/, '') },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const formattedDate = post.data.date.toISOString().split('T')[0];
+const filename = post.id.endsWith('.md') ? post.id : post.id + '.md';
 ---
 
-<Layout title="What's This? — osim.dev">
+<Layout title={`${post.data.title} — osim.dev`} description={post.data.description}>
   <div class="terminal-window">
     <!-- Window Chrome -->
     <div class="window-chrome">
@@ -40,22 +55,26 @@ import '../../styles/global.css';
         <div class="powerline">
           <span class="powerline__seg powerline__seg--user">osim@dev</span>
           <span class="powerline__seg powerline__seg--path">~/blog</span>
-          <span class="powerline__seg powerline__seg--cmd">cat whats-this.md</span>
+          <span class="powerline__seg powerline__seg--cmd">cat {filename}</span>
           <span class="cursor" aria-hidden="true"></span>
         </div>
-        <h1 class="post__title">What's This?</h1>
+        <div class="post__meta">
+          <span class="post__date">{formattedDate}</span>
+        </div>
+        <h1 class="post__title">{post.data.title}</h1>
       </section>
 
       <hr class="divider" />
 
       <!-- Post Body -->
       <article class="post__body">
-        <p>The Princess is in another Castle ...<span class="cursor" aria-hidden="true"></span></p>
+        <Content />
+        <span class="cursor" aria-hidden="true"></span>
       </article>
 
       <hr class="divider" />
 
-      <!-- Back to blog -->
+      <!-- Back -->
       <div class="post__back">
         <span class="prompt">
           <span class="prompt__user">osim</span><span class="prompt__separator">@</span><span class="prompt__host">dev</span><span class="prompt__separator">:</span><span class="prompt__path">~/blog</span><span class="prompt__symbol">$</span>
