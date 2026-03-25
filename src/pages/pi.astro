@@ -26,17 +26,59 @@ import '../styles/global.css';
         <span class="cursor" aria-hidden="true"></span>
       </div>
 
+      <!-- Hack the Planet banner -->
       <section class="section">
         <div class="section__output">
-          <pre class="pi__art">
-    &pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;
-    &pi;                  &pi;
-    &pi;   You found it.  &pi;
-    &pi;                  &pi;
-    &pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;&pi;</pre>
-          <p class="pi__message">> "Just because you're paranoid doesn't mean they're not after you."</p>
-          <p class="pi__sub">You clicked the &pi;. Not many people notice it.</p>
-          <p class="pi__sub">This is a hidden corner of osim.dev. Nothing secret here &mdash; just proof that you pay attention to details. That's a good trait for an engineer.</p>
+          <pre class="pi__banner" id="pi-banner">
+ _   _            _      _   _            ____  _                  _   _
+| | | | __ _  ___| | __ | |_| |__   ___  |  _ \| | __ _ _ __   ___| |_| |
+| |_| |/ _` |/ __| |/ / | __| '_ \ / _ \ | |_) | |/ _` | '_ \ / _ \ __| |
+|  _  | (_| | (__|   &lt;  | |_| | | |  __/ |  __/| | (_| | | | |  __/ |_|_|
+|_| |_|\__,_|\___|_|\_\  \__|_| |_|\___| |_|   |_|\__,_|_| |_|\___|\__(_)</pre>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- Fake processes -->
+      <section class="section">
+        <div class="pi__prompt">
+          <span class="prompt__user">osim</span><span class="prompt__separator">@</span><span class="prompt__host">dev</span><span class="prompt__separator">:</span><span class="prompt__path">~/&pi;</span><span class="prompt__symbol">$</span> <span class="pi__cmd">ps aux | grep suspicious</span>
+        </div>
+        <div class="section__output">
+          <pre class="pi__processes">USER       PID  %CPU %MEM    COMMAND
+root      1337  99.9  0.1    /opt/zero_cool/hack_the_planet --no-limits
+root      1338  28.7  3.8    /opt/acid_burn/access --level=god
+root      1339  42.0  6.9    /opt/lord_nikon/rabbit --incubate
+root      1340  31.2  4.2    /opt/cereal_killer/cookie_monster --eat-cookies
+root      1341  15.3  2.1    /opt/phantom_phreak/wardial --scan-all
+root      1342   8.4  1.3    /opt/joey/zero_bug --attack-logins
+root      1343  66.6  5.5    /opt/the_plague/da_vinci_virus --stealth --deploy</pre>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- Pool on the roof -->
+      <section class="section">
+        <div class="pi__prompt">
+          <span class="prompt__user">osim</span><span class="prompt__separator">@</span><span class="prompt__host">dev</span><span class="prompt__separator">:</span><span class="prompt__path">~/&pi;</span><span class="prompt__symbol">$</span> <span class="pi__cmd">cat /dev/truth</span>
+        </div>
+        <div class="section__output">
+          <p class="pi__pool">There IS a pool on the roof.</p>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- Sign off -->
+      <section class="section">
+        <div class="pi__prompt">
+          <span class="prompt__user">osim</span><span class="prompt__separator">@</span><span class="prompt__host">dev</span><span class="prompt__separator">:</span><span class="prompt__path">~/&pi;</span><span class="prompt__symbol">$</span> <span class="pi__cmd">cat /etc/motd</span>
+        </div>
+        <div class="section__output">
+          <p class="pi__sub">They're trashing the flow of data.</p>
+          <p class="pi__sub">This page doesn't exist. You were never here.<span class="cursor" aria-hidden="true"></span></p>
         </div>
       </section>
 
@@ -45,7 +87,7 @@ import '../styles/global.css';
         <div class="footer__prompt">
           <span class="prompt__user">osim</span><span class="prompt__separator">@</span><span class="prompt__host">dev</span><span class="prompt__separator">:</span><span class="prompt__path">~/&pi;</span><span class="prompt__symbol">$</span> <a href="/" style="color: var(--link-color);">cd ~</a>
         </div>
-        <p>&copy; 2026 osim.dev &middot; Built with Astro &middot; Served statically</p>
+        <p>&copy; 2026 osim.dev</p>
       </footer>
 
     </div>

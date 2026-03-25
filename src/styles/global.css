@@ -450,27 +450,63 @@ a:hover {
 }
 
 /* --- Pi Easter Egg Page --- */
-.pi__art {
-  color: var(--accent-glow);
+/* --- Pi Easter Egg Page --- */
+.pi__banner {
+  color: var(--success);
   font-family: inherit;
-  font-size: 0.85rem;
-  line-height: 1.4;
-  margin-bottom: 1.5rem;
+  font-size: 0.45rem;
+  line-height: 1.15;
+  white-space: pre;
+  overflow-x: auto;
 }
 
-.pi__message {
-  font-size: 0.9rem;
+@media (min-width: 600px) {
+  .pi__banner {
+    font-size: 0.65rem;
+  }
+}
+
+@media (min-width: 800px) {
+  .pi__banner {
+    font-size: 0.8rem;
+  }
+}
+
+.pi__prompt {
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.pi__cmd {
   color: var(--highlight);
-  font-style: italic;
-  margin-bottom: 1.25rem;
+}
+
+.pi__processes {
+  font-family: inherit;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--text-primary);
+  white-space: pre;
+  overflow-x: auto;
+}
+
+.pi__processes {
+  color: var(--error);
+}
+
+.pi__pool {
+  font-size: 0.9rem;
+  color: var(--accent-glow);
+  font-weight: 500;
+  margin-top: 0.25rem;
 }
 
 .pi__sub {
   font-size: 0.83rem;
-  color: var(--text-primary);
+  color: var(--text-secondary);
   line-height: 1.75;
-  margin-bottom: 0.75rem;
-  max-width: 560px;
+  margin-bottom: 0.5rem;
+  font-style: italic;
 }
 
 @media (min-width: 600px) {
