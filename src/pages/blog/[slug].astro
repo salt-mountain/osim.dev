@@ -27,7 +27,7 @@ const filename = post.id.endsWith('.md') ? post.id : post.id + '.md';
         <span class="window-dot window-dot--minimize"></span>
         <span class="window-dot window-dot--maximize"></span>
       </div>
-      <span class="window-title">osim@dev: ~/blog</span>
+      <span class="window-title"><span class="prompt__user">osim</span><span class="prompt__separator">@</span><span class="prompt__host">dev</span><span class="prompt__separator">:</span> <span class="prompt__path">~/blog</span></span>
       <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">light-mode</button>
     </div>
 
@@ -37,7 +37,11 @@ const filename = post.id.endsWith('.md') ? post.id : post.id + '.md';
       <!-- Navigation -->
       <nav class="nav" aria-label="Primary">
         <div class="nav__prompt">
-          <span class="prompt__user">osim</span><span class="prompt__separator">@</span><span class="prompt__host">dev</span><span class="prompt__separator">:</span><span class="prompt__path">~</span><span class="prompt__symbol">$</span> ls ./
+          <div class="powerline">
+            <span class="powerline__seg powerline__seg--user">osim@dev</span>
+            <span class="powerline__seg powerline__seg--path">~</span>
+            <span class="powerline__seg powerline__seg--cmd">ls ./</span>
+          </div>
         </div>
         <ul class="nav__links">
           <li class="nav__link"><a href="/">home</a></li>
@@ -76,16 +80,21 @@ const filename = post.id.endsWith('.md') ? post.id : post.id + '.md';
 
       <!-- Back -->
       <div class="post__back">
-        <span class="prompt">
-          <span class="prompt__user">osim</span><span class="prompt__separator">@</span><span class="prompt__host">dev</span><span class="prompt__separator">:</span><span class="prompt__path">~/blog</span><span class="prompt__symbol">$</span>
-        </span>
-        <a href="/" class="post__back-link">cd ~</a>
+        <div class="powerline">
+          <span class="powerline__seg powerline__seg--user">osim@dev</span>
+          <span class="powerline__seg powerline__seg--path">~/blog</span>
+          <span class="powerline__seg powerline__seg--cmd"><a href="/" class="post__back-link">cd ~</a></span>
+        </div>
       </div>
 
       <!-- Footer -->
       <footer class="footer">
         <div class="footer__prompt">
-          <span class="prompt__user">osim</span><span class="prompt__separator">@</span><span class="prompt__host">dev</span><span class="prompt__separator">:</span><span class="prompt__path">~/blog</span><span class="prompt__symbol">$</span> cd ~
+          <div class="powerline">
+            <span class="powerline__seg powerline__seg--user">osim@dev</span>
+            <span class="powerline__seg powerline__seg--path">~/blog</span>
+            <span class="powerline__seg powerline__seg--cmd">cd ~</span>
+          </div>
         </div>
         <p>&copy; 2026 osim.dev</p>
       </footer>

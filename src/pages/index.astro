@@ -12,7 +12,7 @@ import '../styles/global.css';
         <span class="window-dot window-dot--minimize"></span>
         <span class="window-dot window-dot--maximize"></span>
       </div>
-      <span class="window-title">osim@dev: ~/portfolio</span>
+      <span class="window-title"><span class="prompt__user">osim</span><span class="prompt__separator">@</span><span class="prompt__host">dev</span><span class="prompt__separator">:</span> <span class="prompt__path">~/portfolio</span></span>
       <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">light-mode</button>
     </div>
 
@@ -22,7 +22,11 @@ import '../styles/global.css';
       <!-- Navigation -->
       <nav class="nav" aria-label="Primary">
         <div class="nav__prompt">
-          <span class="prompt__user">osim</span><span class="prompt__separator">@</span><span class="prompt__host">dev</span><span class="prompt__separator">:</span><span class="prompt__path">~</span><span class="prompt__symbol">$</span> ls ./
+          <div class="powerline">
+            <span class="powerline__seg powerline__seg--user">osim@dev</span>
+            <span class="powerline__seg powerline__seg--path">~</span>
+            <span class="powerline__seg powerline__seg--cmd">ls ./</span>
+          </div>
         </div>
         <ul class="nav__links">
           <li class="nav__link"><a href="#about">about</a></li>
@@ -323,7 +327,11 @@ Y8,        88  8b       d8  88          ,adPPPPP88  88       88     Y8,        ,
       <!-- Footer -->
       <footer class="footer">
         <div class="footer__prompt">
-          <span class="prompt__user">osim</span><span class="prompt__separator">@</span><span class="prompt__host">dev</span><span class="prompt__separator">:</span><span class="prompt__path">~</span><span class="prompt__symbol">$</span> exit
+          <div class="powerline">
+            <span class="powerline__seg powerline__seg--user">osim@dev</span>
+            <span class="powerline__seg powerline__seg--path">~</span>
+            <span class="powerline__seg powerline__seg--cmd">exit</span>
+          </div>
         </div>
         <p>&copy; 2026 osim.dev</p>
       </footer>
