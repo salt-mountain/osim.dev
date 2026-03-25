@@ -61,7 +61,7 @@ const posts = (await getCollection('blog')).sort(
         <div class="section__output">
           {posts.map((post) => (
             <div class="blog-entry">
-              <a href={`/blog/${post.id.replace(/\.md$/, '')}`} class="blog-entry__title">{post.data.title}</a>
+              <a href={`/blog/${post.id}`} class="blog-entry__title">{post.data.title}</a>
               <span class="blog-entry__date">{post.data.date.toISOString().split('T')[0]}</span>
             </div>
           ))}
