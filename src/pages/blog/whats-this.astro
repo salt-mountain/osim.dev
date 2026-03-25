@@ -1,9 +1,9 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import '../styles/global.css';
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/global.css';
 ---
 
-<Layout>
+<Layout title="What's This? — osim.dev">
   <div class="terminal-window">
     <!-- Window Chrome -->
     <div class="window-chrome">
@@ -35,27 +35,33 @@ import '../styles/global.css';
         </ul>
       </nav>
 
-      <!-- Blog Header -->
+      <!-- Post Header -->
       <section class="hero">
         <div class="powerline">
           <span class="powerline__seg powerline__seg--user">osim@dev</span>
           <span class="powerline__seg powerline__seg--path">~/blog</span>
-          <span class="powerline__seg powerline__seg--cmd">ls -lt ./posts/</span>
+          <span class="powerline__seg powerline__seg--cmd">cat whats-this.md</span>
           <span class="cursor" aria-hidden="true"></span>
         </div>
+        <h1 class="post__title">What's This?</h1>
       </section>
 
       <hr class="divider" />
 
-      <!-- Blog Posts -->
-      <section class="section">
-        <div class="section__output">
-          <div class="blog-entry">
-            <a href="/blog/whats-this" class="blog-entry__title">What's This?</a>
-            <span class="blog-entry__date">2026-03-24</span>
-          </div>
-        </div>
-      </section>
+      <!-- Post Body -->
+      <article class="post__body">
+        <p>The Princess is in another Castle ...<span class="cursor" aria-hidden="true"></span></p>
+      </article>
+
+      <hr class="divider" />
+
+      <!-- Back to blog -->
+      <div class="post__back">
+        <span class="prompt">
+          <span class="prompt__user">osim</span><span class="prompt__separator">@</span><span class="prompt__host">dev</span><span class="prompt__separator">:</span><span class="prompt__path">~/blog</span><span class="prompt__symbol">$</span>
+        </span>
+        <a href="/" class="post__back-link">cd ~</a>
+      </div>
 
       <!-- Footer -->
       <footer class="footer">
