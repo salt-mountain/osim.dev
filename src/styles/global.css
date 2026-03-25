@@ -501,6 +501,17 @@ a:hover {
   margin-top: 0.25rem;
 }
 
+.pi__visitor-count {
+  font-size: 0.85rem;
+  color: var(--text-heading);
+  margin-top: 0.25rem;
+}
+
+#pi-count {
+  color: var(--accent-glow);
+  font-weight: 600;
+}
+
 .pi__sub {
   font-size: 0.83rem;
   color: var(--text-secondary);
