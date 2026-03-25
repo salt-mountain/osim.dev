@@ -1120,39 +1120,77 @@ a:hover {
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: var(--vinyl-color);
+  background: conic-gradient(
+    from 0deg,
+    #2a2a3e 0deg,
+    #3a3a52 30deg,
+    #2a2a3e 60deg,
+    #333348 120deg,
+    #2a2a3e 180deg,
+    #3a3a52 240deg,
+    #2a2a3e 300deg,
+    #333348 360deg
+  );
   position: relative;
   flex-shrink: 0;
   animation: spin 3s linear infinite;
-  border: 2px solid var(--border);
+  border: 2px solid var(--accent-light);
   cursor: pointer;
   padding: 0;
   outline: none;
+  box-shadow: 0 0 8px rgba(203, 166, 247, 0.15);
   transition: box-shadow 0.2s ease;
 }
 
-button.vinyl {
-  -webkit-appearance: none;
-  appearance: none;
-  font-family: inherit;
+.vinyl-wrapper {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  cursor: pointer;
 }
 
-.vinyl:hover {
-  box-shadow: 0 0 12px rgba(203, 166, 247, 0.2);
+.vinyl-needle {
+  position: absolute;
+  top: -4px;
+  right: -6px;
+  width: 2px;
+  height: 20px;
+  background: var(--text-secondary);
+  border-radius: 1px;
+  transform-origin: top center;
+  transform: rotate(25deg);
+  transition: transform 0.4s ease;
+}
+
+.vinyl-needle::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -2px;
+  width: 6px;
+  height: 6px;
+  background: var(--text-secondary);
+  border-radius: 50%;
+}
+
+.vinyl-needle::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: -1px;
+  width: 4px;
+  height: 4px;
+  background: var(--accent-glow);
+  border-radius: 1px;
+}
+
+.vinyl--paused + .vinyl-needle {
+  transform: rotate(0deg);
 }
 
 .vinyl--paused {
   animation-play-state: paused;
-  cursor: default;
-}
-
-.vinyl--paused:hover {
-  box-shadow: none;
-}
-
-.vinyl--playing-preview {
-  animation-duration: 1.5s;
-  box-shadow: 0 0 16px rgba(203, 166, 247, 0.3);
 }
 
 .vinyl::before {
@@ -1180,26 +1218,7 @@ button.vinyl {
   border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
-.vinyl__play {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-45%, -50%);
-  font-size: 0.6rem;
-  color: var(--text-heading);
-  opacity: 0;
-  transition: opacity 0.15s ease;
-  z-index: 1;
-  pointer-events: none;
-}
 
-.vinyl:hover .vinyl__play {
-  opacity: 0.8;
-}
-
-.vinyl--playing-preview .vinyl__play {
-  opacity: 0.8;
-}
 
 @keyframes spin {
   from { transform: rotate(0deg); }
@@ -1248,7 +1267,7 @@ span.now-playing__song {
 }
 
 a.now-playing__artist {
-  color: var(--text-secondary);
+  color: #fab387;
   font-size: 0.78rem;
   white-space: nowrap;
   overflow: hidden;
@@ -1262,7 +1281,7 @@ a.now-playing__artist:hover {
 }
 
 span.now-playing__artist {
-  color: var(--text-secondary);
+  color: #fab387;
   font-size: 0.78rem;
   white-space: nowrap;
   overflow: hidden;

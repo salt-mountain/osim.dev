@@ -295,9 +295,10 @@ Y8,        88  8b       d8  88          ,adPPPPP88  88       88     Y8,        ,
 
             <!-- Track state (now playing / recently played) -->
             <div class="now-playing__track" id="np-track" hidden>
-              <button class="vinyl" id="np-vinyl" type="button" aria-label="Play preview">
-                <span class="vinyl__play" id="np-play-icon" aria-hidden="true">&#9654;</span>
-              </button>
+              <div class="vinyl-wrapper" id="np-vinyl" role="button" tabindex="0" aria-label="Play preview">
+                <div class="vinyl"></div>
+                <div class="vinyl-needle" aria-hidden="true"></div>
+              </div>
               <div class="now-playing__info">
                 <span class="now-playing__label" id="np-label">Now Playing</span>
                 <a class="now-playing__song" id="np-song" href="#" target="_blank" rel="noopener noreferrer">—</a>

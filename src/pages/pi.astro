@@ -104,4 +104,22 @@ root      1343  66.6  5.5    /opt/the_plague/da_vinci_virus --stealth --deploy</
 
     </div>
   </div>
+  <script is:inline>
+    (function() {
+      var el = document.getElementById('pi-count');
+      if (!el) return;
+      fetch('https://osim-pi-counter.goran-osim.workers.dev')
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+          if (data && typeof data.count === 'number') {
+            el.textContent = data.count;
+          } else {
+            el.textContent = '?';
+          }
+        })
+        .catch(function() {
+          el.textContent = '?';
+        });
+    })();
+  </script>
 </Layout>
