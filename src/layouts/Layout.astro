@@ -155,6 +155,109 @@ const {
         el.className = 'job__running-text job__running-text--blink';
         setTimeout(showCompileLines, 5000);
       })();
+
+      // Now Playing widget
+      (function() {
+        var widget = document.getElementById('now-playing-widget');
+        var loading = document.getElementById('np-loading');
+        var track = document.getElementById('np-track');
+        var offline = document.getElementById('np-offline');
+        var vinyl = document.getElementById('np-vinyl');
+        var playIcon = document.getElementById('np-play-icon');
+        var labelEl = document.getElementById('np-label');
+        var songEl = document.getElementById('np-song');
+        var artistEl = document.getElementById('np-artist');
+
+        if (!widget) return;
+
+        // Preview audio
+        var audio = null;
+        var isPreviewPlaying = false;
+
+        function showState(state) {
+          widget.setAttribute('data-state', state);
+          loading.hidden = state !== 'loading';
+          track.hidden = state !== 'playing' && state !== 'recent';
+          offline.hidden = state !== 'offline';
+        }
+
+        function updateTrack(data) {
+          var isLive = data.is_playing;
+          showState(isLive ? 'playing' : 'recent');
+
+          labelEl.textContent = isLive ? 'Now Playing' : 'Recently Played';
+          labelEl.className = 'now-playing__label' + (isLive ? ' now-playing__label--live' : '');
+
+          songEl.textContent = data.track;
+          songEl.href = data.track_url || '#';
+
+          artistEl.textContent = data.artist;
+          artistEl.href = data.artist_url || '#';
+
+          if (isLive) {
+            vinyl.classList.remove('vinyl--paused');
+          } else {
+            vinyl.classList.add('vinyl--paused');
+          }
+
+          // Store preview URL
+          vinyl.dataset.previewUrl = data.preview_url || '';
+        }
+
+        // Preview play/pause
+        if (vinyl) {
+          vinyl.addEventListener('click', function() {
+            var previewUrl = vinyl.dataset.previewUrl;
+            if (!previewUrl) return;
+
+            if (isPreviewPlaying) {
+              audio.pause();
+              audio = null;
+              isPreviewPlaying = false;
+              vinyl.classList.remove('vinyl--playing-preview');
+              playIcon.innerHTML = '&#9654;';
+            } else {
+              audio = new Audio(previewUrl);
+              audio.volume = 0.5;
+              audio.play();
+              isPreviewPlaying = true;
+              vinyl.classList.add('vinyl--playing-preview');
+              playIcon.innerHTML = '&#9646;&#9646;';
+
+              audio.addEventListener('ended', function() {
+                isPreviewPlaying = false;
+                vinyl.classList.remove('vinyl--playing-preview');
+                playIcon.innerHTML = '&#9654;';
+                audio = null;
+              });
+            }
+          });
+        }
+
+        // Fetch from Worker API
+        // TODO: Replace this URL with your Cloudflare Worker endpoint
+        var API_URL = null; // e.g. 'https://api.osim.dev/now-playing'
+
+        if (API_URL) {
+          fetch(API_URL)
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+              if (data && data.track) {
+                updateTrack(data);
+              } else {
+                showState('offline');
+              }
+            })
+            .catch(function() {
+              showState('offline');
+            });
+        } else {
+          // No API configured — show offline state after brief loading
+          setTimeout(function() {
+            showState('offline');
+          }, 1500);
+        }
+      })();
     </script>
   </body>
 </html>
