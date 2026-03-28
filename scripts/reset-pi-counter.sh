@@ -30,7 +30,12 @@ wrangler kv namespace delete --namespace-id="$OLD_ID"
 echo ""
 echo "Creating new namespace..."
 OUTPUT=$(wrangler kv namespace create PI_VISITORS 2>&1)
-NEW_ID=$(echo "$OUTPUT" | grep '^id' | cut -d'"' -f2)
+NEW_ID=$(echo "$OUTPUT" | grep -o '"id": "[^"]*"' | head -1 | cut -d'"' -f4)
+
+# Fallback to TOML format if JSON parsing failed
+if [ -z "$NEW_ID" ]; then
+  NEW_ID=$(echo "$OUTPUT" | grep '^id' | head -1 | cut -d'"' -f2)
+fi
 
 if [ -z "$NEW_ID" ]; then
   echo "Error: Could not parse new namespace ID from output:"
