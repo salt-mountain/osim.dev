@@ -32,4 +32,7 @@ npm-debug.log*
 
 # ASCII art experiments
 *_ascii.txt
+
+# Design variant experiments
+saved-variants/
 TODO.md
