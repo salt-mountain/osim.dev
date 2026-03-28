@@ -14,24 +14,24 @@
 #let header(name, details) = {
   align(center)[
     #text(size: 22pt, weight: "bold")[#name]
-    #v(4pt)
+    #v(2pt)
     #text(size: 9pt, fill: rgb("#555"))[#details]
   ]
-  v(8pt)
-  line(length: 100%, stroke: 0.5pt + rgb("#333"))
   v(4pt)
+  line(length: 100%, stroke: 0.5pt + rgb("#333"))
+  v(2pt)
 }
 
 #let section-heading(title) = {
-  v(8pt)
+  v(6pt)
   text(size: 11pt, weight: "bold", tracking: 0.05em)[#upper(title)]
-  v(2pt)
+  v(1pt)
   line(length: 100%, stroke: 0.3pt + rgb("#999"))
-  v(4pt)
+  v(2pt)
 }
 
 #let job(company, title, location, dates, bullets) = {
-  v(4pt)
+  v(2pt)
   grid(
     columns: (1fr, auto),
     text(weight: "bold", size: 10pt)[#company],
@@ -43,17 +43,17 @@
     text(size: 9pt, fill: rgb("#555"))[#location],
   )
   if bullets.len() > 0 {
-    v(3pt)
+    v(1pt)
     for bullet in bullets {
       grid(
         columns: (14pt, 1fr),
         text(size: 9pt)[•],
         text(size: 9pt)[#bullet],
       )
-      v(1.5pt)
+      v(0.5pt)
     }
   }
-  v(2pt)
+  v(1pt)
 }
 
 // --- Document ---
@@ -170,7 +170,7 @@
 
 #section-heading("Education")
 
-#v(4pt)
+#v(2pt)
 #grid(
   columns: (1fr, auto),
   text(weight: "bold", size: 10pt)[Clemson University],
@@ -180,14 +180,14 @@
 
 #section-heading("Skills")
 
-#v(4pt)
+#v(2pt)
 #let skill-row(label, value) = {
   grid(
     columns: (120pt, 1fr),
     text(weight: "bold", size: 9pt)[#label],
     text(size: 9pt)[#value],
   )
-  v(2pt)
+  v(1pt)
 }
 
 #skill-row("Languages", "Python, Java, SQL, T-SQL, C, HTML/CSS, Go, Bash")

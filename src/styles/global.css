@@ -739,7 +739,7 @@ a:hover {
   color: var(--text-primary);
   overflow-x: auto;
   display: grid;
-  grid-template-columns: auto auto auto auto auto;
+  grid-template-columns: auto auto auto;
   gap: 0;
   border: 1px solid var(--border);
   border-radius: 4px;
@@ -776,12 +776,6 @@ a:hover {
   background: var(--bg-card-hover);
 }
 
-.htop__pid {
-  color: var(--text-secondary);
-  font-size: 0.72rem;
-  font-variant-numeric: tabular-nums;
-}
-
 .htop__tool {
   color: var(--text-heading);
   font-weight: 500;
@@ -795,13 +789,6 @@ a:hover {
 .htop__cat {
   color: var(--prompt-path);
   font-size: 0.75rem;
-  white-space: nowrap;
-}
-
-.htop__exp {
-  color: var(--success);
-  font-weight: 500;
-  font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 
@@ -831,22 +818,10 @@ a:hover {
   background: rgba(249, 226, 175, 0.1);
 }
 
-@media (max-width: 600px) {
-  .htop {
-    grid-template-columns: auto auto auto auto;
-  }
-  .htop__header .htop__pid,
-  .htop__row .htop__pid {
-    display: none;
-  }
-}
-
 @media (max-width: 450px) {
   .htop {
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto;
   }
-  .htop__header .htop__pid,
-  .htop__row .htop__pid,
   .htop__header .htop__cat,
   .htop__row .htop__cat {
     display: none;

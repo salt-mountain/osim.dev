@@ -91,6 +91,13 @@ const {
         });
       });
 
+      // Assemble email (anti-scraper: base64 encoded)
+      (function() {
+        var el = document.getElementById('contact-email');
+        if (!el) return;
+        el.textContent = atob('Z29yYW4ub3NpbUBnbWFpbC5jb20=');
+      })();
+
       // Spinner animation
       (function() {
         var frames = ['|', '/', '-', '\\'];
