@@ -8,6 +8,15 @@ async function hashIP(ip) {
     .join('');
 }
 
+// Crawler / headless / scraper signatures. Hits matching this regex still receive
+// the current count but do NOT cause an increment, so they can't inflate the number.
+const BOT_UA_RE = /bot\b|crawl|spider|slurp|fetch|httpx?|wget|curl|python-requests|aiohttp|axios|node-fetch|libwww|java\/|go-http-client|okhttp|headless|phantom|selenium|playwright|puppeteer|chrome-lighthouse|lighthouse|pagespeed|gpt|claude|anthropic|openai|perplexity|bytespider|ccbot|cohere|diffbot|facebookexternalhit|meta-externalagent|preview|monitor|uptime|pingdom|datadog|newrelic|prerender|scraper/i;
+
+function looksLikeBot(ua) {
+  if (!ua) return true; // missing UA → almost always a bot
+  return BOT_UA_RE.test(ua);
+}
+
 function corsHeaders(origin) {
   return {
     'Access-Control-Allow-Origin': origin || '*',
@@ -31,6 +40,9 @@ export default {
     }
 
     try {
+      const userAgent = request.headers.get('User-Agent') || '';
+      const isBot = looksLikeBot(userAgent);
+
       // Get visitor IP and hash it
       const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
       const visitorHash = await hashIP(ip);
@@ -42,8 +54,9 @@ export default {
       const countStr = await env.PI_VISITORS.get('count');
       let count = parseInt(countStr) || 0;
 
-      // If new visitor, increment and store hash (30 day TTL)
-      if (!seen) {
+      // Only humans (non-bot UA, new IP) increment the count. Bots still get the
+      // current count back so the page renders something for them.
+      if (!seen && !isBot) {
         count++;
         await env.PI_VISITORS.put('count', count.toString());
         await env.PI_VISITORS.put(`visitor:${visitorHash}`, '1', {
