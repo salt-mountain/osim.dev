@@ -20,7 +20,7 @@ function looksLikeBot(ua) {
 function corsHeaders(origin) {
   return {
     'Access-Control-Allow-Origin': origin || '*',
-    'Access-Control-Allow-Methods': 'GET, OPTIONS',
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type',
     'Content-Type': 'application/json',
   };
@@ -35,33 +35,36 @@ export default {
       return new Response(null, { headers: corsHeaders(origin) });
     }
 
-    if (request.method !== 'GET') {
+    if (request.method !== 'GET' && request.method !== 'POST') {
       return new Response('Method not allowed', { status: 405 });
     }
 
     try {
-      const userAgent = request.headers.get('User-Agent') || '';
-      const isBot = looksLikeBot(userAgent);
-
-      // Get visitor IP and hash it
-      const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
-      const visitorHash = await hashIP(ip);
-
-      // Check if this visitor has been seen
-      const seen = await env.PI_VISITORS.get(`visitor:${visitorHash}`);
+      // GET = read the current count without side effects.
+      // POST = increment if this is a new visitor and the UA isn't a bot.
+      // The page calls GET on load (so the number appears immediately) and POST
+      // only after a real-user interaction (mousemove / scroll / keydown / etc.).
+      const isIncrement = request.method === 'POST';
 
       // Get current count
       const countStr = await env.PI_VISITORS.get('count');
       let count = parseInt(countStr) || 0;
 
-      // Only humans (non-bot UA, new IP) increment the count. Bots still get the
-      // current count back so the page renders something for them.
-      if (!seen && !isBot) {
-        count++;
-        await env.PI_VISITORS.put('count', count.toString());
-        await env.PI_VISITORS.put(`visitor:${visitorHash}`, '1', {
-          expirationTtl: 2592000, // 30 days
-        });
+      if (isIncrement) {
+        const userAgent = request.headers.get('User-Agent') || '';
+        const isBot = looksLikeBot(userAgent);
+
+        const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+        const visitorHash = await hashIP(ip);
+        const seen = await env.PI_VISITORS.get(`visitor:${visitorHash}`);
+
+        if (!seen && !isBot) {
+          count++;
+          await env.PI_VISITORS.put('count', count.toString());
+          await env.PI_VISITORS.put(`visitor:${visitorHash}`, '1', {
+            expirationTtl: 2592000, // 30 days
+          });
+        }
       }
 
       return new Response(JSON.stringify({ count }), {
