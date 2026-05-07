@@ -11,6 +11,6 @@
   "dependencies": {
     "@astrojs/sitemap": "3.7.2",
     "@fontsource/jetbrains-mono": "5.2.8",
-    "astro": "6.2.2"
+    "astro": "6.3.0"
   }
 }
