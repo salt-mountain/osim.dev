@@ -4,6 +4,17 @@ on:
   push:
     branches: [main]
 
+# Cloudflare auth comes from the CLOUDFLARE_API_TOKEN secret, not GITHUB_TOKEN,
+# so the workflow token only needs read access to the repo.
+permissions:
+  contents: read
+
+# Serialize deploys; do NOT cancel an in-flight one (cancelling mid-deploy could
+# leave a partial deploy).
+concurrency:
+  group: deploy-cloudflare-pages
+  cancel-in-progress: false
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
