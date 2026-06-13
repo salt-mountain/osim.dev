@@ -1,9 +1,9 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import '../styles/global.css';
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
 ---
 
-<Layout title="&pi; — osim.dev" noindex={true}>
+<Layout title="π — osim.dev" noindex={true}>
   <div class="terminal-window">
     <!-- Window Chrome -->
     <div class="window-chrome">
@@ -12,13 +12,24 @@ import '../styles/global.css';
         <span class="window-dot window-dot--minimize"></span>
         <span class="window-dot window-dot--maximize"></span>
       </div>
-      <span class="window-title"><span class="prompt__user">osim</span><span class="prompt__separator">@</span><span class="prompt__host">dev</span><span class="prompt__separator">:</span> <span class="prompt__path">~/&pi;</span></span>
-      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">light-mode</button>
+      <span class="window-title"
+        ><span class="prompt__user">osim</span><span class="prompt__separator"
+          >@</span
+        ><span class="prompt__host">dev</span><span class="prompt__separator"
+          >:</span
+        >
+        <span class="prompt__path">~/&pi;</span></span
+      >
+      <button
+        id="theme-toggle"
+        class="theme-toggle"
+        type="button"
+        aria-label="Toggle theme">light-mode</button
+      >
     </div>
 
     <!-- Terminal Body -->
     <div class="terminal-body">
-
       <div class="powerline">
         <span class="powerline__seg powerline__seg--user">osim@dev</span>
         <span class="powerline__seg powerline__seg--path">~</span>
@@ -29,7 +40,9 @@ import '../styles/global.css';
       <!-- Hack the Planet banner -->
       <section class="section">
         <div class="section__output">
-          <pre class="pi__banner" id="pi-banner">
+          <pre
+            class="pi__banner"
+            id="pi-banner">
  _   _            _      _   _            ____  _                  _   _
 | | | | __ _  ___| | __ | |_| |__   ___  |  _ \| | __ _ _ __   ___| |_| |
 | |_| |/ _` |/ __| |/ / | __| '_ \ / _ \ | |_) | |/ _` | '_ \ / _ \ __| |
@@ -45,10 +58,14 @@ import '../styles/global.css';
         <div class="powerline">
           <span class="powerline__seg powerline__seg--user">osim@dev</span>
           <span class="powerline__seg powerline__seg--path">~/&pi;</span>
-          <span class="powerline__seg powerline__seg--cmd">wc -l /var/log/the_gibson</span>
+          <span class="powerline__seg powerline__seg--cmd"
+            >wc -l /var/log/the_gibson</span
+          >
         </div>
         <div class="section__output">
-          <p class="pi__visitor-count"><span id="pi-count">...</span> curious visitors have found this page.</p>
+          <p class="pi__visitor-count">
+            <span id="pi-count">...</span> curious visitors have found this page.
+          </p>
         </div>
       </section>
 
@@ -59,10 +76,13 @@ import '../styles/global.css';
         <div class="powerline">
           <span class="powerline__seg powerline__seg--user">osim@dev</span>
           <span class="powerline__seg powerline__seg--path">~/&pi;</span>
-          <span class="powerline__seg powerline__seg--cmd">ps aux | grep suspicious</span>
+          <span class="powerline__seg powerline__seg--cmd"
+            >ps aux | grep suspicious</span
+          >
         </div>
         <div class="section__output">
-          <pre class="pi__processes">USER       PID  %CPU %MEM    COMMAND
+          <pre
+            class="pi__processes">USER       PID  %CPU %MEM    COMMAND
 root      1337  99.9  0.1    /opt/zero_cool/hack_the_planet --no-limits
 root      1338  28.7  3.8    /opt/acid_burn/access --level=god
 root      1339  42.0  6.9    /opt/lord_nikon/rabbit --incubate
@@ -98,7 +118,11 @@ root      1343  66.6  5.5    /opt/the_plague/da_vinci_virus --stealth --deploy</
         </div>
         <div class="section__output">
           <p class="pi__sub">They're trashing the flow of data.</p>
-          <p class="pi__sub">This page doesn't exist. You were never here.<span class="cursor" aria-hidden="true"></span></p>
+          <p class="pi__sub">
+            This page doesn't exist. You were never here.<span
+              class="cursor"
+              aria-hidden="true"></span>
+          </p>
         </div>
       </section>
 
@@ -108,12 +132,13 @@ root      1343  66.6  5.5    /opt/the_plague/da_vinci_virus --stealth --deploy</
           <div class="powerline">
             <span class="powerline__seg powerline__seg--user">osim@dev</span>
             <span class="powerline__seg powerline__seg--path">~/&pi;</span>
-            <span class="powerline__seg powerline__seg--cmd"><a href="/" style="color: inherit;">cd ~</a></span>
+            <span class="powerline__seg powerline__seg--cmd"
+              ><a href="/" style="color: inherit;">cd ~</a></span
+            >
           </div>
         </div>
         <p>&copy; 2026 osim.dev</p>
       </footer>
-
     </div>
   </div>
   <script is:inline>
@@ -122,24 +147,26 @@ root      1343  66.6  5.5    /opt/the_plague/da_vinci_virus --stealth --deploy</
     //  2. Only after a real-user interaction (mousemove / touchstart / scroll /
     //     keydown), POST to record the visit. Headless crawlers that load the
     //     page but don't simulate input never trigger the POST.
-    (function() {
-      var el = document.getElementById('pi-count');
+    (function () {
+      var el = document.getElementById("pi-count");
       if (!el) return;
 
-      var API = 'https://osim-pi-counter.goran-osim.workers.dev';
+      var API = "https://osim-pi-counter.goran-osim.workers.dev";
 
       // Step 1: read-only fetch on load.
       fetch(API)
-        .then(function(res) { return res.json(); })
-        .then(function(data) {
-          if (data && typeof data.count === 'number') {
+        .then(function (res) {
+          return res.json();
+        })
+        .then(function (data) {
+          if (data && typeof data.count === "number") {
             el.textContent = data.count;
           } else {
-            el.textContent = '?';
+            el.textContent = "?";
           }
         })
-        .catch(function() {
-          el.textContent = '?';
+        .catch(function () {
+          el.textContent = "?";
         });
 
       // Step 2: increment after first interaction. Fire and forget.
@@ -147,15 +174,15 @@ root      1343  66.6  5.5    /opt/the_plague/da_vinci_virus --stealth --deploy</
       function recordVisit() {
         if (fired) return;
         fired = true;
-        events.forEach(function(name) {
+        events.forEach(function (name) {
           window.removeEventListener(name, recordVisit, opts);
         });
-        fetch(API, { method: 'POST' }).catch(function() {});
+        fetch(API, { method: "POST" }).catch(function () {});
       }
 
-      var events = ['mousemove', 'touchstart', 'scroll', 'keydown'];
+      var events = ["mousemove", "touchstart", "scroll", "keydown"];
       var opts = { once: true, passive: true };
-      events.forEach(function(name) {
+      events.forEach(function (name) {
         window.addEventListener(name, recordVisit, opts);
       });
     })();

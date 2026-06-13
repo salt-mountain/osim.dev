@@ -3,15 +3,17 @@
    ============================================ */
 
 /* --- Self-hosted JetBrains Mono (latin) --- */
-@import '@fontsource/jetbrains-mono/latin-300.css';
-@import '@fontsource/jetbrains-mono/latin-400.css';
-@import '@fontsource/jetbrains-mono/latin-500.css';
-@import '@fontsource/jetbrains-mono/latin-600.css';
-@import '@fontsource/jetbrains-mono/latin-700.css';
-@import '@fontsource/jetbrains-mono/latin-400-italic.css';
+@import "@fontsource/jetbrains-mono/latin-300.css";
+@import "@fontsource/jetbrains-mono/latin-400.css";
+@import "@fontsource/jetbrains-mono/latin-500.css";
+@import "@fontsource/jetbrains-mono/latin-600.css";
+@import "@fontsource/jetbrains-mono/latin-700.css";
+@import "@fontsource/jetbrains-mono/latin-400-italic.css";
 
 /* --- Reset & Base --- */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -113,7 +115,9 @@ html {
 }
 
 body {
-  font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'JetBrains Mono', 'Cascadia Code', 'Consolas', 'Monaco', 'Menlo', monospace;
+  font-family:
+    "SF Mono", "Fira Code", "Fira Mono", "JetBrains Mono", "Cascadia Code",
+    "Consolas", "Monaco", "Menlo", monospace;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.7;
@@ -126,7 +130,7 @@ body {
 
 /* --- CRT / Scanline Overlay --- */
 body::before {
-  content: '';
+  content: "";
   position: fixed;
   top: 0;
   left: 0;
@@ -144,7 +148,7 @@ body::before {
 }
 
 body::after {
-  content: '';
+  content: "";
   position: fixed;
   top: 0;
   left: 0;
@@ -213,9 +217,15 @@ a:hover {
   height: 12px;
   border-radius: 50%;
 }
-.window-dot--close { background: #f38ba8; }
-.window-dot--minimize { background: #f9e2af; }
-.window-dot--maximize { background: #a6e3a1; }
+.window-dot--close {
+  background: #f38ba8;
+}
+.window-dot--minimize {
+  background: #f9e2af;
+}
+.window-dot--maximize {
+  background: #a6e3a1;
+}
 
 .window-title {
   font-size: 0.75rem;
@@ -280,7 +290,7 @@ a:hover {
 }
 
 .nav__link::before {
-  content: './';
+  content: "./";
   color: var(--text-secondary);
   font-size: 0.8rem;
 }
@@ -299,7 +309,7 @@ a:hover {
 }
 
 .nav__link--resume::before {
-  content: '';
+  content: "";
 }
 
 .nav__link--resume a {
@@ -346,7 +356,7 @@ a:hover {
 
 .powerline__seg--user::after,
 .powerline__seg--path::after {
-  content: '';
+  content: "";
   position: absolute;
   right: 0;
   top: 0;
@@ -592,8 +602,13 @@ a:hover {
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 /* --- About (personal story) --- */
@@ -647,7 +662,9 @@ a:hover {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 4px;
-  transition: background 0.2s ease, border-color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
 }
 .job:hover {
   background: var(--bg-card-hover);
@@ -737,7 +754,7 @@ a:hover {
 }
 
 .job__bullets li::before {
-  content: '>';
+  content: ">";
   position: absolute;
   left: 0;
   color: var(--prompt-user);
@@ -932,7 +949,7 @@ a:hover {
 }
 
 .post__body ul li::before {
-  content: '>';
+  content: ">";
   position: absolute;
   left: 0;
   color: var(--prompt-user);
@@ -1076,15 +1093,23 @@ a:hover {
 }
 
 .now-playing__dots::after {
-  content: '';
+  content: "";
   animation: dots 1.5s steps(4, end) infinite;
 }
 
 @keyframes dots {
-  0%  { content: ''; }
-  25% { content: '.'; }
-  50% { content: '..'; }
-  75% { content: '...'; }
+  0% {
+    content: "";
+  }
+  25% {
+    content: ".";
+  }
+  50% {
+    content: "..";
+  }
+  75% {
+    content: "...";
+  }
 }
 
 /* --- Track State --- */
@@ -1150,7 +1175,7 @@ a:hover {
 }
 
 .vinyl-needle::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -2px;
@@ -1161,7 +1186,7 @@ a:hover {
 }
 
 .vinyl-needle::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -1px;
   left: -1px;
@@ -1180,7 +1205,7 @@ a:hover {
 }
 
 .vinyl::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1193,7 +1218,7 @@ a:hover {
 }
 
 .vinyl::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1204,11 +1229,13 @@ a:hover {
   border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
-
-
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* --- Info --- */
@@ -1359,10 +1386,12 @@ span.now-playing__artist {
 
 /* --- Print --- */
 @media print {
-  body::before, body::after {
+  body::before,
+  body::after {
     display: none;
   }
-  .theme-toggle, .window-chrome {
+  .theme-toggle,
+  .window-chrome {
     display: none;
   }
   .terminal-body {

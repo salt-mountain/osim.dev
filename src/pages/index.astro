@@ -1,6 +1,6 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import '../styles/global.css';
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
 ---
 
 <Layout>
@@ -12,13 +12,24 @@ import '../styles/global.css';
         <span class="window-dot window-dot--minimize"></span>
         <span class="window-dot window-dot--maximize"></span>
       </div>
-      <span class="window-title"><span class="prompt__user">osim</span><span class="prompt__separator">@</span><span class="prompt__host">dev</span><span class="prompt__separator">:</span> <span class="prompt__path">~/portfolio</span></span>
-      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">light-mode</button>
+      <span class="window-title"
+        ><span class="prompt__user">osim</span><span class="prompt__separator"
+          >@</span
+        ><span class="prompt__host">dev</span><span class="prompt__separator"
+          >:</span
+        >
+        <span class="prompt__path">~/portfolio</span></span
+      >
+      <button
+        id="theme-toggle"
+        class="theme-toggle"
+        type="button"
+        aria-label="Toggle theme">light-mode</button
+      >
     </div>
 
     <!-- Terminal Body -->
     <div class="terminal-body">
-
       <!-- Navigation -->
       <nav class="nav" aria-label="Primary">
         <div class="nav__prompt">
@@ -34,7 +45,9 @@ import '../styles/global.css';
           <li class="nav__link"><a href="#tech">tech</a></li>
           <!-- <li class="nav__link"><a href="/blog">blog</a></li> -->
           <li class="nav__link"><a href="#contact">contact</a></li>
-          <li class="nav__link nav__link--resume"><a href="/resume.pdf" download>resume.pdf</a></li>
+          <li class="nav__link nav__link--resume">
+            <a href="/resume.pdf" download>resume.pdf</a>
+          </li>
         </ul>
       </nav>
 
@@ -47,7 +60,9 @@ import '../styles/global.css';
           <span class="cursor" aria-hidden="true"></span>
         </div>
         <h1 class="hero__name">Goran Osim</h1>
-        <pre class="hero__ascii" aria-label="Goran Osim">
+        <pre
+          class="hero__ascii"
+          aria-label="Goran Osim">
   ,ad8888ba,                                                          ,ad8888ba,
  d8"'    `"8b                                                        d8"'    `"8b             <a href="/pi" class="easter-egg" title="">&middot;π&middot;</a>
 d8'                                                                 d8'        `8b
@@ -81,8 +96,21 @@ Y8,        88  8b       d8  88          ,adPPPPP88  88       88     Y8,        ,
         <div class="section__output">
           <div class="about__label"># personal</div>
           <div class="about__content">
-            <p>I build platforms that let other engineers ship faster. For the last decade, that's meant designing and running Kubernetes-based infrastructure at scale&mdash;from self-service developer portals to air-gapped software factories for the US Air Force and DoD programs.</p>
-            <p>I lead teams, mentor engineers new to the cloud, and care as much about the developer experience as the infrastructure underneath it. I've built in both commercial and government environments, internet-connected and disconnected, and I'm most useful when the problem is "we need this to work reliably for hundreds of people, yesterday."</p>
+            <p>
+              I build platforms that let other engineers ship faster. For the
+              last decade, that's meant designing and running Kubernetes-based
+              infrastructure at scale&mdash;from self-service developer portals
+              to air-gapped software factories for the US Air Force and DoD
+              programs.
+            </p>
+            <p>
+              I lead teams, mentor engineers new to the cloud, and care as much
+              about the developer experience as the infrastructure underneath
+              it. I've built in both commercial and government environments,
+              internet-connected and disconnected, and I'm most useful when the
+              problem is "we need this to work reliably for hundreds of people,
+              yesterday."
+            </p>
           </div>
         </div>
       </section>
@@ -94,17 +122,25 @@ Y8,        88  8b       d8  88          ,adPPPPP88  88       88     Y8,        ,
         <div class="powerline">
           <span class="powerline__seg powerline__seg--user">osim@dev</span>
           <span class="powerline__seg powerline__seg--path">~/experience</span>
-          <span class="powerline__seg powerline__seg--cmd">cat history.json | jq '.[]'</span>
+          <span class="powerline__seg powerline__seg--cmd"
+            >cat history.json | jq '.[]'</span
+          >
         </div>
         <div class="section__output">
           <div class="job job--current">
             <div class="job__header">
               <span class="job__company">Amazon Web Services</span>
-              <span class="job__dates">11/2025 &ndash; Present <span class="spinner" aria-hidden="true"></span></span>
+              <span class="job__dates"
+                >11/2025 &ndash; Present <span
+                  class="spinner"
+                  aria-hidden="true"></span></span
+              >
             </div>
             <div class="job__title">System Development Engineer III</div>
             <div class="job__running">
-              <span class="job__running-text" id="job-running-text">RUNNING</span>
+              <span class="job__running-text" id="job-running-text"
+                >RUNNING</span
+              >
             </div>
           </div>
 
@@ -115,12 +151,40 @@ Y8,        88  8b       d8  88          ,adPPPPP88  88       88     Y8,        ,
             </div>
             <div class="job__title">Chief Engineer</div>
             <ul class="job__bullets">
-              <li>Led a team of 7 Platform and Cloud engineers architecting and building a secure-by-default platform-as-a-service with automated resource deployment and a self-service developer portal.</li>
-              <li>Designed and implemented a project onboarding pipeline for creating AWS accounts and Kubernetes clusters within 70 minutes leveraging AWS Landing Zone Accelerator, Step Functions, and Terraform.</li>
-              <li>Spearheaded and mentored a team of 5 platform engineers designing and operationalizing an enterprise software platform for the F-35 Joint Program Office, automating VMware Tanzu Kubernetes Grid deployments.</li>
-              <li>Built custom GitLab CI pipelines for cross-domain software artifact deployment from inter-connected USAF environments to classified environments utilizing Amazon Diode.</li>
-              <li>Established GitLab CI pipelines for testing Kubernetes Platform applications and automated infrastructure deployments across Rancher RKE2, air-gapped Kubernetes, and K3D distributions.</li>
-              <li>Deployed Kubernetes clusters with autoscaling capabilities that dynamically adjust pod and cluster size, implementing horizontal and vertical autoscaling strategies utilizing event-driven and resource-driven metrics.</li>
+              <li>
+                Led a team of 7 Platform and Cloud engineers architecting and
+                building a secure-by-default platform-as-a-service with
+                automated resource deployment and a self-service developer
+                portal.
+              </li>
+              <li>
+                Designed and implemented a project onboarding pipeline for
+                creating AWS accounts and Kubernetes clusters within 70 minutes
+                leveraging AWS Landing Zone Accelerator, Step Functions, and
+                Terraform.
+              </li>
+              <li>
+                Spearheaded and mentored a team of 5 platform engineers
+                designing and operationalizing an enterprise software platform
+                for the F-35 Joint Program Office, automating VMware Tanzu
+                Kubernetes Grid deployments.
+              </li>
+              <li>
+                Built custom GitLab CI pipelines for cross-domain software
+                artifact deployment from inter-connected USAF environments to
+                classified environments utilizing Amazon Diode.
+              </li>
+              <li>
+                Established GitLab CI pipelines for testing Kubernetes Platform
+                applications and automated infrastructure deployments across
+                Rancher RKE2, air-gapped Kubernetes, and K3D distributions.
+              </li>
+              <li>
+                Deployed Kubernetes clusters with autoscaling capabilities that
+                dynamically adjust pod and cluster size, implementing horizontal
+                and vertical autoscaling strategies utilizing event-driven and
+                resource-driven metrics.
+              </li>
             </ul>
           </div>
 
@@ -131,11 +195,33 @@ Y8,        88  8b       d8  88          ,adPPPPP88  88       88     Y8,        ,
             </div>
             <div class="job__title">Senior Lead Technologist</div>
             <ul class="job__bullets">
-              <li>Built a standardized Platform-as-a-Service / Platform-in-a-Box for the United States Air Force under the Chief Software Officer.</li>
-              <li>Led a team of 4 Engineers as the Classified Operations Technical Anchor enabling low-side development and automating deployment of software to classified environments in SIPR and JWICS.</li>
-              <li>Served on the Air Force Platform One program as an Advanced Kubernetes SME, developing and deploying platform capabilities utilizing open source technologies for government Mission Application Developers.</li>
-              <li>Designed and deployed production grade Kubernetes platforms hosting software factories for government contract technical challenge evaluations.</li>
-              <li>Selected as the lead technical presenter and SME for government proposal evaluations, conducting live demos, presenting technical orals, and developing technical volumes for competitive contract awards.</li>
+              <li>
+                Built a standardized Platform-as-a-Service / Platform-in-a-Box
+                for the United States Air Force under the Chief Software
+                Officer.
+              </li>
+              <li>
+                Led a team of 4 Engineers as the Classified Operations Technical
+                Anchor enabling low-side development and automating deployment
+                of software to classified environments in SIPR and JWICS.
+              </li>
+              <li>
+                Served on the Air Force Platform One program as an Advanced
+                Kubernetes SME, developing and deploying platform capabilities
+                utilizing open source technologies for government Mission
+                Application Developers.
+              </li>
+              <li>
+                Designed and deployed production grade Kubernetes platforms
+                hosting software factories for government contract technical
+                challenge evaluations.
+              </li>
+              <li>
+                Selected as the lead technical presenter and SME for government
+                proposal evaluations, conducting live demos, presenting
+                technical orals, and developing technical volumes for
+                competitive contract awards.
+              </li>
             </ul>
           </div>
 
@@ -147,10 +233,24 @@ Y8,        88  8b       d8  88          ,adPPPPP88  88       88     Y8,        ,
               </div>
               <div class="job__title">Infrastructure Lead</div>
               <ul class="job__bullets">
-                <li>Led application teams in migrating from legacy virtual machines to custom built, high-performance compute clusters.</li>
-                <li>Established automated CI/CD processes and deployment pipelines to build Docker containers and deploy into Kubernetes environments running on bare metal within a datacenter.</li>
-                <li>Established the company's first large-scale performant Kubernetes cluster: 32 Nodes, 4TB RAM, 1024 Cores, and 64TB SSD storage.</li>
-                <li>Grew overall company data center to 3000+ cores, 7+ TB of RAM, and 300 TB of mixed SSD/HDD storage.</li>
+                <li>
+                  Led application teams in migrating from legacy virtual
+                  machines to custom built, high-performance compute clusters.
+                </li>
+                <li>
+                  Established automated CI/CD processes and deployment pipelines
+                  to build Docker containers and deploy into Kubernetes
+                  environments running on bare metal within a datacenter.
+                </li>
+                <li>
+                  Established the company's first large-scale performant
+                  Kubernetes cluster: 32 Nodes, 4TB RAM, 1024 Cores, and 64TB
+                  SSD storage.
+                </li>
+                <li>
+                  Grew overall company data center to 3000+ cores, 7+ TB of RAM,
+                  and 300 TB of mixed SSD/HDD storage.
+                </li>
               </ul>
             </div>
 
@@ -161,9 +261,20 @@ Y8,        88  8b       d8  88          ,adPPPPP88  88       88     Y8,        ,
               </div>
               <div class="job__title">Senior Software Engineer</div>
               <ul class="job__bullets">
-                <li>Researched and implemented modernization strategies to modify the operational stack, remove brittle deployment processes, and adopt Docker and Kubernetes.</li>
-                <li>Maintained a Virtual Private Cloud with over 1500 cores and 25 Servers, supporting a Cassandra cluster comprising billions of records.</li>
-                <li>Provided 24/7 support and maintenance of the private cloud and associated ingest and egress data pipelines.</li>
+                <li>
+                  Researched and implemented modernization strategies to modify
+                  the operational stack, remove brittle deployment processes,
+                  and adopt Docker and Kubernetes.
+                </li>
+                <li>
+                  Maintained a Virtual Private Cloud with over 1500 cores and 25
+                  Servers, supporting a Cassandra cluster comprising billions of
+                  records.
+                </li>
+                <li>
+                  Provided 24/7 support and maintenance of the private cloud and
+                  associated ingest and egress data pipelines.
+                </li>
               </ul>
             </div>
 
@@ -174,10 +285,25 @@ Y8,        88  8b       d8  88          ,adPPPPP88  88       88     Y8,        ,
               </div>
               <div class="job__title">Senior Software Engineer</div>
               <ul class="job__bullets">
-                <li>Developed an information mapping, geo-capable solution using Django backed by Elasticsearch, enabling search over 30 billion documents with highly performant queries.</li>
-                <li>Created Amazon CloudFormation scripts for automated deployments and scaling for both AWS and C2S.</li>
-                <li>Prototyped and implemented custom solutions utilizing RDS, SQS, EC2, and S3 to provide durable services easily deployed across multiple regions.</li>
-                <li>Automated frontend and backend machine configuration using Fabric Scripts and CloudFormation for fast, seamless deployment requiring no manual interaction.</li>
+                <li>
+                  Developed an information mapping, geo-capable solution using
+                  Django backed by Elasticsearch, enabling search over 30
+                  billion documents with highly performant queries.
+                </li>
+                <li>
+                  Created Amazon CloudFormation scripts for automated
+                  deployments and scaling for both AWS and C2S.
+                </li>
+                <li>
+                  Prototyped and implemented custom solutions utilizing RDS,
+                  SQS, EC2, and S3 to provide durable services easily deployed
+                  across multiple regions.
+                </li>
+                <li>
+                  Automated frontend and backend machine configuration using
+                  Fabric Scripts and CloudFormation for fast, seamless
+                  deployment requiring no manual interaction.
+                </li>
               </ul>
             </div>
 
@@ -188,10 +314,26 @@ Y8,        88  8b       d8  88          ,adPPPPP88  88       88     Y8,        ,
               </div>
               <div class="job__title">Software Engineer</div>
               <ul class="job__bullets">
-                <li>Served on the Analytics Team of a major Hotel Company, converting outdated and complex ETL processes into logical and stable data flows.</li>
-                <li>Implemented automated Python scripts for data manipulation formerly done by hand, saving time on daily, weekly, and monthly tasks.</li>
-                <li>Built a custom data retrieval script to automatically scrape vendor data from APIs and transform customer data, handling instability and inconsistency errors from third party vendors.</li>
-                <li>Designed and tested a conversion plan to migrate existing data flows and data warehouses to newer software versions with zero downtime.</li>
+                <li>
+                  Served on the Analytics Team of a major Hotel Company,
+                  converting outdated and complex ETL processes into logical and
+                  stable data flows.
+                </li>
+                <li>
+                  Implemented automated Python scripts for data manipulation
+                  formerly done by hand, saving time on daily, weekly, and
+                  monthly tasks.
+                </li>
+                <li>
+                  Built a custom data retrieval script to automatically scrape
+                  vendor data from APIs and transform customer data, handling
+                  instability and inconsistency errors from third party vendors.
+                </li>
+                <li>
+                  Designed and tested a conversion plan to migrate existing data
+                  flows and data warehouses to newer software versions with zero
+                  downtime.
+                </li>
               </ul>
             </div>
 
@@ -202,15 +344,35 @@ Y8,        88  8b       d8  88          ,adPPPPP88  88       88     Y8,        ,
               </div>
               <div class="job__title">Consultant / Application Developer</div>
               <ul class="job__bullets">
-                <li>Technical consultant on the Momentum Technical Support team, supporting issue resolution, development, and upgrade support for Java components of the Momentum suite.</li>
-                <li>Supported implementation and ongoing maintenance of Momentum for multiple Federal clients in a geographically dispersed shared pool of resources.</li>
-                <li>Supported on-site project teams with new system implementations and upgrades by providing application development, testing services, and issue analysis.</li>
-                <li>Interviewed and mentored new Technical Consultants through the Momentum Apprenticeship Program.</li>
+                <li>
+                  Technical consultant on the Momentum Technical Support team,
+                  supporting issue resolution, development, and upgrade support
+                  for Java components of the Momentum suite.
+                </li>
+                <li>
+                  Supported implementation and ongoing maintenance of Momentum
+                  for multiple Federal clients in a geographically dispersed
+                  shared pool of resources.
+                </li>
+                <li>
+                  Supported on-site project teams with new system
+                  implementations and upgrades by providing application
+                  development, testing services, and issue analysis.
+                </li>
+                <li>
+                  Interviewed and mentored new Technical Consultants through the
+                  Momentum Apprenticeship Program.
+                </li>
               </ul>
             </div>
           </div>
 
-          <a href="#" id="experience-toggle" class="experience-toggle" aria-expanded="false">
+          <a
+            href="#"
+            id="experience-toggle"
+            class="experience-toggle"
+            aria-expanded="false"
+          >
             <span class="experience-toggle__text">-- MORE --</span>
             <span class="cursor" aria-hidden="true"></span>
           </a>
@@ -224,7 +386,9 @@ Y8,        88  8b       d8  88          ,adPPPPP88  88       88     Y8,        ,
         <div class="powerline">
           <span class="powerline__seg powerline__seg--user">osim@dev</span>
           <span class="powerline__seg powerline__seg--path">~/tech</span>
-          <span class="powerline__seg powerline__seg--cmd">htop --filter="tools,platforms,languages"</span>
+          <span class="powerline__seg powerline__seg--cmd"
+            >htop --filter="tools,platforms,languages"</span
+          >
         </div>
         <div class="section__output">
           <div class="htop">
@@ -233,49 +397,350 @@ Y8,        88  8b       d8  88          ,adPPPPP88  88       88     Y8,        ,
               <span class="htop__cat">GROUP</span>
               <span class="htop__status">STATUS</span>
             </div>
-            <div class="htop__row"><span class="htop__tool">ArgoCD</span><span class="htop__cat">cicd</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">Flux</span><span class="htop__cat">cicd</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">GitHub Actions</span><span class="htop__cat">cicd</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">GitLab CI</span><span class="htop__cat">cicd</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">AWS</span><span class="htop__cat">cloud</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">AWS CDK</span><span class="htop__cat">cloud</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">CloudFormation</span><span class="htop__cat">cloud</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">EKS</span><span class="htop__cat">cloud</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">Step Functions</span><span class="htop__cat">cloud</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">Docker</span><span class="htop__cat">containers</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">Harbor</span><span class="htop__cat">containers</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">Helm</span><span class="htop__cat">containers</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">K3D</span><span class="htop__cat">containers</span><span class="htop__status"><span class="htop__tag htop__tag--familiar">familiar</span></span></div>
-            <div class="htop__row"><span class="htop__tool">Kubernetes</span><span class="htop__cat">containers</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">Kustomize</span><span class="htop__cat">containers</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">Rancher RKE2</span><span class="htop__cat">containers</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">VMware Tanzu</span><span class="htop__cat">containers</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">Elasticsearch</span><span class="htop__cat">data</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">Kafka</span><span class="htop__cat">data</span><span class="htop__status"><span class="htop__tag htop__tag--familiar">familiar</span></span></div>
-            <div class="htop__row"><span class="htop__tool">PostgreSQL</span><span class="htop__cat">data</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">Redis</span><span class="htop__cat">data</span><span class="htop__status"><span class="htop__tag htop__tag--familiar">familiar</span></span></div>
-            <div class="htop__row"><span class="htop__tool">SQL</span><span class="htop__cat">data</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">Ansible</span><span class="htop__cat">iac</span><span class="htop__status"><span class="htop__tag htop__tag--familiar">familiar</span></span></div>
-            <div class="htop__row"><span class="htop__tool">Crossplane</span><span class="htop__cat">iac</span><span class="htop__status"><span class="htop__tag htop__tag--familiar">familiar</span></span></div>
-            <div class="htop__row"><span class="htop__tool">Pulumi</span><span class="htop__cat">iac</span><span class="htop__status"><span class="htop__tag htop__tag--familiar">familiar</span></span></div>
-            <div class="htop__row"><span class="htop__tool">Terraform</span><span class="htop__cat">iac</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">Bash</span><span class="htop__cat">languages</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">Go</span><span class="htop__cat">languages</span><span class="htop__status"><span class="htop__tag htop__tag--familiar">familiar</span></span></div>
-            <div class="htop__row"><span class="htop__tool">Java</span><span class="htop__cat">languages</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">Python</span><span class="htop__cat">languages</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">Cilium</span><span class="htop__cat">networking</span><span class="htop__status"><span class="htop__tag htop__tag--familiar">familiar</span></span></div>
-            <div class="htop__row"><span class="htop__tool">Istio</span><span class="htop__cat">networking</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">Nginx</span><span class="htop__cat">networking</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">Grafana</span><span class="htop__cat">o11y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">OpenTelemetry</span><span class="htop__cat">o11y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">Prometheus</span><span class="htop__cat">o11y</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">Linux</span><span class="htop__cat">os</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">Git</span><span class="htop__cat">tools</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">Chainguard</span><span class="htop__cat">security</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">HashiCorp Vault</span><span class="htop__cat">security</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">Trivy</span><span class="htop__cat">security</span><span class="htop__status"><span class="htop__tag htop__tag--production">production</span></span></div>
-            <div class="htop__row"><span class="htop__tool">Argo Rollouts</span><span class="htop__cat">platform</span><span class="htop__status"><span class="htop__tag htop__tag--familiar">familiar</span></span></div>
-            <div class="htop__row"><span class="htop__tool">Backstage</span><span class="htop__cat">platform</span><span class="htop__status"><span class="htop__tag htop__tag--familiar">familiar</span></span></div>
+            <div class="htop__row">
+              <span class="htop__tool">ArgoCD</span><span class="htop__cat"
+                >cicd</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">Flux</span><span class="htop__cat"
+                >cicd</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">GitHub Actions</span><span
+                class="htop__cat">cicd</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">GitLab CI</span><span class="htop__cat"
+                >cicd</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">AWS</span><span class="htop__cat"
+                >cloud</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">AWS CDK</span><span class="htop__cat"
+                >cloud</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">CloudFormation</span><span
+                class="htop__cat">cloud</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">EKS</span><span class="htop__cat"
+                >cloud</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">Step Functions</span><span
+                class="htop__cat">cloud</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">Docker</span><span class="htop__cat"
+                >containers</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">Harbor</span><span class="htop__cat"
+                >containers</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">Helm</span><span class="htop__cat"
+                >containers</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">K3D</span><span class="htop__cat"
+                >containers</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--familiar">familiar</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">Kubernetes</span><span class="htop__cat"
+                >containers</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">Kustomize</span><span class="htop__cat"
+                >containers</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">Rancher RKE2</span><span
+                class="htop__cat">containers</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">VMware Tanzu</span><span
+                class="htop__cat">containers</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">Elasticsearch</span><span
+                class="htop__cat">data</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">Kafka</span><span class="htop__cat"
+                >data</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--familiar">familiar</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">PostgreSQL</span><span class="htop__cat"
+                >data</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">Redis</span><span class="htop__cat"
+                >data</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--familiar">familiar</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">SQL</span><span class="htop__cat"
+                >data</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">Ansible</span><span class="htop__cat"
+                >iac</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--familiar">familiar</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">Crossplane</span><span class="htop__cat"
+                >iac</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--familiar">familiar</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">Pulumi</span><span class="htop__cat"
+                >iac</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--familiar">familiar</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">Terraform</span><span class="htop__cat"
+                >iac</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">Bash</span><span class="htop__cat"
+                >languages</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">Go</span><span class="htop__cat"
+                >languages</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--familiar">familiar</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">Java</span><span class="htop__cat"
+                >languages</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">Python</span><span class="htop__cat"
+                >languages</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">Cilium</span><span class="htop__cat"
+                >networking</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--familiar">familiar</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">Istio</span><span class="htop__cat"
+                >networking</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">Nginx</span><span class="htop__cat"
+                >networking</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">Grafana</span><span class="htop__cat"
+                >o11y</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">OpenTelemetry</span><span
+                class="htop__cat">o11y</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">Prometheus</span><span class="htop__cat"
+                >o11y</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">Linux</span><span class="htop__cat"
+                >os</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">Git</span><span class="htop__cat"
+                >tools</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">Chainguard</span><span class="htop__cat"
+                >security</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">HashiCorp Vault</span><span
+                class="htop__cat">security</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">Trivy</span><span class="htop__cat"
+                >security</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--production">production</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">Argo Rollouts</span><span
+                class="htop__cat">platform</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--familiar">familiar</span
+                ></span
+              >
+            </div>
+            <div class="htop__row">
+              <span class="htop__tool">Backstage</span><span class="htop__cat"
+                >platform</span
+              ><span class="htop__status"
+                ><span class="htop__tag htop__tag--familiar">familiar</span
+                ></span
+              >
+            </div>
           </div>
         </div>
       </section>
@@ -290,9 +755,10 @@ Y8,        88  8b       d8  88          ,adPPPPP88  88       88     Y8,        ,
           <span class="powerline__seg powerline__seg--cmd">cat links.yml</span>
         </div>
         <div class="section__output">
-          <pre class="contact-yaml"><span class="yaml__key">github:</span>   <a href="https://github.com/salt-mountain" target="_blank" rel="noopener noreferrer">github.com/salt-mountain</a>
+          <pre
+            class="contact-yaml"><span class="yaml__key">github:</span>   <a href="https://github.com/salt-mountain" target="_blank" rel="noopener noreferrer">github.com/salt-mountain</a>
 <span class="yaml__key">linkedin:</span> <a href="https://www.linkedin.com/in/goranosim/" target="_blank" rel="noopener noreferrer">linkedin.com/in/goranosim</a>
-<span class="yaml__key">email:</span>    <span id="contact-email"></span></pre>
+<span class="yaml__key">email:</span>    <span id="contact-email" /></pre>
         </div>
       </section>
 
@@ -303,26 +769,49 @@ Y8,        88  8b       d8  88          ,adPPPPP88  88       88     Y8,        ,
         <div class="powerline">
           <span class="powerline__seg powerline__seg--user">osim@dev</span>
           <span class="powerline__seg powerline__seg--path">~</span>
-          <span class="powerline__seg powerline__seg--cmd">now-playing --status</span>
+          <span class="powerline__seg powerline__seg--cmd"
+            >now-playing --status</span
+          >
         </div>
         <div class="section__output">
           <div class="now-playing" id="now-playing-widget" data-state="loading">
-
             <!-- Loading state -->
             <div class="now-playing__loading" id="np-loading">
-              <span class="now-playing__loading-text">fetching track data<span class="now-playing__dots"></span></span>
+              <span class="now-playing__loading-text"
+                >fetching track data<span class="now-playing__dots"
+                ></span></span
+              >
             </div>
 
             <!-- Track state (now playing / recently played) -->
             <div class="now-playing__track" id="np-track" hidden>
-              <div class="vinyl-wrapper" id="np-vinyl" role="button" tabindex="0" aria-label="Play preview">
+              <div
+                class="vinyl-wrapper"
+                id="np-vinyl"
+                role="button"
+                tabindex="0"
+                aria-label="Play preview"
+              >
                 <div class="vinyl"></div>
                 <div class="vinyl-needle" aria-hidden="true"></div>
               </div>
               <div class="now-playing__info">
-                <span class="now-playing__label" id="np-label">Now Playing</span>
-                <a class="now-playing__song" id="np-song" href="#" target="_blank" rel="noopener noreferrer">—</a>
-                <a class="now-playing__artist" id="np-artist" href="#" target="_blank" rel="noopener noreferrer">—</a>
+                <span class="now-playing__label" id="np-label">Now Playing</span
+                >
+                <a
+                  class="now-playing__song"
+                  id="np-song"
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer">—</a
+                >
+                <a
+                  class="now-playing__artist"
+                  id="np-artist"
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer">—</a
+                >
               </div>
             </div>
 
@@ -335,7 +824,6 @@ Y8,        88  8b       d8  88          ,adPPPPP88  88       88     Y8,        ,
                 <span class="now-playing__artist">Check back later</span>
               </div>
             </div>
-
           </div>
         </div>
       </section>
@@ -351,7 +839,6 @@ Y8,        88  8b       d8  88          ,adPPPPP88  88       88     Y8,        ,
         </div>
         <p>&copy; 2026 osim.dev</p>
       </footer>
-
     </div>
   </div>
 </Layout>

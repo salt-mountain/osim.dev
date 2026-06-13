@@ -1,10 +1,10 @@
 ---
-import { getCollection, render } from 'astro:content';
-import Layout from '../../layouts/Layout.astro';
-import '../../styles/global.css';
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import "../../styles/global.css";
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
+  const posts = await getCollection("blog");
   return posts.map((post) => ({
     params: { slug: post.id },
     props: { post },
@@ -14,11 +14,14 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 
-const formattedDate = post.data.date.toISOString().split('T')[0];
-const filename = post.id + '.md';
+const formattedDate = post.data.date.toISOString().split("T")[0];
+const filename = post.id + ".md";
 ---
 
-<Layout title={`${post.data.title} — osim.dev`} description={post.data.description}>
+<Layout
+  title={`${post.data.title} — osim.dev`}
+  description={post.data.description}
+>
   <div class="terminal-window">
     <!-- Window Chrome -->
     <div class="window-chrome">
@@ -27,13 +30,24 @@ const filename = post.id + '.md';
         <span class="window-dot window-dot--minimize"></span>
         <span class="window-dot window-dot--maximize"></span>
       </div>
-      <span class="window-title"><span class="prompt__user">osim</span><span class="prompt__separator">@</span><span class="prompt__host">dev</span><span class="prompt__separator">:</span> <span class="prompt__path">~/blog</span></span>
-      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">light-mode</button>
+      <span class="window-title"
+        ><span class="prompt__user">osim</span><span class="prompt__separator"
+          >@</span
+        ><span class="prompt__host">dev</span><span class="prompt__separator"
+          >:</span
+        >
+        <span class="prompt__path">~/blog</span></span
+      >
+      <button
+        id="theme-toggle"
+        class="theme-toggle"
+        type="button"
+        aria-label="Toggle theme">light-mode</button
+      >
     </div>
 
     <!-- Terminal Body -->
     <div class="terminal-body">
-
       <!-- Navigation -->
       <nav class="nav" aria-label="Primary">
         <div class="nav__prompt">
@@ -50,7 +64,9 @@ const filename = post.id + '.md';
           <li class="nav__link"><a href="/#tech">tech</a></li>
           <li class="nav__link nav__link--active"><a href="/blog">blog</a></li>
           <li class="nav__link"><a href="/#contact">contact</a></li>
-          <li class="nav__link nav__link--resume"><a href="/resume.pdf" download>resume.pdf</a></li>
+          <li class="nav__link nav__link--resume">
+            <a href="/resume.pdf" download>resume.pdf</a>
+          </li>
         </ul>
       </nav>
 
@@ -83,7 +99,9 @@ const filename = post.id + '.md';
         <div class="powerline">
           <span class="powerline__seg powerline__seg--user">osim@dev</span>
           <span class="powerline__seg powerline__seg--path">~/blog</span>
-          <span class="powerline__seg powerline__seg--cmd"><a href="/" class="post__back-link">cd ~</a></span>
+          <span class="powerline__seg powerline__seg--cmd"
+            ><a href="/" class="post__back-link">cd ~</a></span
+          >
         </div>
       </div>
 
@@ -98,7 +116,6 @@ const filename = post.id + '.md';
         </div>
         <p>&copy; 2026 osim.dev</p>
       </footer>
-
     </div>
   </div>
 </Layout>
