@@ -26,5 +26,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-bun-
       - run: bun install --frozen-lockfile
+      - name: Typecheck
+        run: bun run check
+      - name: Format check
+        run: bun run format:check
       - name: Build
         run: bun run build

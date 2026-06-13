@@ -1,13 +1,15 @@
-const TOKEN_ENDPOINT = 'https://accounts.spotify.com/api/token';
-const NOW_PLAYING_ENDPOINT = 'https://api.spotify.com/v1/me/player/currently-playing';
-const RECENTLY_PLAYED_ENDPOINT = 'https://api.spotify.com/v1/me/player/recently-played?limit=1';
+const TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token";
+const NOW_PLAYING_ENDPOINT =
+  "https://api.spotify.com/v1/me/player/currently-playing";
+const RECENTLY_PLAYED_ENDPOINT =
+  "https://api.spotify.com/v1/me/player/recently-played?limit=1";
 
 async function getAccessToken(env) {
   const response = await fetch(TOKEN_ENDPOINT, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams({
-      grant_type: 'refresh_token',
+      grant_type: "refresh_token",
       refresh_token: env.SPOTIFY_REFRESH_TOKEN,
       client_id: env.SPOTIFY_CLIENT_ID,
       client_secret: env.SPOTIFY_CLIENT_SECRET,
@@ -32,7 +34,7 @@ async function getNowPlaying(accessToken) {
   return {
     is_playing: data.is_playing,
     track: data.item.name,
-    artist: data.item.artists.map((a) => a.name).join(', '),
+    artist: data.item.artists.map((a) => a.name).join(", "),
     track_url: data.item.external_urls.spotify,
     artist_url: data.item.artists[0].external_urls.spotify,
     preview_url: data.item.preview_url,
@@ -53,7 +55,7 @@ async function getRecentlyPlayed(accessToken) {
   return {
     is_playing: false,
     track: item.name,
-    artist: item.artists.map((a) => a.name).join(', '),
+    artist: item.artists.map((a) => a.name).join(", "),
     track_url: item.external_urls.spotify,
     artist_url: item.artists[0].external_urls.spotify,
     preview_url: item.preview_url,
@@ -62,30 +64,30 @@ async function getRecentlyPlayed(accessToken) {
 
 function corsHeaders(origin) {
   return {
-    'Access-Control-Allow-Origin': origin || '*',
-    'Access-Control-Allow-Methods': 'GET, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Content-Type': 'application/json',
+    "Access-Control-Allow-Origin": origin || "*",
+    "Access-Control-Allow-Methods": "GET, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+    "Content-Type": "application/json",
   };
 }
 
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    const origin = request.headers.get('Origin');
+    const origin = request.headers.get("Origin");
 
     // CORS preflight
-    if (request.method === 'OPTIONS') {
+    if (request.method === "OPTIONS") {
       return new Response(null, { headers: corsHeaders(origin) });
     }
 
     // Only allow GET
-    if (request.method !== 'GET') {
-      return new Response('Method not allowed', { status: 405 });
+    if (request.method !== "GET") {
+      return new Response("Method not allowed", { status: 405 });
     }
 
     // Check KV cache
-    const cached = await env.CACHE.get('now-playing', 'json');
+    const cached = await env.CACHE.get("now-playing", "json");
     if (cached) {
       return new Response(JSON.stringify(cached), {
         headers: corsHeaders(origin),
@@ -104,7 +106,7 @@ export default {
       }
 
       if (!track) {
-        return new Response(JSON.stringify({ error: 'No track data' }), {
+        return new Response(JSON.stringify({ error: "No track data" }), {
           status: 404,
           headers: corsHeaders(origin),
         });
@@ -112,7 +114,7 @@ export default {
 
       // Cache the result
       const ttl = parseInt(env.CACHE_TTL) || 60;
-      await env.CACHE.put('now-playing', JSON.stringify(track), {
+      await env.CACHE.put("now-playing", JSON.stringify(track), {
         expirationTtl: ttl,
       });
 
@@ -120,7 +122,7 @@ export default {
         headers: corsHeaders(origin),
       });
     } catch (err) {
-      return new Response(JSON.stringify({ error: 'Failed to fetch track' }), {
+      return new Response(JSON.stringify({ error: "Failed to fetch track" }), {
         status: 500,
         headers: corsHeaders(origin),
       });
