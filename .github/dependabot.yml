@@ -10,6 +10,13 @@ updates:
       semver-major-days: 30
       semver-minor-days: 7
       semver-patch-days: 7
+    # TypeScript 7 is the native (Go) compiler rewrite. `astro check` (via
+    # @astrojs/check) only supports TS "^5 || ^6", so a TS7 bump crashes the
+    # Typecheck step in CI. Stay on the 6.x line — patch/minor updates (incl.
+    # security) still flow — until @astrojs/check declares TS7 support.
+    ignore:
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
