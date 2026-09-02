@@ -1,9 +1,12 @@
 name: CI
 
+# PRs only. Branch protection on main requires `verify` to pass with
+# "require branches to be up to date" enabled, so the tree a PR validates is
+# exactly the tree that lands — re-running the same checks on the merge commit
+# duplicates work without adding a guarantee. Note this means a direct push to
+# main (admins are not enforced) is unverified.
 on:
   pull_request:
-  push:
-    branches: [main]
 
 permissions:
   contents: read
