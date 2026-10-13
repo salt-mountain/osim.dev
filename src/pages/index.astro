@@ -12,20 +12,21 @@ import "../styles/global.css";
         <span class="window-dot window-dot--minimize"></span>
         <span class="window-dot window-dot--maximize"></span>
       </div>
-      <span class="window-title"
-        ><span class="prompt__user">osim</span><span class="prompt__separator"
-          >@</span
-        ><span class="prompt__host">dev</span><span class="prompt__separator"
-          >:</span
-        >
-        <span class="prompt__path">~/portfolio</span></span
-      >
+      <span class="window-title">
+        <span class="prompt__user">osim</span>
+        <span class="prompt__separator">@</span>
+        <span class="prompt__host">dev</span>
+        <span class="prompt__separator">:</span>
+        <span class="prompt__path">~/portfolio</span>
+      </span>
       <button
         id="theme-toggle"
         class="theme-toggle"
         type="button"
-        aria-label="Toggle theme">light-mode</button
+        aria-label="Toggle theme"
       >
+        light-mode
+      </button>
     </div>
 
     <!-- Terminal Body -->
@@ -40,13 +41,23 @@ import "../styles/global.css";
           </div>
         </div>
         <ul class="nav__links">
-          <li class="nav__link"><a href="#about">about</a></li>
-          <li class="nav__link"><a href="#experience">experience</a></li>
-          <li class="nav__link"><a href="#tech">tech</a></li>
+          <li class="nav__link">
+            <a href="#about">about</a>
+          </li>
+          <li class="nav__link">
+            <a href="#experience">experience</a>
+          </li>
+          <li class="nav__link">
+            <a href="#tech">tech</a>
+          </li>
           <!-- <li class="nav__link"><a href="/blog">blog</a></li> -->
-          <li class="nav__link"><a href="#contact">contact</a></li>
+          <li class="nav__link">
+            <a href="#contact">contact</a>
+          </li>
           <li class="nav__link nav__link--resume">
-            <a href="/resume.pdf" download>resume.pdf</a>
+            <a href="/resume.pdf" download>
+              resume.pdf
+            </a>
           </li>
         </ul>
       </nav>
@@ -60,9 +71,7 @@ import "../styles/global.css";
           <span class="cursor" aria-hidden="true"></span>
         </div>
         <h1 class="hero__name">Goran Osim</h1>
-        <pre
-          class="hero__ascii"
-          aria-label="Goran Osim">
+        <pre class="hero__ascii" aria-label="Goran Osim">
   ,ad8888ba,                                                          ,ad8888ba,
  d8"'    `"8b                                                        d8"'    `"8b             <a href="/pi" class="easter-egg" title="">&middot;π&middot;</a>
 d8'                                                                 d8'        `8b
@@ -122,25 +131,24 @@ Y8,        88  8b       d8  88          ,adPPPPP88  88       88     Y8,        ,
         <div class="powerline">
           <span class="powerline__seg powerline__seg--user">osim@dev</span>
           <span class="powerline__seg powerline__seg--path">~/experience</span>
-          <span class="powerline__seg powerline__seg--cmd"
-            >cat history.json | jq '.[]'</span
-          >
+          <span class="powerline__seg powerline__seg--cmd">
+            cat history.json | jq '.[]'
+          </span>
         </div>
         <div class="section__output">
           <div class="job job--current">
             <div class="job__header">
               <span class="job__company">Amazon Web Services</span>
-              <span class="job__dates"
-                >11/2025 &ndash; Present <span
-                  class="spinner"
-                  aria-hidden="true"></span></span
-              >
+              <span class="job__dates">
+                11/2025 &ndash; Present{" "}
+                <span class="spinner" aria-hidden="true"></span>
+              </span>
             </div>
             <div class="job__title">System Development Engineer III</div>
             <div class="job__running">
-              <span class="job__running-text" id="job-running-text"
-                >RUNNING</span
-              >
+              <span class="job__running-text" id="job-running-text">
+                RUNNING
+              </span>
             </div>
           </div>
 
@@ -386,9 +394,9 @@ Y8,        88  8b       d8  88          ,adPPPPP88  88       88     Y8,        ,
         <div class="powerline">
           <span class="powerline__seg powerline__seg--user">osim@dev</span>
           <span class="powerline__seg powerline__seg--path">~/tech</span>
-          <span class="powerline__seg powerline__seg--cmd"
-            >htop --filter="tools,platforms,languages"</span
-          >
+          <span class="powerline__seg powerline__seg--cmd">
+            htop --filter="tools,platforms,languages"
+          </span>
         </div>
         <div class="section__output">
           <div class="htop">
@@ -398,348 +406,305 @@ Y8,        88  8b       d8  88          ,adPPPPP88  88       88     Y8,        ,
               <span class="htop__status">STATUS</span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">ArgoCD</span><span class="htop__cat"
-                >cicd</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">ArgoCD</span>
+              <span class="htop__cat">cicd</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">Flux</span><span class="htop__cat"
-                >cicd</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">Flux</span>
+              <span class="htop__cat">cicd</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">GitHub Actions</span><span
-                class="htop__cat">cicd</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">GitHub Actions</span>
+              <span class="htop__cat">cicd</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">GitLab CI</span><span class="htop__cat"
-                >cicd</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">GitLab CI</span>
+              <span class="htop__cat">cicd</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">AWS</span><span class="htop__cat"
-                >cloud</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">AWS</span>
+              <span class="htop__cat">cloud</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">AWS CDK</span><span class="htop__cat"
-                >cloud</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">AWS CDK</span>
+              <span class="htop__cat">cloud</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">CloudFormation</span><span
-                class="htop__cat">cloud</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">CloudFormation</span>
+              <span class="htop__cat">cloud</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">EKS</span><span class="htop__cat"
-                >cloud</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">EKS</span>
+              <span class="htop__cat">cloud</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">Step Functions</span><span
-                class="htop__cat">cloud</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">Step Functions</span>
+              <span class="htop__cat">cloud</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">Docker</span><span class="htop__cat"
-                >containers</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">Docker</span>
+              <span class="htop__cat">containers</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">Harbor</span><span class="htop__cat"
-                >containers</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">Harbor</span>
+              <span class="htop__cat">containers</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">Helm</span><span class="htop__cat"
-                >containers</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">Helm</span>
+              <span class="htop__cat">containers</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">K3D</span><span class="htop__cat"
-                >containers</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--familiar">familiar</span
-                ></span
-              >
+              <span class="htop__tool">K3D</span>
+              <span class="htop__cat">containers</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--familiar">familiar</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">Kubernetes</span><span class="htop__cat"
-                >containers</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">Kubernetes</span>
+              <span class="htop__cat">containers</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">Kustomize</span><span class="htop__cat"
-                >containers</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">Kustomize</span>
+              <span class="htop__cat">containers</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">Rancher RKE2</span><span
-                class="htop__cat">containers</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">Rancher RKE2</span>
+              <span class="htop__cat">containers</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">VMware Tanzu</span><span
-                class="htop__cat">containers</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">VMware Tanzu</span>
+              <span class="htop__cat">containers</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">Elasticsearch</span><span
-                class="htop__cat">data</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">Elasticsearch</span>
+              <span class="htop__cat">data</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">Kafka</span><span class="htop__cat"
-                >data</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--familiar">familiar</span
-                ></span
-              >
+              <span class="htop__tool">Kafka</span>
+              <span class="htop__cat">data</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--familiar">familiar</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">PostgreSQL</span><span class="htop__cat"
-                >data</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">PostgreSQL</span>
+              <span class="htop__cat">data</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">Redis</span><span class="htop__cat"
-                >data</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--familiar">familiar</span
-                ></span
-              >
+              <span class="htop__tool">Redis</span>
+              <span class="htop__cat">data</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--familiar">familiar</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">SQL</span><span class="htop__cat"
-                >data</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">SQL</span>
+              <span class="htop__cat">data</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">Ansible</span><span class="htop__cat"
-                >iac</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--familiar">familiar</span
-                ></span
-              >
+              <span class="htop__tool">Ansible</span>
+              <span class="htop__cat">iac</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--familiar">familiar</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">Crossplane</span><span class="htop__cat"
-                >iac</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--familiar">familiar</span
-                ></span
-              >
+              <span class="htop__tool">Crossplane</span>
+              <span class="htop__cat">iac</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--familiar">familiar</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">Pulumi</span><span class="htop__cat"
-                >iac</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--familiar">familiar</span
-                ></span
-              >
+              <span class="htop__tool">Pulumi</span>
+              <span class="htop__cat">iac</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--familiar">familiar</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">Terraform</span><span class="htop__cat"
-                >iac</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">Terraform</span>
+              <span class="htop__cat">iac</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">Bash</span><span class="htop__cat"
-                >languages</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">Bash</span>
+              <span class="htop__cat">languages</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">Go</span><span class="htop__cat"
-                >languages</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--familiar">familiar</span
-                ></span
-              >
+              <span class="htop__tool">Go</span>
+              <span class="htop__cat">languages</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--familiar">familiar</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">Java</span><span class="htop__cat"
-                >languages</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">Java</span>
+              <span class="htop__cat">languages</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">Python</span><span class="htop__cat"
-                >languages</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">Python</span>
+              <span class="htop__cat">languages</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">Cilium</span><span class="htop__cat"
-                >networking</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--familiar">familiar</span
-                ></span
-              >
+              <span class="htop__tool">Cilium</span>
+              <span class="htop__cat">networking</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--familiar">familiar</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">Istio</span><span class="htop__cat"
-                >networking</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">Istio</span>
+              <span class="htop__cat">networking</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">Nginx</span><span class="htop__cat"
-                >networking</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">Nginx</span>
+              <span class="htop__cat">networking</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">Grafana</span><span class="htop__cat"
-                >o11y</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">Grafana</span>
+              <span class="htop__cat">o11y</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">OpenTelemetry</span><span
-                class="htop__cat">o11y</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">OpenTelemetry</span>
+              <span class="htop__cat">o11y</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">Prometheus</span><span class="htop__cat"
-                >o11y</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">Prometheus</span>
+              <span class="htop__cat">o11y</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">Linux</span><span class="htop__cat"
-                >os</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">Linux</span>
+              <span class="htop__cat">os</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">Git</span><span class="htop__cat"
-                >tools</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">Git</span>
+              <span class="htop__cat">tools</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">Chainguard</span><span class="htop__cat"
-                >security</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">Chainguard</span>
+              <span class="htop__cat">security</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">HashiCorp Vault</span><span
-                class="htop__cat">security</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">HashiCorp Vault</span>
+              <span class="htop__cat">security</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">Trivy</span><span class="htop__cat"
-                >security</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--production">production</span
-                ></span
-              >
+              <span class="htop__tool">Trivy</span>
+              <span class="htop__cat">security</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--production">production</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">Argo Rollouts</span><span
-                class="htop__cat">platform</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--familiar">familiar</span
-                ></span
-              >
+              <span class="htop__tool">Argo Rollouts</span>
+              <span class="htop__cat">platform</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--familiar">familiar</span>
+              </span>
             </div>
             <div class="htop__row">
-              <span class="htop__tool">Backstage</span><span class="htop__cat"
-                >platform</span
-              ><span class="htop__status"
-                ><span class="htop__tag htop__tag--familiar">familiar</span
-                ></span
-              >
+              <span class="htop__tool">Backstage</span>
+              <span class="htop__cat">platform</span>
+              <span class="htop__status">
+                <span class="htop__tag htop__tag--familiar">familiar</span>
+              </span>
             </div>
           </div>
         </div>
@@ -755,8 +720,7 @@ Y8,        88  8b       d8  88          ,adPPPPP88  88       88     Y8,        ,
           <span class="powerline__seg powerline__seg--cmd">cat links.yml</span>
         </div>
         <div class="section__output">
-          <pre
-            class="contact-yaml"><span class="yaml__key">github:</span>   <a href="https://github.com/salt-mountain" target="_blank" rel="noopener noreferrer">github.com/salt-mountain</a>
+          <pre class="contact-yaml"><span class="yaml__key">github:</span>   <a href="https://github.com/salt-mountain" target="_blank" rel="noopener noreferrer">github.com/salt-mountain</a>
 <span class="yaml__key">linkedin:</span> <a href="https://www.linkedin.com/in/goranosim/" target="_blank" rel="noopener noreferrer">linkedin.com/in/goranosim</a>
 <span class="yaml__key">email:</span>    <span id="contact-email" /></pre>
         </div>
@@ -769,18 +733,17 @@ Y8,        88  8b       d8  88          ,adPPPPP88  88       88     Y8,        ,
         <div class="powerline">
           <span class="powerline__seg powerline__seg--user">osim@dev</span>
           <span class="powerline__seg powerline__seg--path">~</span>
-          <span class="powerline__seg powerline__seg--cmd"
-            >now-playing --status</span
-          >
+          <span class="powerline__seg powerline__seg--cmd">
+            now-playing --status
+          </span>
         </div>
         <div class="section__output">
           <div class="now-playing" id="now-playing-widget" data-state="loading">
             <!-- Loading state -->
             <div class="now-playing__loading" id="np-loading">
-              <span class="now-playing__loading-text"
-                >fetching track data<span class="now-playing__dots"
-                ></span></span
-              >
+              <span class="now-playing__loading-text">
+                fetching track data<span class="now-playing__dots"></span>
+              </span>
             </div>
 
             <!-- Track state (now playing / recently played) -->
@@ -796,22 +759,27 @@ Y8,        88  8b       d8  88          ,adPPPPP88  88       88     Y8,        ,
                 <div class="vinyl-needle" aria-hidden="true"></div>
               </div>
               <div class="now-playing__info">
-                <span class="now-playing__label" id="np-label">Now Playing</span
-                >
+                <span class="now-playing__label" id="np-label">
+                  Now Playing
+                </span>
                 <a
                   class="now-playing__song"
                   id="np-song"
                   href="#"
                   target="_blank"
-                  rel="noopener noreferrer">—</a
+                  rel="noopener noreferrer"
                 >
+                  —
+                </a>
                 <a
                   class="now-playing__artist"
                   id="np-artist"
                   href="#"
                   target="_blank"
-                  rel="noopener noreferrer">—</a
+                  rel="noopener noreferrer"
                 >
+                  —
+                </a>
               </div>
             </div>
 
