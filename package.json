@@ -13,7 +13,8 @@
     "preview": "astro preview",
     "check": "astro check",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "test": "echo \"no tests yet\""
   },
   "dependencies": {
     "@astrojs/sitemap": "3.7.4",
