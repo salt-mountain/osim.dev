@@ -5,18 +5,35 @@ updates:
     schedule:
       interval: "daily"
     open-pull-requests-limit: 10
+    # Age-gate: don't open an update PR until the new version has been published
+    # for this many days. Mitigates supply-chain attacks where a poisoned release
+    # is usually detected and yanked within a few days of publishing.
     cooldown:
       default-days: 7
       semver-major-days: 30
       semver-minor-days: 7
       semver-patch-days: 7
-    # TypeScript 7 is the native (Go) compiler rewrite. `astro check` (via
-    # @astrojs/check) only supports TS "^5 || ^6", so a TS7 bump crashes the
-    # Typecheck step in CI. Stay on the 6.x line — patch/minor updates (incl.
-    # security) still flow — until @astrojs/check declares TS7 support.
+    # TypeScript 7 is the native (Go) compiler rewrite and ships no JS compiler
+    # API. Both fleet typecheckers break on it: `astro check` (@astrojs/check
+    # supports TS "^5 || ^6") and `vue-tsc` (wraps `typescript/lib/tsc`, removed
+    # in TS7). Stay on the 6.x line — patch/minor (incl. security) still flow —
+    # until both declare TS7 support.
     ignore:
       - dependency-name: "typescript"
         update-types: ["version-update:semver-major"]
+    # Batch non-major updates into one PR per run so fewer PRs race each other
+    # to main (auto-merge doesn't require up-to-date branches). Majors stay
+    # separate PRs for a human; .github/workflows/automerge.yml merges the rest.
+    groups:
+      bun-minor-patch:
+        applies-to: version-updates
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
+      bun-security:
+        applies-to: security-updates
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
+
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
@@ -24,3 +41,8 @@ updates:
     open-pull-requests-limit: 5
     cooldown:
       default-days: 7
+    groups:
+      actions-minor-patch:
+        applies-to: version-updates
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
