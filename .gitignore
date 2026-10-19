@@ -38,3 +38,7 @@ npm-debug.log*
 # Design variant experiments
 saved-variants/
 TODO.md
+
+# Personal agent settings (never committed)
+.claude/settings.local.json
+CLAUDE.local.md
