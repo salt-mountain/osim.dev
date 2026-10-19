@@ -71,8 +71,10 @@ Worker (`wrangler deploy`, KV, secrets) and running a script follow the
   `git push`. You may open the PR once the push is approved. Merge, tag or
   release only when told to (you may ask).
 - **PR descriptions:** three short parts: the problem, the solution, and
-  anything a reviewer needs to know (risks, follow-ups). Verification details
-  belong in the chat, not the PR.
+  anything a reviewer needs to know about this change (risks, required
+  follow-ups). Every sentence must be about this PR's change: leave out other
+  planned work, work in other areas, and anything that isn't needed to review
+  or act on this PR. Verification details belong in the chat, not the PR.
 - **Tests:** add or update tests for any page or behaviour you change, in the
   same PR.
 - **Dependencies:** Dependabot and Renovate handle upgrades. Bump a version by
