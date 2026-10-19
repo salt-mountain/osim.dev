@@ -44,7 +44,10 @@ Worker (`wrangler deploy`, KV, secrets) and running a script follow the
 - **Identity:** commit only as
   `salt-mountain <48201364+salt-mountain@users.noreply.github.com>` (check
   `git config user.email` first). No `Co-authored-by` or "Generated with" lines
-  naming anyone else, AI tools included.
+  naming anyone else, AI tools included. Commits and tags are signed
+  automatically by the user's git config. Never turn signing off
+  (`--no-gpg-sign`, `-c commit.gpgsign=false`) or change signing settings; if
+  signing fails, stop and tell the user.
 - **Secrets:** never read, print, stage or commit secret files (`.env*` except
   `*.example`, `.dev.vars`, `*.pem` and other keys, `cdk-outputs.json`,
   credentials) or credential values from the environment. Check
