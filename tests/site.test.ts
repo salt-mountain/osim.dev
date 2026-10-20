@@ -336,6 +336,34 @@ describe("Worker URLs", () => {
   });
 });
 
+// ---- security headers ----------------------------------------------------------
+
+describe("security headers", () => {
+  const headers = readFileSync(join(DIST, "_headers"), "utf8");
+  const csp = headers.match(/Content-Security-Policy:(.*)/)?.[1] ?? "";
+
+  test("the CSP lets the widgets reach their Workers", () => {
+    expect(csp).toContain("connect-src");
+    for (const dir of ["spotify", "pi-counter"]) {
+      const name = readFileSync(
+        join(ROOT, "workers", dir, "wrangler.toml"),
+        "utf8",
+      ).match(/^name\s*=\s*"([^"]+)"/m)![1];
+      expect(csp, name).toContain(name);
+    }
+  });
+
+  test("sets the baseline hardening headers", () => {
+    for (const h of [
+      "X-Content-Type-Options: nosniff",
+      "Referrer-Policy: strict-origin-when-cross-origin",
+      "Strict-Transport-Security:",
+    ]) {
+      expect(headers, h).toContain(h);
+    }
+  });
+});
+
 // ---- blog ----------------------------------------------------------------------
 
 describe("blog", () => {
