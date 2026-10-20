@@ -4,7 +4,7 @@ Allow: /
 Disallow: /pi
 
 # Sitemap
-Sitemap: https://osim.dev/sitemap.xml
+Sitemap: https://osim.dev/sitemap-index.xml
 
 # AI crawlers
 User-agent: GPTBot

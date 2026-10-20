@@ -1,0 +1,65 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
+---
+
+<Layout
+  title="404 — osim.dev"
+  description="This page doesn't exist."
+  noindex={true}
+>
+  <div class="terminal-window">
+    <!-- Window Chrome -->
+    <div class="window-chrome">
+      <div class="window-dots">
+        <span class="window-dot window-dot--close"></span>
+        <span class="window-dot window-dot--minimize"></span>
+        <span class="window-dot window-dot--maximize"></span>
+      </div>
+      <span class="window-title">
+        <span class="prompt__user">osim</span>
+        <span class="prompt__separator">@</span>
+        <span class="prompt__host">dev</span>
+        <span class="prompt__separator">:</span>
+        <span class="prompt__path">~/404</span>
+      </span>
+      <button
+        id="theme-toggle"
+        class="theme-toggle"
+        type="button"
+        aria-label="Toggle theme"
+      >
+        light-mode
+      </button>
+    </div>
+
+    <!-- Terminal Body -->
+    <div class="terminal-body">
+      <section class="hero">
+        <div class="powerline">
+          <span class="powerline__seg powerline__seg--user">osim@dev</span>
+          <span class="powerline__seg powerline__seg--path">~</span>
+          <span class="powerline__seg powerline__seg--cmd">cd ./page</span>
+        </div>
+        <h1 class="hero__name">404</h1>
+        <p class="hero__title">cd: no such file or directory</p>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer__prompt">
+          <div class="powerline">
+            <span class="powerline__seg powerline__seg--user">osim@dev</span>
+            <span class="powerline__seg powerline__seg--path">~/404</span>
+            <span class="powerline__seg powerline__seg--cmd">
+              <a href="/" style="color: inherit;">
+                cd ~
+              </a>
+            </span>
+          </div>
+        </div>
+        <p>&copy; 2026 osim.dev</p>
+      </footer>
+    </div>
+  </div>
+</Layout>
