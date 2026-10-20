@@ -82,6 +82,15 @@ Worker (`wrangler deploy`, KV, secrets) and running a script follow the
   or act on this PR. Verification details belong in the chat, not the PR.
 - **Tests:** add or update tests for any page or behaviour you change, in the
   same PR.
+- **Comments and naming:** comment only when the code can't say it: why
+  something is done, a constraint, a workaround, or a link to the source.
+  Comment blocks are <= 7 words, function names <= 4 words. User-facing message
+  strings should be <= 10 words. Use an active voice, no stage performances,
+  and pick the most common word when choosing among alternatives. Don't restate
+  the code, narrate steps ("Now we…", "This function…"), add banners or section
+  headers, use emphasis words (IMPORTANT, CRITICAL, NOTE:), or mention the
+  change or conversation ("added", "fixed", "per request"). Leave existing
+  comments alone unless you're changing that code.
 - **Dependencies:** Dependabot and Renovate handle upgrades. Bump a version by
   hand (for example, to skip a cooldown) only if the user approves. A new
   package needs a reason in the PR and an exact version (`bun add --exact`),
