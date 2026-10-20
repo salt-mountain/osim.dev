@@ -11,6 +11,8 @@ resume PDF, and two small Cloudflare Workers.
 - `public/`: copied to the site as-is, including the resume PDFs
 - `workers/pi-counter/`, `workers/spotify/`: Cloudflare Workers, deployed by hand
 - `scripts/`: maintenance scripts that use real credentials
+- `tests/`: `site.test.ts` checks the built `dist/`; `workers.test.ts` unit-tests
+  the Workers with a fake KV and `fetch`
 
 ## Commands
 
