@@ -24,7 +24,13 @@ const {
 } = Astro.props;
 
 const imageUrl = new URL(image.src, Astro.site).href;
-const publishedIso = published?.toISOString().slice(0, 10);
+// Bare dates parse as midnight UTC; use noon.
+const dateOnly = published?.toISOString().endsWith("T00:00:00.000Z");
+const publishedIso =
+  published &&
+  (dateOnly
+    ? `${published.toISOString().slice(0, 10)}T12:00:00Z`
+    : published.toISOString().replace(".000Z", "Z"));
 ---
 
 <!doctype html>
