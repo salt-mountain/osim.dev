@@ -21,6 +21,13 @@ const filename = post.id + ".md";
 <Layout
   title={`${post.data.title} — osim.dev`}
   description={post.data.description}
+  image={
+    post.data.ogImage ?? {
+      src: `/og/blog/${post.id}.png`,
+      alt: `${post.data.title} — a post on osim.dev`,
+      generated: true,
+    }
+  }
 >
   <div class="terminal-window">
     <!-- Window Chrome -->
