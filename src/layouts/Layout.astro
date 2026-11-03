@@ -24,7 +24,9 @@ const {
 } = Astro.props;
 
 const imageUrl = new URL(image.src, Astro.site).href;
-const publishedIso = published?.toISOString().slice(0, 10);
+// Noon UTC stays on the date nearly everywhere.
+const publishedIso =
+  published && `${published.toISOString().slice(0, 10)}T12:00:00Z`;
 ---
 
 <!doctype html>
