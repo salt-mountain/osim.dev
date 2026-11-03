@@ -342,6 +342,12 @@ describe.each(allPages)("page %s", (path, page) => {
 // ---- home page -----------------------------------------------------------------
 
 describe("home page", () => {
+  test("is a website, not an article", () => {
+    const html = readFileSync(join(DIST, "index.html"), "utf8");
+    expect(html).toContain('<meta property="og:type" content="website">');
+    expect(html).not.toContain("article:published_time");
+  });
+
   test("shows the name and the sections the nav links to", () => {
     expect(home.text).toContain("Goran Osim");
     for (const id of ["about", "experience", "tech", "contact"]) {
@@ -502,6 +508,19 @@ describe.each(postSlugs)("blog post %s", (slug) => {
     expect(container).toContain(`data-term="${slug}"`);
     expect(container).toMatch(/data-repo-id="R_[^"]+"/);
     expect(container).toMatch(/data-category-id="DIC_[^"]+"/);
+  });
+
+  test("is an article with its author and publish date", () => {
+    const date = fm.match(/^date:\s*(\S+)\s*$/m)![1];
+    const iso = new Date(date).toISOString().slice(0, 10);
+    expect(html).toContain('<meta property="og:type" content="article">');
+    expect(html).toContain('<meta name="author" content="Goran Osim">');
+    expect(html).toContain(
+      `<meta property="article:published_time" content="${iso}">`,
+    );
+    expect(html).toMatch(
+      new RegExp(`<meta name="publish_date"[^>]*content="${iso}"`),
+    );
   });
 
   test("previews with its ogImage, or else a generated card", () => {
