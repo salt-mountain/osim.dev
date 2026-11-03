@@ -146,11 +146,19 @@ const filename = post.id + ".md";
           <span class="powerline__seg powerline__seg--user">osim@dev</span>
           <span class="powerline__seg powerline__seg--path">~/blog</span>
           <span class="powerline__seg powerline__seg--cmd">
-            <a href="/" class="post__back-link">
-              cd ~
+            <a href="/blog" class="post__back-link">
+              cd ~/blog
             </a>
           </span>
         </div>
+        <a
+          href="/blog"
+          class="post__back-hint"
+          tabindex="-1"
+          aria-hidden="true"
+        >
+          # &larr; All posts
+        </a>
       </div>
 
       <!-- Footer -->
@@ -159,7 +167,11 @@ const filename = post.id + ".md";
           <div class="powerline">
             <span class="powerline__seg powerline__seg--user">osim@dev</span>
             <span class="powerline__seg powerline__seg--path">~/blog</span>
-            <span class="powerline__seg powerline__seg--cmd">cd ~</span>
+            <span class="powerline__seg powerline__seg--cmd">
+              <a href="/" class="post__back-link">
+                cd ~
+              </a>
+            </span>
           </div>
         </div>
         <p>&copy; 2026 osim.dev</p>

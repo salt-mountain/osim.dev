@@ -1161,6 +1161,16 @@ a:hover {
   color: var(--link-hover);
 }
 
+.post__back-hint {
+  color: var(--accent-glow);
+  font-weight: 600;
+}
+.post__back-hint:hover {
+  color: var(--link-color);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* --- Contact / Social --- */
 .contact-yaml {
   font-size: 0.85rem;

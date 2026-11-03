@@ -426,6 +426,17 @@ describe("security headers", () => {
 
 // ---- blog ----------------------------------------------------------------------
 
+describe.each(["/blog/", ...postSlugs.map((slug) => `/blog/${slug}/`)])(
+  "blog page %s",
+  (path) => {
+    test("its footer's cd ~ links home", () => {
+      const html = readFileSync(join(DIST, path, "index.html"), "utf8");
+      const footer = html.match(/<footer[\s\S]*?<\/footer>/)?.[0] ?? "";
+      expect(footer).toMatch(/<a href="\/"[^>]*>\s*cd ~\s*<\/a>/);
+    });
+  },
+);
+
 describe("blog", () => {
   test("the index links to every post", () => {
     const linked = parsed
@@ -460,6 +471,15 @@ describe.each(postSlugs)("blog post %s", (slug) => {
 
   test("shows a hero image only when frontmatter sets one", () => {
     expect(html.includes('class="post__hero"')).toBe(hasHero);
+  });
+
+  test("ends with a link back to the post list", () => {
+    expect(html).toMatch(
+      /<a href="\/blog" class="post__back-link">\s*cd ~\/blog\s*<\/a>/,
+    );
+    expect(html).toMatch(
+      /<a href="\/blog" class="post__back-hint"[^>]*>\s*# (←|&larr;) All posts\s*<\/a>/,
+    );
   });
 
   test("loads giscus for its slug unless comments are off", () => {
