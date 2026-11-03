@@ -1,6 +1,7 @@
 import type { APIRoute, GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 import { type Card, renderCard } from "../../lib/og-card";
+import { heroSvg } from "../../lib/post-hero";
 
 export const getStaticPaths = (async () => {
   const posts = await getCollection("blog");
@@ -8,8 +9,10 @@ export const getStaticPaths = (async () => {
     command: "whoami",
     path: "~",
     title: "Goran Osim",
-    description:
-      "System Development Engineer. I build the platforms that engineers build on.",
+    description: [
+      "System Development Engineer.",
+      "I build the platforms that engineers build on.",
+    ],
   };
   return [
     { params: { slug: "default" }, props: { card: home } },
@@ -24,6 +27,7 @@ export const getStaticPaths = (async () => {
             title: post.data.title,
             description: post.data.description,
             footer: post.data.date.toISOString().split("T")[0],
+            picture: heroSvg(post) ?? undefined,
           } satisfies Card,
         },
       })),

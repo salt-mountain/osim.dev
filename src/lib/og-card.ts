@@ -2,15 +2,20 @@ import { readFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import { Resvg } from "@resvg/resvg-js";
 import satori from "satori";
+import { diagramPng } from "./diagram-png";
 import { CARD_HEIGHT, CARD_WIDTH } from "./og-size";
 
 export interface Card {
   command: string;
   path: string;
   title: string;
-  description?: string;
+  description?: string | string[];
   footer?: string;
+  /** Diagram SVG shown under the title instead of the description. */
+  picture?: string;
 }
+
+const PICTURE_WIDTH = 920;
 
 // Catppuccin Mocha, matching the dark theme.
 const C = {
@@ -32,7 +37,11 @@ const C = {
 
 interface Node {
   type: string;
-  props: { style?: Record<string, unknown>; children?: unknown };
+  props: {
+    style?: Record<string, unknown>;
+    children?: unknown;
+    [attr: string]: unknown;
+  };
 }
 
 function el(
@@ -41,6 +50,26 @@ function el(
   children?: unknown,
 ): Node {
   return { type, props: { style, children } };
+}
+
+interface Picture {
+  src: string;
+  width: number;
+  height: number;
+}
+
+function picture(svg: string): Picture {
+  const [, , w, h] = svg
+    .match(/viewBox="([^"]+)"/)![1]
+    .split(/\s+/)
+    .map(Number);
+  const height = Math.round((PICTURE_WIDTH * h) / w);
+  const png = Buffer.from(diagramPng(svg, PICTURE_WIDTH * 2));
+  return {
+    src: `data:image/png;base64,${png.toString("base64")}`,
+    width: PICTURE_WIDTH,
+    height,
+  };
 }
 
 const require = createRequire(import.meta.url);
@@ -61,8 +90,8 @@ function segment(text: string, bg: string, color: string): Node {
   );
 }
 
-function layout(card: Card): Node {
-  const titleSize = card.title.length > 48 ? 56 : 68;
+function layout(card: Card, pic?: Picture): Node {
+  const titleSize = pic ? 62 : card.title.length > 48 ? 56 : 68;
   const dots = [C.red, C.yellow, C.green].map((color) =>
     el("div", {
       width: 18,
@@ -129,7 +158,7 @@ function layout(card: Card): Node {
             display: "flex",
             flexDirection: "column",
             flexGrow: 1,
-            padding: "40px 56px 36px",
+            padding: pic ? "30px 56px 26px" : "40px 56px 36px",
           },
           [
             el("div", { display: "flex", fontSize: 24 }, [
@@ -141,27 +170,42 @@ function layout(card: Card): Node {
               "div",
               {
                 display: "flex",
-                marginTop: 44,
+                marginTop: pic ? 18 : 44,
                 fontSize: titleSize,
                 fontWeight: 700,
                 lineHeight: 1.15,
                 color: C.text,
-                lineClamp: 3,
+                lineClamp: pic ? 1 : 3,
               },
               card.title,
             ),
-            card.description
+            pic
+              ? {
+                  type: "img",
+                  props: {
+                    src: pic.src,
+                    width: pic.width,
+                    height: pic.height,
+                    style: { marginTop: 10, alignSelf: "center" },
+                  },
+                }
+              : null,
+            card.description && !pic
               ? el(
                   "div",
                   {
                     display: "flex",
+                    flexDirection: "column",
                     marginTop: 24,
                     fontSize: 30,
                     lineHeight: 1.4,
                     color: C.subtext0,
-                    lineClamp: 2,
                   },
-                  card.description,
+                  [card.description]
+                    .flat()
+                    .map((line) =>
+                      el("div", { display: "flex", lineClamp: 2 }, line),
+                    ),
                 )
               : null,
             el(
@@ -194,11 +238,14 @@ export async function renderCard(card: Card): Promise<Uint8Array> {
     { name: "JetBrains Mono", data: font(400), weight: 400 },
     { name: "JetBrains Mono", data: font(700), weight: 700 },
   ];
-  const svg = await satori(layout(card) as never, {
-    width: CARD_WIDTH,
-    height: CARD_HEIGHT,
-    fonts,
-  });
+  const svg = await satori(
+    layout(card, card.picture ? picture(card.picture) : undefined) as never,
+    {
+      width: CARD_WIDTH,
+      height: CARD_HEIGHT,
+      fonts,
+    },
+  );
   return new Resvg(svg, { fitTo: { mode: "width", value: CARD_WIDTH } })
     .render()
     .asPng();
