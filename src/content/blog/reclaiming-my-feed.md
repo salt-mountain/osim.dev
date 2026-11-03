@@ -2,6 +2,9 @@
 title: "Reclaiming My Feed"
 date: 2026-11-06
 description: "Why and how I self-host an RSS aggregator to get away from algorithmic feeds."
+hero:
+  src: "./diagrams/saltrss-hero.svg"
+  alt: "Tangled feeds from a blog, news sites, release notes, a friend's site and a podcast go into FreshRSS and come out as one tidy list, newest first, until I'm all caught up."
 ---
 
 ## Why I left the feed

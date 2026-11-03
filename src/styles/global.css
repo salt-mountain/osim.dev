@@ -1014,6 +1014,9 @@ a:hover {
 .post__hero {
   margin: 0 0 1.75rem;
 }
+.diagram.post__hero {
+  margin: 0 0 1.75rem;
+}
 .post__hero img {
   display: block;
   width: 100%;
@@ -1091,6 +1094,11 @@ a:hover {
 .d-t2 {
   fill: var(--text-primary);
   font-size: 18px;
+  font-weight: 700;
+}
+.d-t3 {
+  fill: var(--text-primary);
+  font-size: 20px;
   font-weight: 700;
 }
 .d-lbl {

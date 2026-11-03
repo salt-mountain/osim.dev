@@ -470,7 +470,16 @@ describe.each(postSlugs)("blog post %s", (slug) => {
   });
 
   test("shows a hero image only when frontmatter sets one", () => {
-    expect(html.includes('class="post__hero"')).toBe(hasHero);
+    expect(/class="[^"]*\bpost__hero\b/.test(html)).toBe(hasHero);
+  });
+
+  test("inlines an SVG hero with its alt text", () => {
+    const src = fm.match(/^hero:\s*\n\s+src:\s*["']?([^"'\n]+)/m)?.[1];
+    if (!src?.endsWith(".svg")) return;
+    expect(html).toMatch(
+      /<figure class="diagram post__hero">\s*<svg aria-label="[^"]{10,}"/,
+    );
+    expect(html).not.toContain(`<img src="${src}"`);
   });
 
   test("ends with a link back to the post list", () => {

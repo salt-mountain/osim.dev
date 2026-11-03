@@ -15,7 +15,7 @@ const BASE: Options = {
 
 export type Color = "ink" | "muted" | "net" | "host" | "block" | "link";
 export type Fill = "net" | "host" | "block";
-type TextStyle = "t1" | "t2" | "lbl" | "lbl-net" | "lbl-block" | "grp";
+type TextStyle = "t1" | "t2" | "t3" | "lbl" | "lbl-net" | "lbl-block" | "grp";
 
 export interface Icon {
   viewBox: string;
@@ -197,6 +197,33 @@ export class Sketch {
   cross(cx: number, cy: number, color: Color = "block") {
     this.line(cx - 9, cy - 11, cx + 9, cy + 11, { color, strokeWidth: 2.4 });
     this.line(cx + 9, cy - 11, cx - 9, cy + 11, { color, strokeWidth: 2.4 });
+  }
+
+  curve(
+    points: [number, number][],
+    opts: { color?: Color; strokeWidth?: number } = {},
+  ) {
+    this.ink(
+      opts.color ?? "ink",
+      gen.curve(
+        points,
+        this.opts({ strokeWidth: opts.strokeWidth ?? 1.3, roughness: 1.1 }),
+      ),
+    );
+  }
+
+  tick(x: number, y: number, color: Color = "net") {
+    this.ink(
+      color,
+      gen.linearPath(
+        [
+          [x, y],
+          [x + 7, y + 8],
+          [x + 22, y - 10],
+        ],
+        this.opts({ strokeWidth: 2.8 }),
+      ),
+    );
   }
 
   badge(cx: number, cy: number, logo: Icon, color: Color) {

@@ -130,11 +130,56 @@ function feedFlow(): string {
   return s.render();
 }
 
+function hero(): string {
+  const s = new Sketch(
+    960,
+    240,
+    "Tangled feeds from many sites go into FreshRSS and come out as one tidy list, newest first.",
+  );
+  // Fixed seed keeps the tangle stable.
+  let seed = 42;
+  const rand = () =>
+    (seed = (seed * 1103515245 + 12345) % 2147483648) / 2147483648;
+
+  ["a blog", "news", "release notes", "a friend's site", "a podcast"].forEach(
+    (name, i) => {
+      const y = 14 + i * 44;
+      s.box(16, y, 140, 34);
+      s.text("t3", 86, y + 23, name);
+      const points: [number, number][] = [[158, y + 17]];
+      for (let k = 0; k < 5; k++) {
+        points.push([200 + k * 52 + rand() * 30, 30 + rand() * 180]);
+      }
+      points.push([452, 120]);
+      s.curve(points, { color: "muted" });
+    },
+  );
+
+  s.box(460, 82, 170, 76, { fill: "host" });
+  s.badge(460, 82, icon("freshrss"), "ink");
+  s.text("t1", 545, 118, "FreshRSS");
+  s.text("t3", 545, 142, "sorts it out");
+  s.arrow(634, 120, 690, 120, { color: "net", strokeWidth: 2.2 });
+
+  s.text("lbl-net", 820, 26, "newest first");
+  [40, 82, 124].forEach((y, i) => {
+    s.box(700, y, 240, 34, i === 0 ? { fill: "net" } : {});
+    s.line(716, y + 17, 866 - i * 30, y + 17, {
+      color: "muted",
+      strokeWidth: 1.2,
+    });
+  });
+  s.tick(735, 192);
+  s.text("lbl-net", 820, 200, "All caught up");
+  return s.render();
+}
+
 /** Output file name to SVG markup. */
 export function renderSaltrss(): Record<string, string> {
   return {
     "saltrss-architecture.svg": architecture(),
     "saltrss-before-after.svg": beforeAfter(),
     "saltrss-feed-flow.svg": feedFlow(),
+    "saltrss-hero.svg": hero(),
   };
 }
