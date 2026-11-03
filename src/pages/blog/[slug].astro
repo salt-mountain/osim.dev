@@ -103,8 +103,24 @@ const filename = post.id + ".md";
 
       <!-- Post Body -->
       <article class="post__body">
+        {post.data.hero && (
+          <figure class="post__hero">
+            <img src={post.data.hero.src} alt={post.data.hero.alt} />
+          </figure>
+        )}
         <Content />
         <span class="cursor" aria-hidden="true"></span>
+        {post.data.linkedin && (
+          <p class="post__linkedin">
+            <a
+              href={post.data.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Discuss on LinkedIn &rarr;
+            </a>
+          </p>
+        )}
       </article>
 
       <hr class="divider" />

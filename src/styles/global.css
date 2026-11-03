@@ -974,6 +974,49 @@ a:hover {
   font-size: 0.82rem;
 }
 
+.post__body a {
+  color: var(--link-color);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.post__body a:hover {
+  color: var(--link-hover);
+}
+
+.post__body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.25rem;
+  font-size: 0.82rem;
+}
+.post__body th,
+.post__body td {
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  vertical-align: top;
+}
+.post__body th {
+  color: var(--text-heading);
+  font-weight: 600;
+  background: var(--bg-card);
+}
+
+.post__hero {
+  margin: 0 0 1.75rem;
+}
+.post__hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.post__linkedin {
+  margin-top: 1.75rem;
+}
+
 .code-block {
   background: var(--bg-card);
   border: 1px solid var(--border);

@@ -378,6 +378,31 @@ describe("blog", () => {
   });
 });
 
+describe.each(postSlugs)("blog post %s", (slug) => {
+  const mdFile = [".md", ".mdx"]
+    .map((ext) => join(ROOT, "src/content/blog", `${slug}${ext}`))
+    .find((file) => existsSync(file))!;
+  const fm =
+    readFileSync(mdFile, "utf8").match(/^---\r?\n([\s\S]*?)\r?\n---/)?.[1] ??
+    "";
+  const html = readFileSync(join(DIST, "blog", slug, "index.html"), "utf8");
+  const linkedin = fm.match(/^linkedin:\s*["']?([^"'\n]+?)["']?\s*$/m)?.[1];
+  const hasHero = /^hero:/m.test(fm);
+
+  test("links to LinkedIn only when frontmatter sets a url", () => {
+    if (linkedin) {
+      expect(html).toContain("Discuss on LinkedIn");
+      expect(html).toContain(linkedin);
+    } else {
+      expect(html).not.toContain("Discuss on LinkedIn");
+    }
+  });
+
+  test("shows a hero image only when frontmatter sets one", () => {
+    expect(html.includes('class="post__hero"')).toBe(hasHero);
+  });
+});
+
 // ---- hidden pages --------------------------------------------------------------
 
 describe("hidden pages", () => {
