@@ -6,7 +6,10 @@ interface Props {
   description?: string;
   noindex?: boolean;
   image?: { src: string; alt: string; generated?: boolean };
+  published?: Date;
 }
+
+const AUTHOR = "Goran Osim";
 
 const {
   title = "Goran Osim — System Development Engineer",
@@ -17,9 +20,11 @@ const {
     alt: "osim.dev: Goran Osim, System Development Engineer",
     generated: true,
   },
+  published,
 } = Astro.props;
 
 const imageUrl = new URL(image.src, Astro.site).href;
+const publishedIso = published?.toISOString().slice(0, 10);
 ---
 
 <!doctype html>
@@ -28,11 +33,24 @@ const imageUrl = new URL(image.src, Astro.site).href;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="author" content={AUTHOR} />
     <meta name="generator" content={Astro.generator} />
     {noindex && <meta name="robots" content="noindex,nofollow" />}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={publishedIso ? "article" : "website"} />
+    {publishedIso && (
+      <>
+        <meta property="article:published_time" content={publishedIso} />
+        <meta property="article:author" content={AUTHOR} />
+        {/* LinkedIn's Post Inspector reads this date */}
+        <meta
+          name="publish_date"
+          property="og:publish_date"
+          content={publishedIso}
+        />
+      </>
+    )}
     <meta property="og:url" content={Astro.url.href} />
     <meta property="og:image" content={imageUrl} />
     <meta property="og:image:alt" content={image.alt} />

@@ -30,6 +30,7 @@ const heroInline =
 <Layout
   title={`${post.data.title} — osim.dev`}
   description={post.data.description}
+  published={post.data.date}
   image={
     post.data.ogImage ?? {
       src: `/og/blog/${post.id}.png`,
