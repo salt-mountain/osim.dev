@@ -1,15 +1,25 @@
 ---
+import { CARD_HEIGHT, CARD_WIDTH } from "../lib/og-size";
+
 interface Props {
   title?: string;
   description?: string;
   noindex?: boolean;
+  image?: { src: string; alt: string; generated?: boolean };
 }
 
 const {
   title = "Goran Osim — System Development Engineer",
   description = "Building platforms, enabling teams, shipping infrastructure.",
   noindex = false,
+  image = {
+    src: "/og/default.png",
+    alt: "osim.dev: Goran Osim, System Development Engineer",
+    generated: true,
+  },
 } = Astro.props;
+
+const imageUrl = new URL(image.src, Astro.site).href;
 ---
 
 <!doctype html>
@@ -24,10 +34,20 @@ const {
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url.href} />
-    <!-- TODO: Add og:image once we create a 1200x630 preview card -->
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:alt" content={image.alt} />
+    {image.generated && (
+      <>
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content={String(CARD_WIDTH)} />
+        <meta property="og:image:height" content={String(CARD_HEIGHT)} />
+      </>
+    )}
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+    <meta name="twitter:image:alt" content={image.alt} />
     <title>{title}</title>
     <link
       rel="icon"

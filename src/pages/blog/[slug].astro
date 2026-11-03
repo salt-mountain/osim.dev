@@ -1,6 +1,8 @@
 ---
 import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
+import Comments from "../../components/Comments.astro";
+import { heroSvg } from "../../lib/post-hero";
 import "../../styles/global.css";
 
 export async function getStaticPaths() {
@@ -16,11 +18,25 @@ const { Content } = await render(post);
 
 const formattedDate = post.data.date.toISOString().split("T")[0];
 const filename = post.id + ".md";
+const heroMarkup = heroSvg(post);
+const heroInline =
+  heroMarkup &&
+  heroMarkup.replace(
+    "<svg ",
+    `<svg aria-label="${post.data.hero!.alt.replace(/"/g, "&quot;")}" `,
+  );
 ---
 
 <Layout
   title={`${post.data.title} — osim.dev`}
   description={post.data.description}
+  image={
+    post.data.ogImage ?? {
+      src: `/og/blog/${post.id}.png`,
+      alt: `${post.data.title} — a post on osim.dev`,
+      generated: true,
+    }
+  }
 >
   <div class="terminal-window">
     <!-- Window Chrome -->
@@ -103,9 +119,36 @@ const filename = post.id + ".md";
 
       <!-- Post Body -->
       <article class="post__body">
+        {heroInline ? (
+          <figure class="diagram post__hero" set:html={heroInline} />
+        ) : (
+          post.data.hero && (
+            <figure class="post__hero">
+              <img src={post.data.hero.src} alt={post.data.hero.alt} />
+            </figure>
+          )
+        )}
         <Content />
         <span class="cursor" aria-hidden="true"></span>
+        {post.data.linkedin && (
+          <p class="post__linkedin">
+            <a
+              href={post.data.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Discuss on LinkedIn &rarr;
+            </a>
+          </p>
+        )}
       </article>
+
+      {post.data.comments !== false && (
+        <>
+          <hr class="divider" />
+          <Comments term={post.id} />
+        </>
+      )}
 
       <hr class="divider" />
 
@@ -115,11 +158,19 @@ const filename = post.id + ".md";
           <span class="powerline__seg powerline__seg--user">osim@dev</span>
           <span class="powerline__seg powerline__seg--path">~/blog</span>
           <span class="powerline__seg powerline__seg--cmd">
-            <a href="/" class="post__back-link">
-              cd ~
+            <a href="/blog" class="post__back-link">
+              cd ~/blog
             </a>
           </span>
         </div>
+        <a
+          href="/blog"
+          class="post__back-hint"
+          tabindex="-1"
+          aria-hidden="true"
+        >
+          # &larr; All posts
+        </a>
       </div>
 
       <!-- Footer -->
@@ -128,7 +179,11 @@ const filename = post.id + ".md";
           <div class="powerline">
             <span class="powerline__seg powerline__seg--user">osim@dev</span>
             <span class="powerline__seg powerline__seg--path">~/blog</span>
-            <span class="powerline__seg powerline__seg--cmd">cd ~</span>
+            <span class="powerline__seg powerline__seg--cmd">
+              <a href="/" class="post__back-link">
+                cd ~
+              </a>
+            </span>
           </div>
         </div>
         <p>&copy; 2026 osim.dev</p>

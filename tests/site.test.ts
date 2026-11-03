@@ -56,6 +56,13 @@ function distFileFor(url: string, base: URL = SITE): string | null {
   return join(DIST, path); // a path that doesn't exist, for the error message
 }
 
+/** "WxH" of a PNG, or null if it isn't one. */
+function pngSize(file: string): string | null {
+  const head = readFileSync(file).subarray(0, 24);
+  if (head.subarray(1, 4).toString() !== "PNG") return null;
+  return `${head.readUInt32BE(16)}x${head.readUInt32BE(20)}`;
+}
+
 function decodeEntities(text: string): string {
   return text
     .replace(/&#(\d+);/g, (_, code) => String.fromCodePoint(Number(code)))
@@ -74,6 +81,10 @@ interface Page {
   description: string | null;
   robots: string | null;
   ogUrl: string | null;
+  ogImage: string | null;
+  ogImageAlt: string | null;
+  ogImageSize: string | null;
+  twitterCard: string | null;
   text: string;
   /** Every URL the page loads or links to, with the attribute it came from. */
   refs: { attr: string; url: string }[];
@@ -92,6 +103,10 @@ async function parseHtml(file: string): Promise<Page> {
     description: null,
     robots: null,
     ogUrl: null,
+    ogImage: null,
+    ogImageAlt: null,
+    ogImageSize: null,
+    twitterCard: null,
     text: "",
     refs: [],
     newTabLinks: [],
@@ -124,6 +139,28 @@ async function parseHtml(file: string): Promise<Page> {
     .on('meta[property="og:url"]', {
       element(el) {
         page.ogUrl = el.getAttribute("content");
+      },
+    })
+    .on('meta[property="og:image"]', {
+      element(el) {
+        page.ogImage = el.getAttribute("content");
+      },
+    })
+    .on('meta[property="og:image:alt"]', {
+      element(el) {
+        page.ogImageAlt = el.getAttribute("content");
+      },
+    })
+    .on('meta[property="og:image:width"], meta[property="og:image:height"]', {
+      element(el) {
+        page.ogImageSize = [page.ogImageSize, el.getAttribute("content")]
+          .filter(Boolean)
+          .join("x");
+      },
+    })
+    .on('meta[name="twitter:card"]', {
+      element(el) {
+        page.twitterCard = el.getAttribute("content");
       },
     })
     .on('link[rel="stylesheet"]', {
@@ -233,6 +270,19 @@ describe.each(allPages)("page %s", (path, page) => {
     expect(page.description?.length ?? 0).toBeGreaterThan(10);
     if (path !== "/404.html") {
       expect(page.ogUrl).toBe(new URL(path, SITE).href);
+    }
+  });
+
+  test("has a large preview image with alt text", () => {
+    expect(page.twitterCard).toBe("summary_large_image");
+    expect(page.ogImageAlt?.length ?? 0).toBeGreaterThan(5);
+    const image = new URL(page.ogImage ?? "");
+    expect(image.protocol).toBe("https:");
+    const file = distFileFor(image.href);
+    if (!file) return;
+    expect(existsSync(file), image.href).toBe(true);
+    if (page.ogImageSize) {
+      expect(pngSize(file)).toBe(page.ogImageSize);
     }
   });
 
@@ -353,6 +403,16 @@ describe("security headers", () => {
     }
   });
 
+  test("the CSP lets giscus load its script, styles and frame", () => {
+    const directive = (name: string) =>
+      csp.match(new RegExp(`(?:^|;)\\s*${name}\\s([^;]*)`))?.[1] ?? "";
+    for (const name of ["script-src", "style-src", "frame-src"]) {
+      expect(directive(name).split(/\s+/), name).toContain(
+        "https://giscus.app",
+      );
+    }
+  });
+
   test("sets the baseline hardening headers", () => {
     for (const h of [
       "X-Content-Type-Options: nosniff",
@@ -366,6 +426,17 @@ describe("security headers", () => {
 
 // ---- blog ----------------------------------------------------------------------
 
+describe.each(["/blog/", ...postSlugs.map((slug) => `/blog/${slug}/`)])(
+  "blog page %s",
+  (path) => {
+    test("its footer's cd ~ links home", () => {
+      const html = readFileSync(join(DIST, path, "index.html"), "utf8");
+      const footer = html.match(/<footer[\s\S]*?<\/footer>/)?.[0] ?? "";
+      expect(footer).toMatch(/<a href="\/"[^>]*>\s*cd ~\s*<\/a>/);
+    });
+  },
+);
+
 describe("blog", () => {
   test("the index links to every post", () => {
     const linked = parsed
@@ -375,6 +446,109 @@ describe("blog", () => {
     expect([...new Set(linked)].sort()).toEqual(
       postSlugs.map((slug) => `/blog/${slug}/`),
     );
+  });
+});
+
+describe.each(postSlugs)("blog post %s", (slug) => {
+  const mdFile = [".md", ".mdx"]
+    .map((ext) => join(ROOT, "src/content/blog", `${slug}${ext}`))
+    .find((file) => existsSync(file))!;
+  const fm =
+    readFileSync(mdFile, "utf8").match(/^---\r?\n([\s\S]*?)\r?\n---/)?.[1] ??
+    "";
+  const html = readFileSync(join(DIST, "blog", slug, "index.html"), "utf8");
+  const linkedin = fm.match(/^linkedin:\s*["']?([^"'\n]+?)["']?\s*$/m)?.[1];
+  const hasHero = /^hero:/m.test(fm);
+
+  test("links to LinkedIn only when frontmatter sets a url", () => {
+    if (linkedin) {
+      expect(html).toContain("Discuss on LinkedIn");
+      expect(html).toContain(linkedin);
+    } else {
+      expect(html).not.toContain("Discuss on LinkedIn");
+    }
+  });
+
+  test("shows a hero image only when frontmatter sets one", () => {
+    expect(/class="[^"]*\bpost__hero\b/.test(html)).toBe(hasHero);
+  });
+
+  test("inlines an SVG hero with its alt text", () => {
+    const src = fm.match(/^hero:\s*\n\s+src:\s*["']?([^"'\n]+)/m)?.[1];
+    if (!src?.endsWith(".svg")) return;
+    expect(html).toMatch(
+      /<figure class="diagram post__hero">\s*<svg aria-label="[^"]{10,}"/,
+    );
+    expect(html).not.toContain(`<img src="${src}"`);
+  });
+
+  test("ends with a link back to the post list", () => {
+    expect(html).toMatch(
+      /<a href="\/blog" class="post__back-link">\s*cd ~\/blog\s*<\/a>/,
+    );
+    expect(html).toMatch(
+      /<a href="\/blog" class="post__back-hint"[^>]*>\s*# (←|&larr;) All posts\s*<\/a>/,
+    );
+  });
+
+  test("loads giscus for its slug unless comments are off", () => {
+    const off = /^comments:\s*false\s*$/m.test(fm);
+    const container = html.match(/<div class="giscus"[^>]*>/)?.[0];
+    if (off) {
+      expect(container).toBeUndefined();
+      return;
+    }
+    expect(container).toBeDefined();
+    expect(container).toContain(`data-term="${slug}"`);
+    expect(container).toMatch(/data-repo-id="R_[^"]+"/);
+    expect(container).toMatch(/data-category-id="DIC_[^"]+"/);
+  });
+
+  test("previews with its ogImage, or else a generated card", () => {
+    const page = parsed.get(`/blog/${slug}/`)!;
+    const ogSrc = fm.match(/^ogImage:\s*\n\s+src:\s*["']?([^"'\n]+)/m)?.[1];
+    const expected = ogSrc ?? `/og/blog/${slug}.png`;
+    expect(page.ogImage).toBe(new URL(expected, SITE).href);
+    if (!ogSrc) expect(page.ogImageSize).toBe("1200x630");
+  });
+
+  test("inlines every SVG diagram with its alt text", () => {
+    const body = readFileSync(mdFile, "utf8").slice(fm.length);
+    const diagrams = [...body.matchAll(/!\[[^\]]+\]\(\.\/[^)]+\.svg\)/g)];
+    const figures = [
+      ...html.matchAll(/<figure class="diagram">\s*<svg aria-label="([^"]+)"/g),
+    ];
+    expect(figures.length).toBe(diagrams.length);
+    expect(html).not.toMatch(/<img[^>]+\.svg/);
+  });
+});
+
+// ---- hidden pages --------------------------------------------------------------
+
+describe("giscus", () => {
+  const post = [...parsed].find(([path]) => /^\/blog\/.+\//.test(path))?.[1];
+  const config = JSON.parse(readFileSync(join(ROOT, "giscus.json"), "utf8"));
+
+  test("giscus.json only lets this site load the comments", () => {
+    expect(config.origins).toEqual([SITE.origin]);
+    for (const pattern of config.originsRegex ?? []) {
+      expect(new RegExp(pattern).test("https://example.com")).toBe(false);
+      expect(new RegExp(pattern).test("http://localhost.evil.com")).toBe(false);
+    }
+  });
+
+  test("the loader uses strict matching and both Catppuccin themes", () => {
+    expect(post).toBeDefined();
+    for (const text of [
+      'ORIGIN = "https://giscus.app"',
+      '"data-mapping": "specific"',
+      '"data-strict": "1"',
+      "catppuccin_latte",
+      "catppuccin_mocha",
+      'attributeFilter: ["data-theme"]',
+    ]) {
+      expect(post!.inlineScripts, text).toContain(text);
+    }
   });
 });
 

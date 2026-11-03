@@ -108,7 +108,11 @@ const posts = (await getCollection("blog")).sort(
           <div class="powerline">
             <span class="powerline__seg powerline__seg--user">osim@dev</span>
             <span class="powerline__seg powerline__seg--path">~/blog</span>
-            <span class="powerline__seg powerline__seg--cmd">cd ~</span>
+            <span class="powerline__seg powerline__seg--cmd">
+              <a href="/" class="post__back-link">
+                cd ~
+              </a>
+            </span>
           </div>
         </div>
         <p>&copy; 2026 osim.dev</p>

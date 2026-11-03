@@ -8,6 +8,11 @@ const blog = defineCollection({
     title: z.string(),
     date: z.date(),
     description: z.string().optional(),
+    // Top-of-post image; link-preview card. No fallback between them.
+    hero: z.object({ src: z.string(), alt: z.string() }).optional(),
+    ogImage: z.object({ src: z.string(), alt: z.string() }).optional(),
+    linkedin: z.url().optional(),
+    comments: z.boolean().optional(),
   }),
 });
 
