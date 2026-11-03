@@ -10,6 +10,8 @@ I set up my own RSS reader to get my time and attention back from algorithms. Ev
 
 RSS is the opposite deal. I pick the sources. New posts show up in the order they were published. Nothing gets ranked, boosted or slipped in because it might keep me around longer. When I've read everything, I'm done.
 
+![Before: accounts I follow, ads and suggested posts are ranked by the platform to keep me scrolling, without end. After: sites I picked go into FreshRSS, newest first and unranked, until I'm all caught up.](./diagrams/saltrss-before-after.svg)
+
 This post covers why I chose the software I did, how I set it up so it isn't exposed to the internet, and the parts that didn't work.
 
 ## Choosing the software
@@ -49,13 +51,15 @@ My reader lives on a small VPS, and only my own devices can reach it. Nothing ab
 
 Everything that isn't a secret lives in a Git repo, so I can rebuild it from scratch.
 
-_Diagram placeholder — the hand-drawn saltrss architecture SVG goes here._
+![My devices connect over Tailscale to Caddy and FreshRSS on a VPS. The VPS gets its certificate through Cloudflare DNS and fetches feeds from websites. The public internet is blocked.](./diagrams/saltrss-architecture.svg)
 
 My devices reach FreshRSS only through Tailscale and Caddy; the server reaches out for certificates and feeds, and nothing from the public internet gets in.
 
 ## Living with it
 
 Day to day, I read in NetNewsWire on my Mac, iPhone and iPad, and my read status follows me between them. The apps never talk to the websites. They sync with my server, and the server does the fetching.
+
+![FreshRSS fetches a website's feed every hour, and NetNewsWire on my Mac, iPhone and iPad syncs with FreshRSS. The app never talks to the website.](./diagrams/saltrss-feed-flow.svg)
 
 A few habits that keep it calm:
 

@@ -401,6 +401,16 @@ describe.each(postSlugs)("blog post %s", (slug) => {
   test("shows a hero image only when frontmatter sets one", () => {
     expect(html.includes('class="post__hero"')).toBe(hasHero);
   });
+
+  test("inlines every SVG diagram with its alt text", () => {
+    const body = readFileSync(mdFile, "utf8").slice(fm.length);
+    const diagrams = [...body.matchAll(/!\[[^\]]+\]\(\.\/[^)]+\.svg\)/g)];
+    const figures = [
+      ...html.matchAll(/<figure class="diagram">\s*<svg aria-label="([^"]+)"/g),
+    ];
+    expect(figures.length).toBe(diagrams.length);
+    expect(html).not.toMatch(/<img[^>]+\.svg/);
+  });
 });
 
 // ---- hidden pages --------------------------------------------------------------

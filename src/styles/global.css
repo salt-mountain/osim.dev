@@ -9,6 +9,8 @@
 @import "@fontsource/jetbrains-mono/latin-600.css";
 @import "@fontsource/jetbrains-mono/latin-700.css";
 @import "@fontsource/jetbrains-mono/latin-400-italic.css";
+@import "@fontsource/caveat/latin-400.css";
+@import "@fontsource/caveat/latin-700.css";
 
 /* --- Reset & Base --- */
 *,
@@ -59,6 +61,8 @@
   --pl-path-text: #89dceb;
   --pl-cmd-bg: #313244;
   --pl-cmd-text: #f9e2af;
+  --diagram-net: #94e2d5;
+  --diagram-host: #fab387;
 }
 
 [data-theme="light"] {
@@ -101,6 +105,8 @@
   --pl-path-text: #0480b0;
   --pl-cmd-bg: #e6e9ef;
   --pl-cmd-text: #b87610;
+  --diagram-net: #179299;
+  --diagram-host: #fe640b;
 }
 
 ::selection {
@@ -920,6 +926,9 @@ a:hover {
   font-size: 0.88rem;
   line-height: 1.85;
   color: var(--text-primary);
+}
+
+.post__body > :not(.diagram) {
   max-width: 640px;
 }
 
@@ -1015,6 +1024,79 @@ a:hover {
 
 .post__linkedin {
   margin-top: 1.75rem;
+}
+
+/* Inline SVG diagrams from diagrams/ */
+.diagram {
+  margin: 1.75rem 0 1.25rem;
+  overflow-x: auto;
+}
+.diagram-svg {
+  display: block;
+  width: 100%;
+  min-width: 560px;
+  height: auto;
+}
+.diagram-svg text {
+  font-family: "Caveat", "Comic Sans MS", cursive;
+}
+.d-ink {
+  color: var(--text-primary);
+}
+.d-muted {
+  color: var(--text-secondary);
+}
+.d-net {
+  color: var(--diagram-net);
+}
+.d-host {
+  color: var(--diagram-host);
+}
+.d-block {
+  color: var(--error);
+}
+.d-link {
+  color: var(--link-color);
+}
+.d-fill-net {
+  color: color-mix(in srgb, var(--diagram-net) 16%, var(--bg-secondary));
+}
+.d-fill-host {
+  color: color-mix(in srgb, var(--diagram-host) 14%, var(--bg-secondary));
+}
+.d-fill-block {
+  color: color-mix(in srgb, var(--error) 14%, var(--bg-secondary));
+}
+.d-badge {
+  fill: var(--bg-secondary);
+}
+.d-t1 {
+  fill: var(--text-heading);
+  font-size: 23px;
+  font-weight: 700;
+}
+.d-t2 {
+  fill: color-mix(in srgb, var(--text-primary) 72%, var(--bg-secondary));
+  font-size: 18px;
+}
+.d-lbl {
+  fill: color-mix(in srgb, var(--text-primary) 72%, var(--bg-secondary));
+  font-size: 19px;
+}
+.d-lbl-net {
+  fill: var(--diagram-net);
+  font-size: 19px;
+  font-weight: 700;
+}
+.d-lbl-block {
+  fill: var(--error);
+  font-size: 19px;
+  font-weight: 700;
+}
+.d-grp {
+  fill: var(--diagram-host);
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .code-block {
