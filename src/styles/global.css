@@ -1026,6 +1026,19 @@ a:hover {
   margin-top: 1.75rem;
 }
 
+.comments {
+  margin-bottom: 2rem;
+}
+.comments .giscus {
+  margin-top: 1.25rem;
+  max-width: 760px;
+}
+.comments__noscript {
+  margin-top: 1rem;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
 /* Inline SVG diagrams from diagrams/ */
 .diagram {
   margin: 1.75rem 0 1.25rem;

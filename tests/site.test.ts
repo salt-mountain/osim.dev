@@ -403,6 +403,16 @@ describe("security headers", () => {
     }
   });
 
+  test("the CSP lets giscus load its script, styles and frame", () => {
+    const directive = (name: string) =>
+      csp.match(new RegExp(`(?:^|;)\\s*${name}\\s([^;]*)`))?.[1] ?? "";
+    for (const name of ["script-src", "style-src", "frame-src"]) {
+      expect(directive(name).split(/\s+/), name).toContain(
+        "https://giscus.app",
+      );
+    }
+  });
+
   test("sets the baseline hardening headers", () => {
     for (const h of [
       "X-Content-Type-Options: nosniff",
@@ -452,6 +462,19 @@ describe.each(postSlugs)("blog post %s", (slug) => {
     expect(html.includes('class="post__hero"')).toBe(hasHero);
   });
 
+  test("loads giscus for its slug unless comments are off", () => {
+    const off = /^comments:\s*false\s*$/m.test(fm);
+    const container = html.match(/<div class="giscus"[^>]*>/)?.[0];
+    if (off) {
+      expect(container).toBeUndefined();
+      return;
+    }
+    expect(container).toBeDefined();
+    expect(container).toContain(`data-term="${slug}"`);
+    expect(container).toMatch(/data-repo-id="R_[^"]+"/);
+    expect(container).toMatch(/data-category-id="DIC_[^"]+"/);
+  });
+
   test("previews with its ogImage, or else a generated card", () => {
     const page = parsed.get(`/blog/${slug}/`)!;
     const ogSrc = fm.match(/^ogImage:\s*\n\s+src:\s*["']?([^"'\n]+)/m)?.[1];
@@ -468,6 +491,35 @@ describe.each(postSlugs)("blog post %s", (slug) => {
     ];
     expect(figures.length).toBe(diagrams.length);
     expect(html).not.toMatch(/<img[^>]+\.svg/);
+  });
+});
+
+// ---- hidden pages --------------------------------------------------------------
+
+describe("giscus", () => {
+  const post = [...parsed].find(([path]) => /^\/blog\/.+\//.test(path))?.[1];
+  const config = JSON.parse(readFileSync(join(ROOT, "giscus.json"), "utf8"));
+
+  test("giscus.json only lets this site load the comments", () => {
+    expect(config.origins).toEqual([SITE.origin]);
+    for (const pattern of config.originsRegex ?? []) {
+      expect(new RegExp(pattern).test("https://example.com")).toBe(false);
+      expect(new RegExp(pattern).test("http://localhost.evil.com")).toBe(false);
+    }
+  });
+
+  test("the loader uses strict matching and both Catppuccin themes", () => {
+    expect(post).toBeDefined();
+    for (const text of [
+      'ORIGIN = "https://giscus.app"',
+      '"data-mapping": "specific"',
+      '"data-strict": "1"',
+      "catppuccin_latte",
+      "catppuccin_mocha",
+      'attributeFilter: ["data-theme"]',
+    ]) {
+      expect(post!.inlineScripts, text).toContain(text);
+    }
   });
 });
 

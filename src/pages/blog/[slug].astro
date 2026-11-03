@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
+import Comments from "../../components/Comments.astro";
 import "../../styles/global.css";
 
 export async function getStaticPaths() {
@@ -129,6 +130,13 @@ const filename = post.id + ".md";
           </p>
         )}
       </article>
+
+      {post.data.comments !== false && (
+        <>
+          <hr class="divider" />
+          <Comments term={post.id} />
+        </>
+      )}
 
       <hr class="divider" />
 

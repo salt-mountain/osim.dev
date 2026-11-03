@@ -1,0 +1,95 @@
+---
+interface Props {
+  term: string;
+}
+
+const { term } = Astro.props;
+
+const GISCUS = {
+  repo: "salt-mountain/osim.dev",
+  repoId: "R_kgDORv6UVw",
+  category: "Blog comments",
+  categoryId: "DIC_kwDORv6UV84DKUTY",
+};
+---
+
+<section class="comments" id="comments" aria-label="Comments">
+  <div class="powerline">
+    <span class="powerline__seg powerline__seg--user">osim@dev</span>
+    <span class="powerline__seg powerline__seg--path">~/blog</span>
+    <span class="powerline__seg powerline__seg--cmd">tail -f comments.log</span>
+  </div>
+  <div
+    class="giscus"
+    data-repo={GISCUS.repo}
+    data-repo-id={GISCUS.repoId}
+    data-category={GISCUS.category}
+    data-category-id={GISCUS.categoryId}
+    data-term={term}
+  ></div>
+  <noscript>
+    <p class="comments__noscript">Comments need JavaScript to load.</p>
+  </noscript>
+</section>
+
+<script is:inline>
+  (function () {
+    var ORIGIN = "https://giscus.app";
+    var container = document.querySelector(".giscus[data-term]");
+    if (!container) return;
+
+    function theme() {
+      return document.documentElement.getAttribute("data-theme") === "light"
+        ? "catppuccin_latte"
+        : "catppuccin_mocha";
+    }
+
+    function syncTheme() {
+      var frame = document.querySelector("iframe.giscus-frame");
+      if (!frame || !frame.contentWindow) return;
+      frame.contentWindow.postMessage(
+        { giscus: { setConfig: { theme: theme() } } },
+        ORIGIN,
+      );
+    }
+
+    // Wait for the saved theme to apply.
+    document.addEventListener("DOMContentLoaded", function () {
+      var d = container.dataset;
+      var script = document.createElement("script");
+      script.src = ORIGIN + "/client.js";
+      script.async = true;
+      script.crossOrigin = "anonymous";
+      var attrs = {
+        "data-repo": d.repo,
+        "data-repo-id": d.repoId,
+        "data-category": d.category,
+        "data-category-id": d.categoryId,
+        "data-mapping": "specific",
+        "data-term": d.term,
+        "data-strict": "1",
+        "data-reactions-enabled": "1",
+        "data-emit-metadata": "0",
+        "data-input-position": "bottom",
+        "data-theme": theme(),
+        "data-lang": "en",
+        "data-loading": "lazy",
+      };
+      for (var key in attrs) script.setAttribute(key, attrs[key]);
+      container.appendChild(script);
+    });
+
+    new MutationObserver(syncTheme).observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+
+    // Resend once the frame is ready.
+    var synced = false;
+    window.addEventListener("message", function (event) {
+      if (synced || event.origin !== ORIGIN) return;
+      synced = true;
+      syncTheme();
+    });
+  })();
+</script>
