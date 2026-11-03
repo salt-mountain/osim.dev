@@ -12,7 +12,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "diagrams": "bun diagrams/generate.ts && astro sync --force",
+    "diagrams": "bun diagrams/generate.ts && rm -f .astro/data-store.json && astro sync --force",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "bun test"

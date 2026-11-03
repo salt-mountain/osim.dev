@@ -8,8 +8,9 @@ Nothing runs in the browser.
 bun run diagrams
 ```
 
-This regenerates the SVGs and clears Astro's content cache, which doesn't
-notice SVG-only changes. Restart `bun run dev` afterwards.
+This regenerates the SVGs and clears Astro's content caches, which don't
+notice SVG-only changes. Stop `bun run dev` before running it and start it
+again afterwards, or the running server keeps serving the old diagrams.
 
 In a post, reference a diagram as an image on its own line:
 

@@ -1089,12 +1089,14 @@ a:hover {
   font-weight: 700;
 }
 .d-t2 {
-  fill: color-mix(in srgb, var(--text-primary) 72%, var(--bg-secondary));
+  fill: var(--text-primary);
   font-size: 18px;
+  font-weight: 700;
 }
 .d-lbl {
-  fill: color-mix(in srgb, var(--text-primary) 72%, var(--bg-secondary));
+  fill: color-mix(in srgb, var(--text-primary) 80%, var(--bg-secondary));
   font-size: 19px;
+  font-weight: 700;
 }
 .d-lbl-net {
   fill: var(--diagram-net);

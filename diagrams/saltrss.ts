@@ -10,7 +10,7 @@ function architecture(): string {
   s.box(500, 120, 430, 300, { fill: "host", strokeWidth: 1.8 });
   s.box(525, 20, 160, 66);
   s.box(745, 20, 160, 66);
-  s.box(10, 220, 210, 86);
+  s.box(20, 220, 200, 86);
   s.box(525, 220, 160, 86);
   s.box(745, 220, 160, 86);
   s.box(280, 360, 160, 66);
@@ -24,7 +24,7 @@ function architecture(): string {
   s.line(442, 393, 497, 393, { color: "block", dash: [7, 6] });
   s.cross(470, 393);
 
-  s.badge(10, 220, DEVICE, "ink");
+  s.badge(20, 220, DEVICE, "ink");
   s.badge(296, 232, icon("tailscale"), "net");
   s.badge(500, 120, icon("ubuntu"), "host");
   s.badge(525, 20, icon("cloudflare"), "host");
@@ -37,8 +37,8 @@ function architecture(): string {
   s.text("t2", 605, 72, "+ Let's Encrypt");
   s.text("t1", 825, 50, "Websites & feeds");
   s.text("t2", 825, 72, "blogs, NASA, Ars…");
-  s.text("t1", 115, 258, "Your devices");
-  s.text("t2", 115, 282, "iPhone · iPad · Mac · PC");
+  s.text("t1", 120, 258, "My devices");
+  s.text("t2", 120, 282, "iPhone · iPad · Mac · PC");
   s.text("t1", 360, 260, "Tailscale");
   s.text("t2", 360, 282, "private network");
   s.text("t1", 605, 258, "Caddy");
@@ -74,14 +74,14 @@ function beforeAfter(): string {
   s.arrow(130, 126, 200, 176);
   s.arrow(350, 126, 280, 176);
   s.arrow(240, 262, 240, 300);
-  s.text("t1", 130, 99, "Accounts you follow");
+  s.text("t1", 130, 99, "Accounts I follow");
   s.text("t1", 350, 99, "Ads & suggested posts");
   s.text("t1", 240, 214, "The platform ranks it");
-  s.text("t2", 240, 240, "to keep you scrolling");
+  s.text("t2", 240, 240, "to keep me scrolling");
   s.text("t1", 240, 336, "Endless scroll");
   s.text("t2", 240, 360, "never finished");
 
-  s.text("lbl-net", 720, 34, "After: a feed reader");
+  s.text("lbl-net", 720, 34, "RSS: my own, chosen feeds");
   s.box(620, 60, 200, 64);
   s.box(570, 180, 300, 80, { fill: "net" });
   s.box(570, 304, 300, 72);
