@@ -512,7 +512,9 @@ describe.each(postSlugs)("blog post %s", (slug) => {
 
   test("is an article with its author and publish date", () => {
     const date = fm.match(/^date:\s*(\S+)\s*$/m)![1];
-    const iso = `${new Date(date).toISOString().slice(0, 10)}T12:00:00Z`;
+    const iso = /T/.test(date)
+      ? new Date(date).toISOString().replace(".000Z", "Z")
+      : `${date}T12:00:00Z`;
     expect(html).toContain('<meta property="og:type" content="article">');
     expect(html).toContain('<meta name="author" content="Goran Osim">');
     expect(html).toContain(

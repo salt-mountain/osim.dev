@@ -1,6 +1,6 @@
 ---
 title: "Reclaiming My Feed"
-date: 2026-11-06
+date: 2026-11-06T09:00:00-07:00
 description: "Why and how I self-host an RSS aggregator to get away from algorithmic feeds."
 hero:
   src: "./diagrams/saltrss-hero.svg"
