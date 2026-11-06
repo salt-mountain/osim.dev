@@ -1,6 +1,7 @@
 ---
 title: "Reclaiming My Feed"
 date: 2026-11-06T09:00:00-07:00
+linkedin: "https://www.linkedin.com/posts/goranosim_ive-been-stuck-in-the-doomscroll-lately-share-7524207623873904640-la3v/"
 description: "Why and how I self-host an RSS aggregator to get away from algorithmic feeds."
 hero:
   src: "./diagrams/saltrss-hero.svg"
