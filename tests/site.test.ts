@@ -355,6 +355,12 @@ describe("home page", () => {
     }
   });
 
+  test("links to the blog from the nav", () => {
+    const html = readFileSync(join(DIST, "index.html"), "utf8");
+    const nav = html.match(/<nav[\s\S]*?<\/nav>/)?.[0] ?? "";
+    expect(nav).toMatch(/<a href="\/blog"[^>]*>\s*blog\s*<\/a>/);
+  });
+
   test("has contact links and an email address the script can decode", () => {
     const hosts = home.refs
       .map((ref) => new URL(ref.url, SITE).hostname)
