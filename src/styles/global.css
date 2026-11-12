@@ -891,6 +891,18 @@ a:hover {
   font-size: 0.78rem;
 }
 
+.blog-feed {
+  margin-top: 1rem;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+.blog-feed a {
+  color: var(--link-color);
+}
+.blog-feed a:hover {
+  color: var(--link-hover);
+}
+
 .blog-entry__stub {
   font-size: 0.75rem;
   color: var(--text-secondary);

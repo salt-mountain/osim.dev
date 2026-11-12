@@ -56,10 +56,16 @@ text { font-family: Caveat; }
 `;
 
 /** A diagram SVG drawn as a Mocha PNG. */
-export function diagramPng(svg: string, width: number): Uint8Array {
+export function diagramPng(
+  svg: string,
+  width: number,
+  { opaque = false } = {},
+): Uint8Array {
   const themed = svg.replace(/(<svg[^>]*>)/, `$1<style>${STYLE}</style>`);
   return new Resvg(themed, {
     fitTo: { mode: "width", value: width },
+    // Light Mocha ink vanishes on white.
+    background: opaque ? M.base : undefined,
     font: {
       fontFiles: [font(400), font(700)],
       loadSystemFonts: false,
