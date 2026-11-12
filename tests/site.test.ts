@@ -550,6 +550,95 @@ describe.each(postSlugs)("blog post %s", (slug) => {
   });
 });
 
+describe("RSS feed", () => {
+  const xml = readFileSync(join(DIST, "rss.xml"), "utf8");
+  const items = [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)].map(
+    ([, item]) => item,
+  );
+  const field = (item: string, tag: string) =>
+    item.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)</${tag}>`))?.[1] ?? "";
+
+  test("is RSS 2.0 for this site, with one item per post", () => {
+    expect(xml).toStartWith('<?xml version="1.0" encoding="UTF-8"?>');
+    expect(xml).toContain('<rss version="2.0"');
+    expect(field(xml, "link")).toBe(SITE.href);
+    expect(items.length).toBe(postSlugs.length);
+  });
+
+  test("lists posts newest first", () => {
+    const dates = items.map((item) => Date.parse(field(item, "pubDate")));
+    expect(dates.every((d) => !Number.isNaN(d))).toBe(true);
+    expect(dates).toEqual([...dates].sort((a, b) => b - a));
+  });
+
+  test("every page advertises the feed", () => {
+    for (const path of pages) {
+      const html = readFileSync(join(DIST, path, "index.html"), "utf8");
+      expect(html, path).toMatch(
+        /<link rel="alternate" type="application\/rss\+xml" title="[^"]+" href="\/rss\.xml"/,
+      );
+    }
+  });
+
+  test("the blog index links to the feed", () => {
+    expect(parsed.get("/blog/")!.refs.map((r) => r.url)).toContain("/rss.xml");
+  });
+
+  describe.each(postSlugs)("item for %s", (slug) => {
+    const postUrl = new URL(`/blog/${slug}/`, SITE).href;
+    const item = items.find((i) => field(i, "link") === postUrl) ?? "";
+    const content = decodeEntities(field(item, "content:encoded"));
+    const md = readFileSync(
+      [".md", ".mdx"]
+        .map((ext) => join(ROOT, "src/content/blog", `${slug}${ext}`))
+        .find((file) => existsSync(file))!,
+      "utf8",
+    );
+    const fm = md.match(/^---\r?\n([\s\S]*?)\r?\n---/)?.[1] ?? "";
+    const heroSvg = /^hero:\s*\n\s+src:\s*["']?[^"'\n]+\.svg/m.test(fm);
+    const bodySvgs = [
+      ...md.slice(fm.length).matchAll(/^!\[[^\]]*\]\(\.\.?\/[^)\s]+\.svg\)/gm),
+    ].length;
+
+    test("links to the built post", () => {
+      expect(item).not.toBe("");
+      expect(existsSync(join(DIST, "blog", slug, "index.html"))).toBe(true);
+    });
+
+    test("carries the full post, not a summary", () => {
+      const heading = md.match(/^##\s+(.+)$/m)?.[1];
+      if (heading) expect(content).toContain(heading);
+      expect(content.length).toBeGreaterThan(1000);
+    });
+
+    test("swaps every diagram for a built PNG", () => {
+      expect(content).not.toContain("<svg");
+      const imgs = [...content.matchAll(/<img src="([^"]+)" alt="([^"]+)"/g)];
+      expect(imgs.length).toBe(bodySvgs + (heroSvg ? 1 : 0));
+      for (const [, src] of imgs) {
+        const file = distFileFor(src);
+        expect(file, src).not.toBeNull();
+        expect(pngSize(file!), src).not.toBeNull();
+      }
+    });
+
+    test("uses absolute links and image URLs", () => {
+      const urls = [...content.matchAll(/(?:href|src)="([^"]+)"/g)].map(
+        ([, url]) => url,
+      );
+      for (const url of urls) expect(url).toMatch(/^https?:\/\//);
+    });
+
+    test("ends with the comment and LinkedIn links", () => {
+      const comments = !/^comments:\s*false\s*$/m.test(fm);
+      expect(content.includes(`${postUrl}#comments`)).toBe(comments);
+      const linkedin = fm.match(/^linkedin:\s*["']?([^"'\n]+?)["']?\s*$/m)?.[1];
+      if (linkedin) expect(content).toContain(linkedin);
+      else expect(content).not.toContain("Discuss on LinkedIn");
+    });
+  });
+});
+
 // ---- hidden pages --------------------------------------------------------------
 
 describe("giscus", () => {

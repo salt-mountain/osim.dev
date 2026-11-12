@@ -1,4 +1,5 @@
 ---
+import { FEED_TITLE } from "../lib/feed-html";
 import { CARD_HEIGHT, CARD_WIDTH } from "../lib/og-size";
 
 interface Props {
@@ -41,6 +42,12 @@ const publishedIso =
     <meta name="description" content={description} />
     <meta name="author" content={AUTHOR} />
     <meta name="generator" content={Astro.generator} />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={FEED_TITLE}
+      href="/rss.xml"
+    />
     {noindex && <meta name="robots" content="noindex,nofollow" />}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
