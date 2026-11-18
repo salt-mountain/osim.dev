@@ -21,7 +21,7 @@ concurrency:
 
 jobs:
   verify:
-    uses: salt-mountain/ops/.github/workflows/verify.yml@c7dbf3de763ba189e6c06fc4f2c4a7312c1ed940 # v1.1.6
+    uses: salt-mountain/ops/.github/workflows/verify.yml@a01d2d49fc10e14f30d02c0f592a5caa3fc271ac # v1.1.7
     with:
       dependency_review: true
       node_version: "24" # keep in step with the deploy job (Renovate moves both)
