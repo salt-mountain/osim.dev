@@ -24,7 +24,7 @@ jobs:
     uses: salt-mountain/ops/.github/workflows/verify.yml@a01d2d49fc10e14f30d02c0f592a5caa3fc271ac # v1.1.7
     with:
       dependency_review: true
-      node_version: "24" # keep in step with the deploy job (Renovate moves both)
+      node_version: "26" # keep in step with the deploy job (Renovate moves both)
 
   deploy:
     needs: verify
@@ -42,7 +42,7 @@ jobs:
 
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: "24"
+          node-version: "26"
 
       - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
         # Bun version comes from package.json "packageManager" (pinned), not
